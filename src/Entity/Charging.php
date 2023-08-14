@@ -14,11 +14,11 @@ class Charging extends Entity
     protected string $customer;
 
     /**
-     * Valores disponíveis {@see BillingType}
+     * Método de pagamento, valores disponíveis {@see BillingType}
      *
      * @var $billingType string
     */
-    protected BillingType $billingType;
+    protected string $billingType;
 
     /** @var $value float */
     protected float $value;
@@ -54,8 +54,10 @@ class Charging extends Entity
      */
     protected ?int $installmentValue;
 
-    /** @var $discount DiscountType|null */
-    protected ?DiscountType $discount;
+    /**
+     * @var $discount Discount|null
+     */
+    protected ?Discount $discount;
 
     /** @var $interest Interest|null */
     protected ?Interest $interest;
@@ -90,12 +92,12 @@ class Charging extends Entity
         return $this;
     }
 
-    public function getBillingType(): BillingType
+    public function getBillingType(): ?BillingType
     {
-        return $this->billingType;
+        return BillingType::tryFrom($this->billingType);
     }
 
-    public function setBillingType(BillingType $billingType): self
+    public function setBillingType(string $billingType): self
     {
         $this->billingType = $billingType;
         return $this;
@@ -167,12 +169,12 @@ class Charging extends Entity
         return $this;
     }
 
-    public function getDiscount(): ?DiscountType
+    public function getDiscount(): Discount
     {
         return $this->discount;
     }
 
-    public function setDiscount(?DiscountType $discount): self
+    public function setDiscount(?Discount $discount): self
     {
         $this->discount = $discount;
         return $this;
