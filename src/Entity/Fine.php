@@ -16,8 +16,9 @@ class Fine extends Entity
         return $this->value;
     }
 
-    public function setValue(float $value): void
+    public function setValue(float $value): self
     {
         $this->value = $value;
+        return $this;
     }
 }

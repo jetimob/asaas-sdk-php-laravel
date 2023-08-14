@@ -2,23 +2,9 @@
 
 namespace Jetimob\Asaas\Api\Customer;
 
-use Jetimob\Http\Response;
+use Jetimob\Asaas\Api\DeleteResponse;
 
-class DeleteCustomerResponse extends Response
+class DeleteCustomerResponse extends DeleteResponse
 {
-    /** @var $deleted bool */
-    protected bool $deleted;
 
-    /** @var $id string */
-    protected string $id;
-
-    public function isDeleted(): bool
-    {
-        return $this->deleted;
-    }
-
-    public function getId(): bool
-    {
-        return $this->getId();
-    }
 }

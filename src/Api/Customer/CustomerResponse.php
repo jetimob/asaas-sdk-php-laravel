@@ -4,7 +4,7 @@ namespace Jetimob\Asaas\Api\Customer;
 
 use Jetimob\Http\Response;
 
-class CustomerResponse extends Response
+abstract class CustomerResponse extends Response
 {
     protected string $object;
     protected string $id;

@@ -18,8 +18,11 @@ class Discount extends Entity
      */
     protected int $dueDateLimitDays;
 
-    /** @var $type DiscountType */
-    protected DiscountType $type;
+    /**
+     * Tipos disponíveis no enum {@see DiscountType}
+     * @var $type string
+     */
+    protected string $type;
 
     public function getValue(): int
     {
@@ -45,10 +48,10 @@ class Discount extends Entity
 
     public function getType(): DiscountType
     {
-        return $this->type;
+        return DiscountType::from($this->type);
     }
 
-    public function setType(DiscountType $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
         return $this;
