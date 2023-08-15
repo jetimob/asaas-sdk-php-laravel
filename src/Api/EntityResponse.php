@@ -4,7 +4,7 @@ namespace Jetimob\Asaas\Api;
 
 use Jetimob\Http\Response;
 
-class CreateResponse extends Response
+class EntityResponse extends Response
 {
     /**
      * Entidade criada

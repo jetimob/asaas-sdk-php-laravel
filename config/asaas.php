@@ -1,8 +1,8 @@
 <?php
 
+use Jetimob\Asaas\Api\Account\AccountApi;
 use Jetimob\Asaas\Api\Charging\ChargingApi;
 use Jetimob\Asaas\Api\Customer\CustomerApi;
-use Jetimob\Asaas\Api\Invoice\InvoiceApi;
 
 return [
     'http' => [
@@ -21,7 +21,7 @@ return [
 
         // guzzle configuration, given to Guzzle instance as is
         'guzzle' => [
-            'base_uri' => 'https://sandbox.asaas.com/api/v3/',
+            'base_uri' => env('ASAAS_BASE_URI', 'https://sandbox.asaas.com/api/v3/'),
 
             // Number of seconds to wait while trying to connect to a server. 0 waits indefinitely.
             'connect_timeout' => 0.0,
@@ -53,8 +53,8 @@ return [
     |
     */
     'api_impl' => [
-//        'invoice' => InvoiceApi::class,
         'customer' => CustomerApi::class,
+        'account' => AccountApi::class,
         'charging' => ChargingApi::class,
     ],
 ];

@@ -2,9 +2,9 @@
 
 namespace Jetimob\Asaas\Api\Customer;
 
-use Jetimob\Asaas\Api\CreateResponse;
+use Jetimob\Asaas\Api\EntityResponse;
 
-abstract class CustomerResponse extends CreateResponse
+abstract class CustomerResponse extends EntityResponse
 {
     // TODO: Adicionar comentários
     protected string $dateCreated;
