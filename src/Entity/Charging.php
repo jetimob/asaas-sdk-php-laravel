@@ -48,6 +48,30 @@ class Charging extends Entity
     protected ?int $installmentCount;
 
     /**
+     * @var $creditCard CreditCard|null
+    */
+    protected ?CreditCard $creditCard;
+
+    /**
+     * @var $creditCardHolderInfo CreditCardHolderInfo|null
+     */
+    protected ?CreditCardHolderInfo $creditCardHolderInfo;
+
+    /**
+     * Realizar apenas a Pré-Autorização da cobrança
+     *
+     * @var $authorizeOnly bool
+     */
+    protected bool $authorizeOnly = false;
+
+    /**
+     * IP de onde o cliente está fazendo a compra. Não deve ser informado o IP do seu servidor.
+     *
+     * @var $remoteIp string
+    */
+    protected string $remoteIp;
+
+    /**
      * Valor de cada percela (somento no caso de cobrança parcelada)
      *
      * @var $installmentValue int|null
@@ -221,6 +245,50 @@ class Charging extends Entity
     public function setSplit(?array $split): self
     {
         $this->split = $split;
+        return $this;
+    }
+
+    public function getCreditCard(): ?CreditCard
+    {
+        return $this->creditCard;
+    }
+
+    public function setCreditCard(CreditCard $creditCard): self
+    {
+        $this->creditCard = $creditCard;
+        return $this;
+    }
+
+    public function getCreditCardHolderInfo(): ?CreditCardHolderInfo
+    {
+        return $this->creditCardHolderInfo;
+    }
+
+    public function setCreditCardHolderInfo(CreditCardHolderInfo $creditCardHolderInfo): self
+    {
+        $this->creditCardHolderInfo = $creditCardHolderInfo;
+        return $this;
+    }
+
+    public function getRemoteIp(): ?string
+    {
+        return $this->remoteIp;
+    }
+
+    public function setRemoteIp(string $remoteIp): self
+    {
+        $this->remoteIp = $remoteIp;
+        return $this;
+    }
+
+    public function isAuthorizeOnly(): ?string
+    {
+        return $this->authorizeOnly;
+    }
+
+    public function setAuthorizeOnly(string $authorizeOnly): self
+    {
+        $this->authorizeOnly = $authorizeOnly;
         return $this;
     }
 }

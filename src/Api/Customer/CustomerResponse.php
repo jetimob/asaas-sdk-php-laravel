@@ -2,12 +2,11 @@
 
 namespace Jetimob\Asaas\Api\Customer;
 
-use Jetimob\Http\Response;
+use Jetimob\Asaas\Api\CreateResponse;
 
-abstract class CustomerResponse extends Response
+abstract class CustomerResponse extends CreateResponse
 {
-    protected string $object;
-    protected string $id;
+    // TODO: Adicionar comentários
     protected string $dateCreated;
     protected string $name;
     protected ?string $email;
@@ -28,16 +27,6 @@ abstract class CustomerResponse extends Response
     protected ?string $state;
     protected ?string $country;
     protected ?string $observations;
-
-    public function getObject(): string
-    {
-        return $this->object;
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
 
     public function getDateCreated(): string
     {

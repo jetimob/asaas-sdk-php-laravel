@@ -7,10 +7,12 @@ use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
 use Jetimob\Asaas\Api\Charging\DeleteChargingResponse;
 use Jetimob\Asaas\Api\Charging\FindChargingResponse;
 use Jetimob\Asaas\Api\Customer\CreateCustomerResponse;
+use Jetimob\Asaas\Entity\BillingType;
 use Jetimob\Asaas\Entity\Charging;
 use Jetimob\Asaas\Entity\Discount;
 use Jetimob\Asaas\Entity\DiscountType;
 use Jetimob\Asaas\Entity\Fine;
+use Jetimob\Asaas\Exceptions\AsaasRequestException;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
 
@@ -48,6 +50,43 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertInstanceOf(CreateChargingResponse::class, $response);
 
         return $response->getId();
+    }
+
+    /**
+     * @test
+     */
+    public function shouldCreateChargingForCreditCardSuccessfully()
+    {
+        $this->charging
+            ->setCreditCard($this->fakeCreditCard())
+            ->setCreditCardHolderInfo($this->fakeCreditCardHolder())
+            ->setDescription('cobrança por cartão de credito')
+            ->setBillingType(BillingType::CREDIT_CARD->value)
+            ->setRemoteIp(fake()->ipv4);
+
+        $response = $this->api->create($this->charging);
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf(CreateChargingResponse::class, $response);
+    }
+
+    /**
+     * @test
+    */
+    public function shouldCreateChargingFailWithInvalidCreditCard(): void
+    {
+        $this->expectException(AsaasRequestException::class);
+
+        $this->charging
+            ->setCreditCard($this->fakeCreditCard(valid: false))
+            ->setCreditCardHolderInfo($this->fakeCreditCardHolder())
+            ->setDescription('cobrança por cartão de credito')
+            ->setBillingType(BillingType::CREDIT_CARD->value)
+            ->setRemoteIp(fake()->ipv4);
+
+        $response = $this->api->create($this->charging);
+
+        $this->assertEquals(400, $response->getStatusCode());
     }
 
     /**

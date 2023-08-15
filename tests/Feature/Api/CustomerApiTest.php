@@ -22,7 +22,7 @@ class CustomerApiTest extends AbstractTestCase
         $this->customer = (new Customer())
             ->setName(fake()->name)
             ->setEmail(fake()->safeEmail)
-            ->setCpfCnpj('841.460.850-71');
+            ->setCpfCnpj(self::FAKE_CPF);
     }
 
     /** @test */

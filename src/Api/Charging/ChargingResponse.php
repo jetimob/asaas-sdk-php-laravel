@@ -2,22 +2,16 @@
 
 namespace Jetimob\Asaas\Api\Charging;
 
+use Jetimob\Asaas\Api\CreateResponse;
 use Jetimob\Asaas\Entity\BillingType;
 use Jetimob\Asaas\Entity\ChargingStatus;
 use Jetimob\Asaas\Entity\Discount;
 use Jetimob\Asaas\Entity\Fine;
 use Jetimob\Asaas\Entity\Interest;
 use Jetimob\Asaas\Entity\Refund;
-use Jetimob\Http\Response;
 
-abstract class ChargingResponse extends Response
+abstract class ChargingResponse extends CreateResponse
 {
-    /** @var string $object */
-    protected string $object;
-
-    /** @var string $id */
-    protected string $id;
-
     /** @var $dateCreated string */
     protected string $dateCreated;
 
@@ -115,12 +109,6 @@ abstract class ChargingResponse extends Response
 
     /** @var $refunds Refund[]|null */
     protected ?array $refunds;
-
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
 
     public function getDateCreated(): string
     {
