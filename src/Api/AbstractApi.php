@@ -2,10 +2,13 @@
 
 namespace Jetimob\Asaas\Api;
 
+use Jetimob\Asaas\Exceptions\AsaasRequestException;
 use Jetimob\Http\Contracts\HttpProviderContract;
 
 abstract class AbstractApi extends \Jetimob\Http\AbstractApi
 {
+    protected ?string $exceptionClass = AsaasRequestException::class;
+
     public function __construct(HttpProviderContract $httpProvider)
     {
         parent::__construct($httpProvider);
