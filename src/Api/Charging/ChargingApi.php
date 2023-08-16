@@ -5,6 +5,7 @@ namespace Jetimob\Asaas\Api\Charging;
 use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
 use Jetimob\Asaas\Entity\Charging;
+use Jetimob\Asaas\Entity\ConfirmReceiptInCash;
 
 class ChargingApi extends AbstractApi
 {
@@ -37,5 +38,12 @@ class ChargingApi extends AbstractApi
             DeleteChargingResponse::class,
             []
         );
+    }
+
+    public function confirmReceiptInCash(string $id, ConfirmReceiptInCash $confirmReceiptInCash): ConfirmReceiptInCashResponse
+    {
+        return $this->mappedPost("payments/$id/receiveInCash", ConfirmReceiptInCashResponse::class, [
+            RequestOptions::JSON => $confirmReceiptInCash,
+        ]);
     }
 }

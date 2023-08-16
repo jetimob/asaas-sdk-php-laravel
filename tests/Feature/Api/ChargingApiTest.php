@@ -3,12 +3,14 @@
 namespace Jetimob\Asaas\Tests\Feature\Api;
 
 use Jetimob\Asaas\Api\Charging\ChargingApi;
+use Jetimob\Asaas\Api\Charging\ConfirmReceiptInCashResponse;
 use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
 use Jetimob\Asaas\Api\Charging\DeleteChargingResponse;
 use Jetimob\Asaas\Api\Charging\FindChargingResponse;
 use Jetimob\Asaas\Api\Customer\CreateCustomerResponse;
 use Jetimob\Asaas\Entity\BillingType;
 use Jetimob\Asaas\Entity\Charging;
+use Jetimob\Asaas\Entity\ConfirmReceiptInCash;
 use Jetimob\Asaas\Entity\Discount;
 use Jetimob\Asaas\Entity\DiscountType;
 use Jetimob\Asaas\Entity\Fine;
@@ -100,6 +102,24 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf(FindChargingResponse::class, $response);
         $this->assertEquals($id, $response->getId());
+    }
+
+    /**
+     * @depends shouldCreateChargingSuccessfully
+     *
+     * @test
+     */
+    public function shouldConfirmReceiptInCashSuccessfully(string $id)
+    {
+        $confirmation = (new ConfirmReceiptInCash())
+            ->setPaymentDate(now()->format('Y-m-d'))
+            ->setValue(1000)
+            ->setNotifyCustomer(true);
+
+        $response = $this->api->confirmReceiptInCash($id, $confirmation);
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf(ConfirmReceiptInCashResponse::class, $response);
     }
 
     /**
