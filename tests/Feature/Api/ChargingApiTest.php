@@ -2,18 +2,22 @@
 
 namespace Jetimob\Asaas\Tests\Feature\Api;
 
+ use Jetimob\Asaas\Api\Account\AccountResponse;
 use Jetimob\Asaas\Api\Charging\ChargingApi;
 use Jetimob\Asaas\Api\Charging\ConfirmReceiptInCashResponse;
 use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
 use Jetimob\Asaas\Api\Charging\DeleteChargingResponse;
 use Jetimob\Asaas\Api\Charging\FindChargingResponse;
 use Jetimob\Asaas\Api\Customer\CreateCustomerResponse;
+use Jetimob\Asaas\Entity\Account;
 use Jetimob\Asaas\Entity\BillingType;
 use Jetimob\Asaas\Entity\Charging;
 use Jetimob\Asaas\Entity\ConfirmReceiptInCash;
 use Jetimob\Asaas\Entity\Discount;
 use Jetimob\Asaas\Entity\DiscountType;
 use Jetimob\Asaas\Entity\Fine;
+use Jetimob\Asaas\Entity\Interest;
+use Jetimob\Asaas\Entity\Split;
 use Jetimob\Asaas\Exceptions\AsaasRequestException;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
@@ -33,14 +37,10 @@ class ChargingApiTest extends AbstractTestCase
             ->setValue(fake()->randomFloat(0, 5.0, 50.0))
             ->setDueDate(now()->addMonth()->format('Y-m-d'))
             ->setBillingType($this->getRandomBillingType()->value)
-            ->setFine((new Fine())->setValue(5.00))
+            ->setFine(Fine::withValue(fake()->randomFloat(0, 5.0, 50.0)))
+            ->setInterest(Interest::withValue(fake()->randomFloat(0, 5.0, 10.0)))
             ->setDescription(fake()->text)
-            ->setDiscount(
-                (new Discount())
-                    ->setValue(5.00)
-                    ->setType(DiscountType::FIXED->value)
-                    ->setDueDateLimitDays(10)
-            );
+            ->setDiscount(Discount::new(fake()->randomFloat(0, 5.0, 50.0), DiscountType::FIXED->value, fake()->numberBetween(1, 10)));
     }
 
     /** @test */
@@ -52,6 +52,19 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertInstanceOf(CreateChargingResponse::class, $response);
 
         return $response->getId();
+    }
+
+    /** @test */
+    public function shouldNotCreateChargingWithInterestGreatherThanLimitPerMonth(): void
+    {
+        $this->expectException(AsaasRequestException::class);
+
+        $limitPerMonth = 10;
+
+        $response = $this->api->create($this->charging->setInterest(Interest::withValue($limitPerMonth + 0.1)));
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf(CreateChargingResponse::class, $response);
     }
 
     /**
@@ -134,5 +147,39 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertInstanceOf(DeleteChargingResponse::class, $response);
         $this->assertTrue($response->isDeleted());
         $this->assertEquals($id, $response->getId());
+    }
+
+    /** @test */
+    public function shouldNotCreateAnChargingWithSplitAmountGreatherOrEqualThanChargingFinalValue(): void
+    {
+        $this->expectException(AsaasRequestException::class);
+
+        $account = $this->createAccount();
+
+        $chargingFinalValue = $this->charging->getValue() - $this->charging->getDiscount()->getValue();
+
+        $charging = $this->charging->setSplit([
+            Split::new($account->getWalletId(), $chargingFinalValue)
+        ]);
+
+        $this->api->create($charging);
+    }
+
+    /**
+     * @test
+    */
+    public function shouldCreateChargingWithSplitsSuccessfully(): AccountResponse
+    {
+        $account = $this->createAccount();
+
+        $chargingFinalValue = $this->charging->getValue() - $this->charging->getDiscount()->getValue();
+
+        $charging = $this->charging->setSplit([Split::new($account->getWalletId(), $chargingFinalValue - 10)]);
+
+        $response = $this->api->create($charging);
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        return $account;
     }
 }

@@ -22,13 +22,12 @@ class CustomerApiTest extends AbstractTestCase
         $this->customer = (new Customer())
             ->setName(fake()->name)
             ->setEmail(fake()->safeEmail)
-            ->setCpfCnpj(self::FAKE_CPF);
+            ->setCpfCnpj(self::generateRandomCpf());
     }
 
     /** @test */
     public function shouldCreateCustomerSuccessfully(): string
     {
-        $this->markTestSkipped('todo: Verificar limite de criação de 100 customers');
         $response = $this->api->create($this->customer);
 
         $this->assertEquals(200, $response->getStatusCode());
@@ -38,39 +37,39 @@ class CustomerApiTest extends AbstractTestCase
     }
 
     /**
-//     * @depends shouldCreateCustomerSuccessfully
+     * @depends shouldCreateCustomerSuccessfully
      * @test
      */
-    public function shouldFindCustomerByIdSuccessfully(): void
+    public function shouldFindCustomerByIdSuccessfully(string $id): void
     {
-        $response = $this->api->find(self::DEFAULT_CUSTOMER_ID);
+        $response = $this->api->find($id);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf(FindCustomerResponse::class, $response);
     }
 
     /**
-//     * @depends shouldCreateCustomerSuccessfully
+     * @depends shouldCreateCustomerSuccessfully
      * @test
      */
-    public function shouldUpdateCustomerSuccessFully()
+    public function shouldUpdateCustomerSuccessFully(string $id): void
     {
-        $newName = 'novo-nome';
+        $newName = fake()->name;
         $this->customer->setName($newName);
 
-        $response = $this->api->update(self::DEFAULT_CUSTOMER_ID, $this->customer);
+        $response = $this->api->update($id, $this->customer);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals($newName, $response->getName());
     }
 
     /**
-//     * @depends shouldCreateCustomerSuccessfully
+     * @depends shouldCreateCustomerSuccessfully
      * @test
      */
-    public function shouldDeleteCustomerSuccessfully()
+    public function shouldDeleteCustomerSuccessfully(string $id)
     {
-        $response = $this->api->delete(self::DEFAULT_CUSTOMER_ID);
+        $response = $this->api->delete($id);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertTrue($response->isDeleted());

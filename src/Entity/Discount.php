@@ -56,4 +56,9 @@ class Discount extends Entity
         $this->type = $type;
         return $this;
     }
+
+    public static function new(float $value, string $type, int $dueDateLimitDays): static
+    {
+        return (new static())->setValue($value)->setDueDateLimitDays($dueDateLimitDays);
+    }
 }

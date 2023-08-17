@@ -105,6 +105,11 @@ class Charging extends Entity
     */
     protected array $split;
 
+    public function splitItemType(): string
+    {
+        return Split::class;
+    }
+
     public function getCustomer(): string
     {
         return $this->customer;
