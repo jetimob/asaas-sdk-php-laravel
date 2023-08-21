@@ -1,10 +1,15 @@
 <?php
 
-namespace Jetimob\Asaas\Entity;
+namespace Jetimob\Asaas\Entity\Customer;
+
+use Jetimob\Asaas\Entity\Entity;
 
 class Customer extends Entity
 {
+    /** @var $name string */
     protected string $name;
+
+    /** @var $cpfCnpj string */
     protected string $cpfCnpj;
 
     /** @var $email string|null */
@@ -48,9 +53,10 @@ class Customer extends Entity
 
     /**
      * Envio de notificações de cobrança
+     *
      * @var $notificationDisabled bool
      */
-    protected bool $notificationDisabled; // TODO: Verificar a regra para isso
+    protected bool $notificationDisabled;
 
     /**
      * Emails adicionais para envio de notificações de cobrança separados por ","

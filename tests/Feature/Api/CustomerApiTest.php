@@ -2,11 +2,8 @@
 
 namespace Jetimob\Asaas\Tests\Feature\Api;
 
-use Jetimob\Asaas\Api\Customer\CustomerApi;
-use Jetimob\Asaas\Api\Customer\CustomerResponse;
-use Jetimob\Asaas\Api\Customer\DeleteCustomerResponse;
-use Jetimob\Asaas\Api\Customer\FindCustomerResponse;
-use Jetimob\Asaas\Entity\Customer;
+use Jetimob\Asaas\Api\Customer\{CustomerApi, CustomerResponse, DeleteCustomerResponse, FindCustomerResponse};
+use Jetimob\Asaas\Entity\Customer\Customer;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
 

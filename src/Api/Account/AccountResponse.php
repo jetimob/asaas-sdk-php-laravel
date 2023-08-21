@@ -3,7 +3,7 @@
 namespace Jetimob\Asaas\Api\Account;
 
 use Jetimob\Asaas\Api\EntityResponse;
-use Jetimob\Asaas\Entity\AccountNumber;
+use Jetimob\Asaas\Entity\Account\AccountNumber;
 
 class AccountResponse extends EntityResponse
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jetimob\Asaas\Entity;
+ namespace Jetimob\Asaas\Entity\Account;
 
 enum CompanyType: string
 {

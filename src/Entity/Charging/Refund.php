@@ -1,6 +1,8 @@
 <?php
 
-namespace Jetimob\Asaas\Entity;
+namespace Jetimob\Asaas\Entity\Charging;
+
+use Jetimob\Asaas\Entity\Entity;
 
 class Refund extends Entity
 {

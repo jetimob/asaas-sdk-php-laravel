@@ -1,6 +1,8 @@
 <?php
 
-namespace Jetimob\Asaas\Entity;
+namespace Jetimob\Asaas\Entity\Charging;
+
+use Jetimob\Asaas\Entity\Valuable;
 
 /**
  * Percentual de juros ao mês sobre o valor da cobrança para pagamento após o vencimento

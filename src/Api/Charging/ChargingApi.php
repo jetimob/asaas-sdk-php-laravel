@@ -4,8 +4,7 @@ namespace Jetimob\Asaas\Api\Charging;
 
 use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
-use Jetimob\Asaas\Entity\Charging;
-use Jetimob\Asaas\Entity\ConfirmReceiptInCash;
+use Jetimob\Asaas\Entity\Charging\{Charging, ConfirmReceiptInCash};
 
 class ChargingApi extends AbstractApi
 {

@@ -1,6 +1,8 @@
 <?php
 
-namespace Jetimob\Asaas\Entity;
+namespace Jetimob\Asaas\Entity\Account;
+
+use Jetimob\Asaas\Entity\Entity;
 
 class AccountNumber extends Entity
 {
