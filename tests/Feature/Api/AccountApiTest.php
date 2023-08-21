@@ -6,14 +6,12 @@ use Jetimob\Asaas\Api\Account\AccountApi;
 use Jetimob\Asaas\Api\Account\AccountBalanceResponse;
 use Jetimob\Asaas\Api\Account\CreateAccountResponse;
 use Jetimob\Asaas\Api\Account\FindAccountResponse;
-use Jetimob\Asaas\Entity\Account\Account;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
 
 class AccountApiTest extends AbstractTestCase
 {
     protected AccountApi $api;
-    protected Account $account;
 
     protected function setUp(): void
     {
@@ -59,10 +57,7 @@ class AccountApiTest extends AbstractTestCase
      */
     public function shouldGetBalanceOfSubAccountSuccessfully(CreateAccountResponse $createAccountResponse)
     {
-        $response = $this
-            ->api
-            ->usingToken($createAccountResponse->getApiKey())
-            ->balance();
+         $response = $this->api->usingToken($createAccountResponse->getApiKey())->balance();
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertInstanceOf(AccountBalanceResponse::class, $response);
