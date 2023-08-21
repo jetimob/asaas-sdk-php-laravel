@@ -4,7 +4,7 @@ namespace Jetimob\Asaas\Api\Account;
 
 use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
-use Jetimob\Asaas\Entity\Account;
+ use Jetimob\Asaas\Entity\Account\Account;
 
 class AccountApi extends AbstractApi
 {
@@ -32,5 +32,13 @@ class AccountApi extends AbstractApi
     public function balance(): AccountBalanceResponse
     {
         return $this->mappedGet('finance/balance', AccountBalanceResponse::class);
+    }
+
+    /**
+     * {@see https://docs.asaas.com/reference/recuperar-valores-de-split}
+    */
+    public function splitsStatistics(): SplitStatisticsResponse
+    {
+        return $this->mappedGet('finance/split/statistics', SplitStatisticsResponse::class);
     }
 }

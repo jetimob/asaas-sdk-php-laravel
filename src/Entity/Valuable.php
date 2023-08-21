@@ -2,7 +2,7 @@
 
 namespace Jetimob\Asaas\Entity;
 
-class Valuable extends Entity
+abstract class Valuable extends Entity
 {
     /** @var $value float */
     protected float $value;
