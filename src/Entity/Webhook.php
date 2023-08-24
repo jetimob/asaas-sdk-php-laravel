@@ -23,7 +23,7 @@ class Webhook extends Entity
      *
      * @var $apiVersion string
      */
-    protected string $apiVersion = '3';
+    protected string $apiVersion;
 
 
     /**
