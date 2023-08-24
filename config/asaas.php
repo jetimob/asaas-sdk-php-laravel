@@ -3,6 +3,8 @@
 use Jetimob\Asaas\Api\Account\AccountApi;
 use Jetimob\Asaas\Api\Charging\ChargingApi;
 use Jetimob\Asaas\Api\Customer\CustomerApi;
+use Jetimob\Asaas\Api\Transfer\TransferApi;
+use Jetimob\Asaas\Api\Webhook\WebhookApi;
 
 return [
     'http' => [
@@ -37,8 +39,7 @@ return [
         ],
     ],
 
-    'private_key' => env('ASAAS_PRIVATE_KEY', ''), // todo: Verificar necessidade
-
+    'parent_wallet_id' => env('ASSAS_PARENT_WALLET_ID', ''),
     /*
     |--------------------------------------------------------------------------
     | Implementação dos endpoints da API
@@ -54,7 +55,9 @@ return [
     */
     'api_impl' => [
         'customer' => CustomerApi::class,
-        'account' => AccountApi::class,
+        'account'  => AccountApi::class,
         'charging' => ChargingApi::class,
+        'transfer' => TransferApi::class,
+        'webhook'  => WebhookApi::class,
     ],
 ];
