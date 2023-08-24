@@ -6,26 +6,104 @@ use Jetimob\Asaas\Api\EntityResponse;
 
 abstract class CustomerResponse extends EntityResponse
 {
-    // TODO: Adicionar comentários
+    /**
+     * @var string
+     */
     protected string $dateCreated;
+
+    /**
+     * @var string
+     */
     protected string $name;
+
+    /**
+     * @var string|null
+     */
     protected ?string $email;
+
+    /**
+     * @var string|null
+     */
     protected ?string $phone;
+
+    /**
+     * @var string|null
+     */
     protected ?string $mobilePhone;
+
+    /**
+     * @var string|null
+     */
     protected ?string $address;
+
+    /**
+     * @var string|null
+     */
     protected ?string $addressNumber;
+
+    /**
+     * @var string|null
+     */
     protected ?string $complement;
+
+    /**
+     * @var string|null
+     */
     protected ?string $province;
+
+    /**
+     * @var string|null
+     */
     protected ?string $postalCode;
+
+    /**
+     * @var string
+     */
     protected string $cpfCnpj;
+
+    /**
+     * @var string|null
+     */
     protected ?string $personType;
+
+    /**
+     * @var bool
+     */
     protected bool $deleted;
+
+    /**
+     * @var string|null
+     */
     protected ?string $additionalEmails;
+
+    /**
+     * @var string|null
+     */
     protected ?string $externalReference;
+
+    /**
+     * @var bool
+     */
     protected bool $notificationDisabled;
+
+    /**
+     * @var int|null
+     */
     protected ?int $city;
+
+    /**
+     * @var string|null
+     */
     protected ?string $state;
+
+    /**
+     * @var string|null
+     */
     protected ?string $country;
+
+    /**
+     * @var string|null
+     */
     protected ?string $observations;
 
     public function getDateCreated(): string
