@@ -1,8 +1,10 @@
 <?php
 
-namespace Jetimob\Asaas\Entity;
+namespace Jetimob\Asaas\Entity\Webhook;
 
-class Webhook extends Entity
+use Jetimob\Asaas\Entity\Entity;
+
+class WebhookConfiguration extends Entity
 {
     /**
      * URL que receberá as informações de sincronização
@@ -46,15 +48,6 @@ class Webhook extends Entity
      * @var $authToken string
     */
     protected string $authToken;
-
-    /**
-     * Tipo de webhook
-     *
-     * Valores disponíveis em {@see WebhookType}
-     *
-     * @var $type string
-     */
-    protected string $type;
 
     public function getUrl(): string
     {
@@ -119,17 +112,6 @@ class Webhook extends Entity
     public function setAuthToken(string $authToken): self
     {
         $this->authToken = $authToken;
-        return $this;
-    }
-
-    public function getType(): ?WebhookType
-    {
-        return WebhookType::tryFrom($this->type);
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
         return $this;
     }
 }

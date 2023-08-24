@@ -39,6 +39,7 @@ class ChargingApi extends AbstractApi
         );
     }
 
+    /** {@see https://docs.asaas.com/reference/confirmar-recebimento-em-dinheiro} */
     public function confirmReceiptInCash(string $id, ConfirmReceiptInCash $confirmReceiptInCash): ConfirmReceiptInCashResponse
     {
         return $this->mappedPost("payments/$id/receiveInCash", ConfirmReceiptInCashResponse::class, [
