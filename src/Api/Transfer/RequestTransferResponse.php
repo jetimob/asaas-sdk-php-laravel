@@ -4,7 +4,6 @@ namespace Jetimob\Asaas\Api\Transfer;
 
 use Jetimob\Asaas\Api\EntityResponse;
 use Jetimob\Asaas\Entity\Transfer\BankAccount;
-use Jetimob\Asaas\Entity\Transfer\BankAccountType;
 
 class RequestTransferResponse extends EntityResponse
 {

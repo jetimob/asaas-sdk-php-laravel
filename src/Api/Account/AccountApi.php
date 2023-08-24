@@ -4,7 +4,7 @@ namespace Jetimob\Asaas\Api\Account;
 
 use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
- use Jetimob\Asaas\Entity\Account\Account;
+use Jetimob\Asaas\Entity\Account\Account;
 
 class AccountApi extends AbstractApi
 {

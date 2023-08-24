@@ -6,5 +6,4 @@ use Jetimob\Asaas\Api\DeleteResponse;
 
 class DeleteChargingResponse extends DeleteResponse
 {
-
 }

@@ -1,6 +1,6 @@
 <?php
 
- namespace Jetimob\Asaas\Entity\Charging;
+namespace Jetimob\Asaas\Entity\Charging;
 
 use Jetimob\Asaas\Entity\Entity;
 

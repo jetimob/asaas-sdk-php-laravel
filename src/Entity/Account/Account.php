@@ -2,7 +2,8 @@
 
 namespace Jetimob\Asaas\Entity\Account;
 
-use Jetimob\Asaas\Entity\{Entity, WebhookType};
+use Jetimob\Asaas\Entity\Entity;
+use Jetimob\Asaas\Entity\Webhook\WebhookConfiguration;
 
 class Account extends Entity
 {
@@ -107,10 +108,9 @@ class Account extends Entity
     /**
      * Array com as configurações de Webhooks desejadas
      *
-     * @var $webhooks WebhookType[]
+     * @var $webhooks WebhookConfiguration[]
     */
     protected array $webhooks;
-
 
     public function getName(): string
     {

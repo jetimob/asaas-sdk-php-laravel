@@ -183,7 +183,7 @@ class BankAccount extends Entity
         return $this->pixAddressKey;
     }
 
-    public function setPixAddressKey(string $pixAddressKey): BankAccount
+    public function setPixAddressKey(string $pixAddressKey): self
     {
         $this->pixAddressKey = $pixAddressKey;
         return $this;
@@ -194,7 +194,7 @@ class BankAccount extends Entity
         return $this->account;
     }
 
-    public function setAccount(string $account): BankAccount
+    public function setAccount(string $account): self
     {
         $this->account = $account;
         return $this;
@@ -205,7 +205,7 @@ class BankAccount extends Entity
         return $this->agencyDigit;
     }
 
-    public function setAgencyDigit(string $agencyDigit): BankAccount
+    public function setAgencyDigit(string $agencyDigit): self
     {
         $this->agencyDigit = $agencyDigit;
         return $this;

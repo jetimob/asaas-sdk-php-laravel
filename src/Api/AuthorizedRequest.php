@@ -6,5 +6,4 @@ use Jetimob\Http\Request;
 
 class AuthorizedRequest extends Request
 {
-
 }

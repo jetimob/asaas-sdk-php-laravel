@@ -10,16 +10,14 @@ use Jetimob\Asaas\Entity\Account\Account;
 use Jetimob\Asaas\Entity\Customer\Customer;
 use Jetimob\Asaas\Facades\Asaas;
 use Orchestra\Testbench\TestCase;
-use Jetimob\Asaas\Entity\Charging\{
-    BillingType,
-    Charging,
-    CreditCard,
-    CreditCardHolderInfo,
-    Discount,
-    DiscountType,
-    Fine,
-    Interest,
-};
+use Jetimob\Asaas\Entity\Charging\BillingType;
+use Jetimob\Asaas\Entity\Charging\Charging;
+use Jetimob\Asaas\Entity\Charging\CreditCard;
+use Jetimob\Asaas\Entity\Charging\CreditCardHolderInfo;
+use Jetimob\Asaas\Entity\Charging\Discount;
+use Jetimob\Asaas\Entity\Charging\DiscountType;
+use Jetimob\Asaas\Entity\Charging\Fine;
+use Jetimob\Asaas\Entity\Charging\Interest;
 
 class AbstractTestCase extends TestCase
 {

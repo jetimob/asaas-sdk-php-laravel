@@ -3,7 +3,12 @@
 namespace Jetimob\Asaas\Api\Charging;
 
 use Jetimob\Asaas\Api\EntityResponse;
-use Jetimob\Asaas\Entity\Charging\{BillingType, ChargingStatus, Discount, Fine, Interest, Refund};
+use Jetimob\Asaas\Entity\Charging\BillingType;
+use Jetimob\Asaas\Entity\Charging\ChargingStatus;
+use Jetimob\Asaas\Entity\Charging\Discount;
+use Jetimob\Asaas\Entity\Charging\Fine;
+use Jetimob\Asaas\Entity\Charging\Interest;
+use Jetimob\Asaas\Entity\Charging\Refund;
 
 abstract class ChargingResponse extends EntityResponse
 {
