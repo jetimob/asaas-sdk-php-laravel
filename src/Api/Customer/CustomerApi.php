@@ -5,6 +5,7 @@ namespace Jetimob\Asaas\Api\Customer;
 use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
 use Jetimob\Asaas\Entity\Customer\Customer;
+use Jetimob\Asaas\Entity\Customer\TokenizeCreditCardInfo;
 
 class CustomerApi extends AbstractApi
 {
@@ -46,5 +47,15 @@ class CustomerApi extends AbstractApi
             DeleteCustomerResponse::class,
             []
         );
+    }
+
+    /**
+     * {@see https://docs.asaas.com/reference/tokenizacao-de-cartao-de-credito}
+    */
+    public function tokenizeCreditCard(TokenizeCreditCardInfo $creditCard): TokenizeCreditCardResponse
+    {
+        return $this->mappedPost('creditCard/tokenize', TokenizeCreditCardResponse::class, [
+            RequestOptions::JSON => $creditCard,
+        ]);
     }
 }

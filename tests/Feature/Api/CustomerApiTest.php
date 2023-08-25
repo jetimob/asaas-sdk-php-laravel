@@ -7,6 +7,7 @@ use Jetimob\Asaas\Api\Customer\CustomerApi;
 use Jetimob\Asaas\Api\Customer\CustomerResponse;
 use Jetimob\Asaas\Api\Customer\DeleteCustomerResponse;
 use Jetimob\Asaas\Entity\Customer\Customer;
+use Jetimob\Asaas\Entity\Customer\TokenizeCreditCardInfo;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
 
@@ -40,6 +41,22 @@ class CustomerApiTest extends AbstractTestCase
      * @depends shouldCreateCustomerSuccessfully
      * @test
      */
+    public function shouldTokenizeCreditCardSuccessfully(string $id): void
+    {
+        $info = TokenizeCreditCardInfo::forCustomer($id)
+            ->setCreditCard($this->fakeCreditCard())
+            ->setCreditCardHolderInfo($this->fakeCreditCardHolder())
+            ->setRemoteIp(fake()->ipv6);
+
+        $response = $this->api->tokenizeCreditCard($info);
+
+        $this->assertSame(200, $response->getStatusCode());
+    }
+
+    /**
+     * @depends shouldCreateCustomerSuccessfully
+     * @test
+     */
     public function shouldFindCustomerByIdSuccessfully(string $id): void
     {
         $response = $this->api->find($id);
@@ -67,7 +84,7 @@ class CustomerApiTest extends AbstractTestCase
      * @depends shouldCreateCustomerSuccessfully
      * @test
      */
-    public function shouldDeleteCustomerSuccessfully(string $id)
+    public function shouldDeleteCustomerSuccessfully(string $id): void
     {
         $response = $this->api->delete($id);
 
