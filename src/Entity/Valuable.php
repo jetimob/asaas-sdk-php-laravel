@@ -20,6 +20,6 @@ abstract class Valuable extends Entity
 
     public static function withValue(float $value): static
     {
-        return (new static())->setValue($value);
+        return with(new static())->setValue($value);
     }
 }

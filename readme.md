@@ -33,7 +33,7 @@ Sempre que for chamar qualquer api do pacote asaas-sdk-php-laravel, utilize o na
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Entity\Customer\Customer; 
 
-$customer = (new Customer())
+$customer = with(new Customer())
             ->setName('John Doe')
             ->setEmail('teste@email.com')
             ->setCpfCnpj('00000000000');

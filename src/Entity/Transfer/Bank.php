@@ -56,6 +56,6 @@ class Bank extends BankAccount
 
     public static function new(string $code): static
     {
-        return (new static())->setCode($code);
+        return with(new static())->setCode($code);
     }
 }

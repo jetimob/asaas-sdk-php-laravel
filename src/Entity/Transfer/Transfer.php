@@ -40,7 +40,7 @@ class Transfer extends Entity
 
     /**
      * Informe o tipo de chave caso seja uma transferência para chave Pix
-     * @var $pixAddressKeyType string
+     * @var $pixAddressKeyType string // todo: Criar enum para tipos de chave pix
     */
     protected string $pixAddressKeyType;
 

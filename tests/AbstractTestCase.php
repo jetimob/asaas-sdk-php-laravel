@@ -7,9 +7,6 @@ use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
 use Jetimob\Asaas\Api\Customer\CreateCustomerResponse;
 use Jetimob\Asaas\AsaasServiceProvider;
 use Jetimob\Asaas\Entity\Account\Account;
-use Jetimob\Asaas\Entity\Customer\Customer;
-use Jetimob\Asaas\Facades\Asaas;
-use Orchestra\Testbench\TestCase;
 use Jetimob\Asaas\Entity\Charging\BillingType;
 use Jetimob\Asaas\Entity\Charging\Charging;
 use Jetimob\Asaas\Entity\Charging\CreditCard;
@@ -18,6 +15,9 @@ use Jetimob\Asaas\Entity\Charging\Discount;
 use Jetimob\Asaas\Entity\Charging\DiscountType;
 use Jetimob\Asaas\Entity\Charging\Fine;
 use Jetimob\Asaas\Entity\Charging\Interest;
+use Jetimob\Asaas\Entity\Customer\Customer;
+use Jetimob\Asaas\Facades\Asaas;
+use Orchestra\Testbench\TestCase;
 
 class AbstractTestCase extends TestCase
 {
@@ -84,7 +84,7 @@ class AbstractTestCase extends TestCase
          */
         $number = $valid ? fake()->creditCardNumber : self::INVALID_CREDIT_CARD_NUMBER;
 
-        return (new CreditCard())
+        return with(new CreditCard())
             ->setHolderName(fake()->name)
             ->setNumber($number)
             ->setExpiryMonth('05')
@@ -94,7 +94,7 @@ class AbstractTestCase extends TestCase
 
     protected function fakeCreditCardHolder(): CreditCardHolderInfo
     {
-        return (new CreditCardHolderInfo())
+        return with(new CreditCardHolderInfo())
             ->setName(fake()->name)
             ->setEmail(fake()->safeEmail)
             ->setCpfCnpj(self::fakeCpf())
@@ -107,7 +107,7 @@ class AbstractTestCase extends TestCase
 
     protected function fakeCustomer(): Customer
     {
-        return (new Customer())
+        return with(new Customer())
             ->setName(fake()->name)
             ->setEmail(fake()->email)
             ->setCpfCnpj(self::fakeCpf());
@@ -115,7 +115,7 @@ class AbstractTestCase extends TestCase
 
     protected function fakeAccount(): Account
     {
-        return (new Account())
+        return with(new Account())
             ->setName(fake()->name)
             ->setCpfCnpj(self::fakeCpf())
             ->setBirthDate(now()->subYears(40))
@@ -125,7 +125,7 @@ class AbstractTestCase extends TestCase
 
     protected function fakeCharging(): Charging
     {
-        return (new Charging())
+        return with(new Charging())
             ->setCustomer(self::DEFAULT_CUSTOMER_ID)
             ->setValue(fake()->randomFloat(0, 50, 100.0))
             ->setDueDate(now()->addMonth()->format('Y-m-d'))

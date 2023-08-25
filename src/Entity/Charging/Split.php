@@ -65,7 +65,7 @@ class Split extends Entity
         ?float $fixedValue = null,
         ?float $percentualValue = null
     ): static {
-        return (new static)
+        return with(new static)
             ->setWalletId($walletId)
             ->setFixedValue($fixedValue)
             ->setPercentualValue($percentualValue);

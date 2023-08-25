@@ -61,6 +61,6 @@ class Discount extends Entity
 
     public static function new(float $value, string $type, int $dueDateLimitDays): static
     {
-        return (new static())->setValue($value)->setDueDateLimitDays($dueDateLimitDays);
+        return with(new static())->setValue($value)->setDueDateLimitDays($dueDateLimitDays);
     }
 }

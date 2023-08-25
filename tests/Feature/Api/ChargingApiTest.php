@@ -2,25 +2,21 @@
 
 namespace Jetimob\Asaas\Tests\Feature\Api;
 
- use Jetimob\Asaas\Api\Account\AccountResponse;
- use Jetimob\Asaas\Api\Charging\{
-     ChargingApi,
-     ConfirmReceiptInCashResponse,
-     CreateChargingResponse,
-     DeleteChargingResponse,
-     FindChargingResponse
- };
- use Jetimob\Asaas\Entity\Charging\{
-     BillingType,
-     ConfirmReceiptInCash,
-     Interest,
-     Split
- };
- use Jetimob\Asaas\Exceptions\AsaasRequestException;
- use Jetimob\Asaas\Facades\Asaas;
- use Jetimob\Asaas\Tests\AbstractTestCase;
+use Jetimob\Asaas\Api\Account\AccountResponse;
+use Jetimob\Asaas\Api\Charging\ChargingApi;
+use Jetimob\Asaas\Api\Charging\ConfirmReceiptInCashResponse;
+use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
+use Jetimob\Asaas\Api\Charging\DeleteChargingResponse;
+use Jetimob\Asaas\Api\Charging\FindChargingResponse;
+use Jetimob\Asaas\Entity\Charging\BillingType;
+use Jetimob\Asaas\Entity\Charging\ConfirmReceiptInCash;
+use Jetimob\Asaas\Entity\Charging\Interest;
+use Jetimob\Asaas\Entity\Charging\Split;
+use Jetimob\Asaas\Exceptions\AsaasRequestException;
+use Jetimob\Asaas\Facades\Asaas;
+use Jetimob\Asaas\Tests\AbstractTestCase;
 
- class ChargingApiTest extends AbstractTestCase
+class ChargingApiTest extends AbstractTestCase
 {
     protected ChargingApi $api;
 
@@ -112,7 +108,7 @@ namespace Jetimob\Asaas\Tests\Feature\Api;
      */
     public function shouldConfirmReceiptInCashSuccessfully(string $id)
     {
-        $confirmation = (new ConfirmReceiptInCash())
+        $confirmation = with(new ConfirmReceiptInCash())
             ->setPaymentDate(now()->format('Y-m-d'))
             ->setValue(1000)
             ->setNotifyCustomer(true);
