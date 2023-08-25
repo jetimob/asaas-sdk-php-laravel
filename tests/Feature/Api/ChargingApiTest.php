@@ -8,6 +8,7 @@ use Jetimob\Asaas\Api\Charging\ConfirmReceiptInCashResponse;
 use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
 use Jetimob\Asaas\Api\Charging\DeleteChargingResponse;
 use Jetimob\Asaas\Api\Charging\FindChargingResponse;
+use Jetimob\Asaas\Api\Charging\UpdateChargingResponse;
 use Jetimob\Asaas\Entity\Charging\BillingType;
 use Jetimob\Asaas\Entity\Charging\ConfirmReceiptInCash;
 use Jetimob\Asaas\Entity\Charging\Interest;
@@ -86,6 +87,21 @@ class ChargingApiTest extends AbstractTestCase
         $response = $this->api->create($charging);
 
         $this->assertEquals(400, $response->getStatusCode());
+    }
+
+    /**
+     * @test
+     * @depends shouldCreateChargingSuccessfully
+    */
+    public function shouldUpdateChargingSuccessfully(string $id)
+    {
+        $updatedCharging = $this->fakeCharging();
+
+        $response = $this->api->update($id, $updatedCharging);
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertInstanceOf(UpdateChargingResponse::class, $response);
+        $this->assertSame($response->getDueDate(), $updatedCharging->getDueDate());
     }
 
     /**

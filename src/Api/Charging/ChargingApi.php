@@ -28,6 +28,16 @@ class ChargingApi extends AbstractApi
     }
 
     /**
+     * {@see https://docs.asaas.com/reference/atualizar-cobranca-existente}
+    */
+    public function update(string $id, Charging $charging): UpdateChargingResponse
+    {
+        return $this->mappedPost("payments/$id", UpdateChargingResponse::class, [
+            RequestOptions::JSON => $charging,
+        ]);
+    }
+
+    /**
      * {@see https://docs.asaas.com/reference/remover-cobranca}
     */
     public function delete(string $id): DeleteChargingResponse
