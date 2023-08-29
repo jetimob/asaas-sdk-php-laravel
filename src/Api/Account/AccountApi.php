@@ -5,6 +5,7 @@ namespace Jetimob\Asaas\Api\Account;
 use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
 use Jetimob\Asaas\Entity\Account\Account;
+use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
 
 class AccountApi extends AbstractApi
 {
@@ -40,5 +41,15 @@ class AccountApi extends AbstractApi
     public function splitsStatistics(): SplitStatisticsResponse
     {
         return $this->mappedGet('finance/split/statistics', SplitStatisticsResponse::class);
+    }
+
+    /**
+     * {@see https://docs.asaas.com/reference/salvar-personalizacao-da-fatura}
+    */
+    public function customizeInvoice(InvoiceCustomization $invoiceCustomization): InvoiceCustomizeResponse
+    {
+        return $this->mappedPost('myAccount/paymentCheckoutConfig', InvoiceCustomizeResponse::class, [
+            RequestOptions::MULTIPART => $invoiceCustomization->toArray(),
+        ]);
     }
 }

@@ -2,10 +2,12 @@
 
 namespace Jetimob\Asaas\Tests\Feature\Api;
 
+use Illuminate\Http\Testing\File;
 use Jetimob\Asaas\Api\Account\AccountApi;
 use Jetimob\Asaas\Api\Account\AccountBalanceResponse;
 use Jetimob\Asaas\Api\Account\CreateAccountResponse;
 use Jetimob\Asaas\Api\Account\FindAccountResponse;
+use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
 
@@ -80,6 +82,26 @@ class AccountApiTest extends AbstractTestCase
     public function shouldGetSplitsBalanceOfSubAccountSucessfully(CreateAccountResponse $createAccountResponse): void
     {
         $response = $this->api->usingToken($createAccountResponse->getApiKey())->splitsStatistics();
+
+        $this->assertSame(200, $response->getStatusCode());
+    }
+
+    /**
+     * @depends shouldCreateAccountSuccessfully
+     * @test
+    */
+    public function shoulCustomizeInvoiceSuccessfully(CreateAccountResponse $createAccountResponse): void
+    {
+        $logo = File::image(fake()->image, 50, 50);
+
+        $customization = (new InvoiceCustomization())
+            ->setEnabled(true)
+            ->setFontColor(fake()->hexColor)
+            ->setInfoBackgroundColor(fake()->hexColor)
+            ->setLogoBackgroundColor(fake()->hexColor)
+            ->setLogoFile($logo->getContent());
+
+        $response = $this->api->customizeInvoice($customization);
 
         $this->assertSame(200, $response->getStatusCode());
     }
