@@ -9,6 +9,8 @@ use Jetimob\Asaas\Api\Webhook\WebhookConfigurationResponse;
 use Jetimob\Asaas\Entity\Webhook\WebhookConfiguration;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Test;
 
 class WebhookApiTest extends AbstractTestCase
 {
@@ -29,7 +31,7 @@ class WebhookApiTest extends AbstractTestCase
             ->setInterrupted(false);
     }
 
-    /** @test */
+    #[Test]
     public function shouldActivateChargingWebhook(): CreateAccountResponse
     {
         $account = $this->createAccount();
@@ -47,10 +49,7 @@ class WebhookApiTest extends AbstractTestCase
         return $account;
     }
 
-    /**
-     * @depends shouldActivateChargingWebhook
-     * @test
-     */
+    #[Test, Depends('shouldActivateChargingWebhook')]
     public function shouldDisableChargingWebhook(CreateAccountResponse $account): void
     {
         $this->configuration->setEnabled(false);
@@ -66,8 +65,7 @@ class WebhookApiTest extends AbstractTestCase
         $this->assertInstanceOf(WebhookConfigurationResponse::class, $response);
     }
 
-
-    /** @test */
+    #[Test]
     public function shouldActivateTransferWebhook(): CreateAccountResponse
     {
         $account = $this->createAccount();
@@ -85,10 +83,7 @@ class WebhookApiTest extends AbstractTestCase
         return $account;
     }
 
-    /**
-     * @depends shouldActivateTransferWebhook
-     * @test
-     */
+    #[Test, Depends('shouldActivateChargingWebhook')]
     public function shouldDisableTransferWebhook(CreateAccountResponse $account): void
     {
         $this->configuration->setEnabled(false);

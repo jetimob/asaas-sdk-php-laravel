@@ -10,6 +10,8 @@ use Jetimob\Asaas\Api\Account\FindAccountResponse;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Test;
 
 class AccountApiTest extends AbstractTestCase
 {
@@ -21,7 +23,7 @@ class AccountApiTest extends AbstractTestCase
         $this->api = Asaas::account();
     }
 
-    /** @test */
+    #[Test]
     public function shouldCreateAccountSuccessfully(): CreateAccountResponse
     {
         $response = $this->createAccount();
@@ -32,10 +34,7 @@ class AccountApiTest extends AbstractTestCase
         return $response;
     }
 
-    /**
-     * @depends shouldCreateAccountSuccessfully
-     * @test
-    */
+    #[Test, Depends('shouldCreateAccountSuccessfully')]
     public function shouldFindAccountSuccessfully(CreateAccountResponse $createAccountResponse): void
     {
         $response = $this->api->find($createAccountResponse->getId());
@@ -44,7 +43,7 @@ class AccountApiTest extends AbstractTestCase
         $this->assertInstanceOf(FindAccountResponse::class, $response);
     }
 
-    /** @test */
+    #[Test]
     public function shouldGetBalanceSuccessfully()
     {
         $response = $this->api->balance();
@@ -53,10 +52,7 @@ class AccountApiTest extends AbstractTestCase
         $this->assertInstanceOf(AccountBalanceResponse::class, $response);
     }
 
-    /**
-     * @depends shouldCreateAccountSuccessfully
-     * @test
-     */
+    #[Test, Depends('shouldCreateAccountSuccessfully')]
     public function shouldGetBalanceOfSubAccountSuccessfully(CreateAccountResponse $createAccountResponse)
     {
          $response = $this->api->usingToken($createAccountResponse->getApiKey())->balance();
@@ -67,7 +63,7 @@ class AccountApiTest extends AbstractTestCase
         $this->assertEquals(0, $response->getBalance());
     }
 
-    /** @test */
+    #[Test]
     public function shouldGetSplitsBalanceSucessfully(): void
     {
         $response = $this->api->splitsStatistics();
@@ -75,10 +71,7 @@ class AccountApiTest extends AbstractTestCase
         $this->assertSame(200, $response->getStatusCode());
     }
 
-    /**
-     * @depends shouldCreateAccountSuccessfully
-     * @test
-    */
+    #[Test, Depends('shouldCreateAccountSuccessfully')]
     public function shouldGetSplitsBalanceOfSubAccountSucessfully(CreateAccountResponse $createAccountResponse): void
     {
         $response = $this->api->usingToken($createAccountResponse->getApiKey())->splitsStatistics();
@@ -86,10 +79,7 @@ class AccountApiTest extends AbstractTestCase
         $this->assertSame(200, $response->getStatusCode());
     }
 
-    /**
-     * @depends shouldCreateAccountSuccessfully
-     * @test
-    */
+    #[Test, Depends('shouldCreateAccountSuccessfully')]
     public function shoulCustomizeInvoiceSuccessfully(CreateAccountResponse $createAccountResponse): void
     {
         $logo = File::image(fake()->image, 50, 50);

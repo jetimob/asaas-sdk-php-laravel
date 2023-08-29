@@ -10,6 +10,8 @@ use Jetimob\Asaas\Entity\Customer\Customer;
 use Jetimob\Asaas\Entity\Customer\TokenizeCreditCardInfo;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Test;
 
 class CustomerApiTest extends AbstractTestCase
 {
@@ -26,7 +28,7 @@ class CustomerApiTest extends AbstractTestCase
             ->setCpfCnpj(self::fakeCpf());
     }
 
-    /** @test */
+    #[Test]
     public function shouldCreateCustomerSuccessfully(): string
     {
         $response = $this->api->create($this->customer);
@@ -37,10 +39,7 @@ class CustomerApiTest extends AbstractTestCase
         return $response->getId();
     }
 
-    /**
-     * @depends shouldCreateCustomerSuccessfully
-     * @test
-     */
+    #[Test, Depends('shouldCreateCustomerSuccessfully')]
     public function shouldTokenizeCreditCardSuccessfully(string $id): void
     {
         $info = TokenizeCreditCardInfo::forCustomer($id)
@@ -53,10 +52,7 @@ class CustomerApiTest extends AbstractTestCase
         $this->assertSame(200, $response->getStatusCode());
     }
 
-    /**
-     * @depends shouldCreateCustomerSuccessfully
-     * @test
-     */
+    #[Test, Depends('shouldCreateCustomerSuccessfully')]
     public function shouldFindCustomerByIdSuccessfully(string $id): void
     {
         $response = $this->api->find($id);
@@ -65,10 +61,7 @@ class CustomerApiTest extends AbstractTestCase
         $this->assertInstanceOf(FindCustomerResponse::class, $response);
     }
 
-    /**
-     * @depends shouldCreateCustomerSuccessfully
-     * @test
-     */
+    #[Test, Depends('shouldCreateCustomerSuccessfully')]
     public function shouldUpdateCustomerSuccessFully(string $id): void
     {
         $newName = fake()->name;
@@ -80,10 +73,7 @@ class CustomerApiTest extends AbstractTestCase
         $this->assertEquals($newName, $response->getName());
     }
 
-    /**
-     * @depends shouldCreateCustomerSuccessfully
-     * @test
-     */
+    #[Test, Depends('shouldCreateCustomerSuccessfully')]
     public function shouldDeleteCustomerSuccessfully(string $id): void
     {
         $response = $this->api->delete($id);

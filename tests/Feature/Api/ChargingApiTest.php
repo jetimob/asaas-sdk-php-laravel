@@ -17,6 +17,8 @@ use Jetimob\Asaas\Entity\Charging\Split;
 use Jetimob\Asaas\Exceptions\AsaasRequestException;
 use Jetimob\Asaas\Facades\Asaas;
 use Jetimob\Asaas\Tests\AbstractTestCase;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Test;
 
 class ChargingApiTest extends AbstractTestCase
 {
@@ -28,7 +30,7 @@ class ChargingApiTest extends AbstractTestCase
         $this->api = Asaas::charging();
     }
 
-    /** @test */
+    #[Test]
     public function shouldCreateChargingSuccessfully(): string
     {
         $response = $this->createCharging();
@@ -39,7 +41,7 @@ class ChargingApiTest extends AbstractTestCase
         return $response->getId();
     }
 
-    /** @test */
+    #[Test]
     public function shouldNotCreateChargingWithInterestGreatherThanLimitPerMonth(): void
     {
         $this->expectException(AsaasRequestException::class);
@@ -53,9 +55,7 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertInstanceOf(CreateChargingResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function shouldCreateChargingForCreditCardSuccessfully()
     {
         $charging = $this->fakeCharging()
@@ -71,9 +71,7 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertInstanceOf(CreateChargingResponse::class, $response);
     }
 
-    /**
-     * @test
-    */
+    #[Test]
     public function shouldCreateChargingFailWithInvalidCreditCard(): void
     {
         $this->expectException(AsaasRequestException::class);
@@ -90,10 +88,7 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertEquals(400, $response->getStatusCode());
     }
 
-    /**
-     * @test
-     * @depends shouldCreateChargingSuccessfully
-    */
+    #[Test, Depends('shouldCreateChargingSuccessfully')]
     public function shouldUpdateChargingSuccessfully(string $id)
     {
         $updatedCharging = $this->fakeCharging();
@@ -105,10 +100,7 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertSame($response->getDueDate(), $updatedCharging->getDueDate());
     }
 
-    /**
-     * @depends shouldCreateChargingSuccessfully
-     * @test
-     */
+    #[Test, Depends('shouldCreateChargingSuccessfully')]
     public function shouldFindChargingSuccessfully(string $id)
     {
         $response = $this->api->find($id);
@@ -118,11 +110,7 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertEquals($id, $response->getId());
     }
 
-    /**
-     * @depends shouldCreateChargingSuccessfully
-     *
-     * @test
-     */
+    #[Test, Depends('shouldCreateChargingSuccessfully')]
     public function shouldConfirmReceiptInCashSuccessfully(string $id)
     {
         $confirmation = with(new ConfirmReceiptInCash())
@@ -136,10 +124,7 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertInstanceOf(ConfirmReceiptInCashResponse::class, $response);
     }
 
-    /**
-     * @depends shouldCreateChargingSuccessfully
-     * @test
-    */
+    #[Test, Depends('shouldCreateChargingSuccessfully')]
     public function shouldDeleteChargingSuccessfully(string $id): string
     {
         $response = $this->api->delete($id);
@@ -152,7 +137,7 @@ class ChargingApiTest extends AbstractTestCase
         return $id;
     }
 
-    /** @test */
+    #[Test]
     public function shouldNotCreateAnChargingWithSplitAmountGreatherOrEqualThanChargingFinalValue(): void
     {
         $this->expectException(AsaasRequestException::class);
@@ -170,9 +155,7 @@ class ChargingApiTest extends AbstractTestCase
         $this->createCharging($charging);
     }
 
-    /**
-     * @test
-    */
+    #[Test]
     public function shouldCreateChargingWithSplitsSuccessfully(): AccountResponse
     {
         $account = $this->createAccount();
@@ -189,10 +172,7 @@ class ChargingApiTest extends AbstractTestCase
         return $account;
     }
 
-    /**
-     * @depends shouldDeleteChargingSuccessfully
-     * @test
-    */
+    #[Test, Depends('shouldDeleteChargingSuccessfully')]
     public function shouldRestoreCanceledCharging(string $id): void
     {
         $response = $this->api->restore($id);
