@@ -57,4 +57,10 @@ class ChargingApi extends AbstractApi
             RequestOptions::JSON => $confirmReceiptInCash,
         ]);
     }
+
+    /** {@see https://docs.asaas.com/reference/restaurar-cobranca-removida} */
+    public function restore(string $id): RestoreChargingResponse
+    {
+        return $this->mappedPost("payments/$id/restore", RestoreChargingResponse::class);
+    }
 }

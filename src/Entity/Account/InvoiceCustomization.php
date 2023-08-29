@@ -119,7 +119,7 @@ class InvoiceCustomization extends Entity
             [
                 'name' => 'logoFile',
                 'contents' => $this->getLogoFile(),
-                'filename' => 'logo.png', // TODO: Ver forma de pegar o nome do arquivo dinamicante
+                'filename' => 'logo.png', // TODO: Ver necessidade de pegar o nome do arquivo dinamicamente
             ]
         ];
     }

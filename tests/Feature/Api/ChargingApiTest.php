@@ -8,6 +8,7 @@ use Jetimob\Asaas\Api\Charging\ConfirmReceiptInCashResponse;
 use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
 use Jetimob\Asaas\Api\Charging\DeleteChargingResponse;
 use Jetimob\Asaas\Api\Charging\FindChargingResponse;
+use Jetimob\Asaas\Api\Charging\RestoreChargingResponse;
 use Jetimob\Asaas\Api\Charging\UpdateChargingResponse;
 use Jetimob\Asaas\Entity\Charging\BillingType;
 use Jetimob\Asaas\Entity\Charging\ConfirmReceiptInCash;
@@ -139,7 +140,7 @@ class ChargingApiTest extends AbstractTestCase
      * @depends shouldCreateChargingSuccessfully
      * @test
     */
-    public function shouldDeleteChargingSuccessfully(string $id)
+    public function shouldDeleteChargingSuccessfully(string $id): string
     {
         $response = $this->api->delete($id);
 
@@ -147,6 +148,8 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertInstanceOf(DeleteChargingResponse::class, $response);
         $this->assertTrue($response->isDeleted());
         $this->assertEquals($id, $response->getId());
+
+        return $id;
     }
 
     /** @test */
@@ -184,5 +187,17 @@ class ChargingApiTest extends AbstractTestCase
         $this->assertEquals(200, $response->getStatusCode());
 
         return $account;
+    }
+
+    /**
+     * @depends shouldDeleteChargingSuccessfully
+     * @test
+    */
+    public function shouldRestoreCanceledCharging(string $id): void
+    {
+        $response = $this->api->restore($id);
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf(RestoreChargingResponse::class, $response);
     }
 }
