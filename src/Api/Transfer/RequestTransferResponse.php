@@ -4,6 +4,7 @@ namespace Jetimob\Asaas\Api\Transfer;
 
 use Jetimob\Asaas\Api\EntityResponse;
 use Jetimob\Asaas\Entity\Transfer\BankAccount;
+use Jetimob\Asaas\Entity\Transfer\TransferStatus;
 
 class RequestTransferResponse extends EntityResponse
 {
@@ -19,17 +20,19 @@ class RequestTransferResponse extends EntityResponse
     protected string $dateCreated;
 
     /**
-     * @var $value int
+     * @var $value float
     */
-    protected int $value;
+    protected float $value;
 
     /**
-     * @var $netValue int
+     * @var $netValue float
     */
-    protected int $netValue;
+    protected float $netValue;
 
     /**
      * @var $status string
+     *
+     * Valores disponíveis em {@see TransferStatus}
     */
     protected string $status;
 
@@ -49,9 +52,9 @@ class RequestTransferResponse extends EntityResponse
     protected string $endToEndIdentifier;
 
     /**
-     * @var $scheduleDate string
+     * @var $scheduleDate string|null
     */
-    protected string $scheduleDate;
+    protected ?string $scheduleDate;
 
     /**
      * @var $authorized bool
@@ -88,21 +91,9 @@ class RequestTransferResponse extends EntityResponse
         return $this->type;
     }
 
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-        return $this;
-    }
-
     public function getDateCreated(): string
     {
         return $this->dateCreated;
-    }
-
-    public function setDateCreated(string $dateCreated): self
-    {
-        $this->dateCreated = $dateCreated;
-        return $this;
     }
 
     public function getValue(): int
@@ -110,32 +101,14 @@ class RequestTransferResponse extends EntityResponse
         return $this->value;
     }
 
-    public function setValue(int $value): self
-    {
-        $this->value = $value;
-        return $this;
-    }
-
     public function getNetValue(): int
     {
         return $this->netValue;
     }
 
-    public function setNetValue(int $netValue): self
+    public function getStatus(): TransferStatus
     {
-        $this->netValue = $netValue;
-        return $this;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    public function setStatus(string $status): self
-    {
-        $this->status = $status;
-        return $this;
+        return TransferStatus::from($this->status);
     }
 
     public function getTransferFee(): int
@@ -143,21 +116,9 @@ class RequestTransferResponse extends EntityResponse
         return $this->transferFee;
     }
 
-    public function setTransferFee(int $transferFee): self
-    {
-        $this->transferFee = $transferFee;
-        return $this;
-    }
-
     public function getEffectiveDate(): string
     {
         return $this->effectiveDate;
-    }
-
-    public function setEffectiveDate(string $effectiveDate): self
-    {
-        $this->effectiveDate = $effectiveDate;
-        return $this;
     }
 
     public function getEndToEndIdentifier(): string
@@ -165,21 +126,9 @@ class RequestTransferResponse extends EntityResponse
         return $this->endToEndIdentifier;
     }
 
-    public function setEndToEndIdentifier(string $endToEndIdentifier): self
-    {
-        $this->endToEndIdentifier = $endToEndIdentifier;
-        return $this;
-    }
-
-    public function getScheduleDate(): string
+    public function getScheduleDate(): ?string
     {
         return $this->scheduleDate;
-    }
-
-    public function setScheduleDate(string $scheduleDate): self
-    {
-        $this->scheduleDate = $scheduleDate;
-        return $this;
     }
 
     public function isAuthorized(): bool
@@ -187,21 +136,9 @@ class RequestTransferResponse extends EntityResponse
         return $this->authorized;
     }
 
-    public function setAuthorized(bool $authorized): self
-    {
-        $this->authorized = $authorized;
-        return $this;
-    }
-
     public function getFailReason(): ?string
     {
         return $this->failReason;
-    }
-
-    public function setFailReason(?string $failReason): self
-    {
-        $this->failReason = $failReason;
-        return $this;
     }
 
     public function getBankAccount(): BankAccount
@@ -209,21 +146,9 @@ class RequestTransferResponse extends EntityResponse
         return $this->bankAccount;
     }
 
-    public function setBankAccount(BankAccount $bankAccount): self
-    {
-        $this->bankAccount = $bankAccount;
-        return $this;
-    }
-
     public function getTransactionReceiptUrl(): string
     {
         return $this->transactionReceiptUrl;
-    }
-
-    public function setTransactionReceiptUrl(string $transactionReceiptUrl): self
-    {
-        $this->transactionReceiptUrl = $transactionReceiptUrl;
-        return $this;
     }
 
     public function getOperationType(): string
@@ -231,20 +156,8 @@ class RequestTransferResponse extends EntityResponse
         return $this->operationType;
     }
 
-    public function setOperationType(string $operationType): self
-    {
-        $this->operationType = $operationType;
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-        return $this;
     }
 }
