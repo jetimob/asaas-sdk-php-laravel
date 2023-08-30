@@ -13,12 +13,8 @@ use Jetimob\Asaas\Entity\Charging\Split;
 use Jetimob\Asaas\Entity\Transfer\TransferStatus;
 use Jetimob\Http\Traits\Serializable;
 
-class ChargingWebhookEventData
+class ChargingWebhookEventData extends WebhookEventData
 {
-    use Serializable;
-
-    protected string $object;
-    protected string $id;
     protected string $dateCreated;
     protected string $customer;
     protected ?string $subscription;
@@ -70,16 +66,6 @@ class ChargingWebhookEventData
     public function refundsItemType(): string
     {
         return Refund::class;
-    }
-
-    public function getObject(): string
-    {
-        return $this->object;
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
     }
 
     public function getDateCreated(): string

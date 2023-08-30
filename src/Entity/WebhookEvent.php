@@ -2,6 +2,7 @@
 
 namespace Jetimob\Asaas\Entity;
 
+use Jetimob\Asaas\Entity\Webhook\WebhookEventData;
 use Jetimob\Http\Traits\Serializable;
 
 abstract class WebhookEvent
@@ -12,5 +13,5 @@ abstract class WebhookEvent
 
     abstract public function getEvent();
 
-    abstract public function getData();
+    abstract public function getData(): WebhookEventData;
 }

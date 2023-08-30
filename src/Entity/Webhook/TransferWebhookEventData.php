@@ -5,12 +5,8 @@ namespace Jetimob\Asaas\Entity\Webhook;
 use Jetimob\Asaas\Entity\Transfer\BankAccount;
 use Jetimob\Http\Traits\Serializable;
 
-class TransferWebhookEventData
+class TransferWebhookEventData extends WebhookEventData
 {
-    use Serializable;
-
-    protected string $object;
-    protected string $id;
     protected string $dateCreated;
     protected string $status;
     protected string $effectiveDate;
@@ -25,16 +21,6 @@ class TransferWebhookEventData
     protected ?BankAccount $bankAccount;
     protected ?string $operationType;
     protected ?string $description;
-
-    public function getObject(): string
-    {
-        return $this->object;
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
 
     public function getDateCreated(): string
     {
