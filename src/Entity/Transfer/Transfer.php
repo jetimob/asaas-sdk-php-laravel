@@ -2,6 +2,7 @@
 
 namespace Jetimob\Asaas\Entity\Transfer;
 
+use Jetimob\Asaas\Entity\Charging\PixKeyType;
 use Jetimob\Asaas\Entity\Entity;
 
 class Transfer extends Entity
@@ -40,7 +41,9 @@ class Transfer extends Entity
 
     /**
      * Informe o tipo de chave caso seja uma transferência para chave Pix
-     * @var $pixAddressKeyType string // todo: Criar enum para tipos de chave pix
+     *
+     * Valores disponíveis em {@see PixKeyType}
+     * @var $pixAddressKeyType string
     */
     protected string $pixAddressKeyType;
 
@@ -80,9 +83,9 @@ class Transfer extends Entity
         return $this;
     }
 
-    public function getOperationType(): string
+    public function getOperationType(): ?OperationType
     {
-        return $this->operationType;
+        return OperationType::tryFrom($this->operationType);
     }
 
     public function setOperationType(string $operationType): self
@@ -102,9 +105,9 @@ class Transfer extends Entity
         return $this;
     }
 
-    public function getPixAddressKeyType(): string
+    public function getPixAddressKeyType(): PixKeyType
     {
-        return $this->pixAddressKeyType;
+        return PixKeyType::tryFrom($this->pixAddressKeyType);
     }
 
     public function setPixAddressKeyType(string $pixAddressKeyType): self
@@ -124,7 +127,7 @@ class Transfer extends Entity
         return $this;
     }
 
-    public function getScheduleDate(): string
+    public function getScheduleDate(): ?string
     {
         return $this->scheduleDate;
     }
