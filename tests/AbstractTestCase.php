@@ -135,4 +135,14 @@ class AbstractTestCase extends TestCase
             ->setDescription(fake()->text)
             ->setDiscount(Discount::new(fake()->randomFloat(0, 5.0, 10.0), DiscountType::FIXED->value, fake()->numberBetween(1, 10)));
     }
+
+    protected function fakeCreditCardCharging(): Charging
+    {
+        return $this->fakeCharging()
+            ->setCreditCard($this->fakeCreditCard())
+            ->setCreditCardHolderInfo($this->fakeCreditCardHolder())
+            ->setDescription(fake()->text)
+            ->setBillingType(BillingType::CREDIT_CARD->value)
+            ->setRemoteIp(fake()->ipv4);
+    }
 }

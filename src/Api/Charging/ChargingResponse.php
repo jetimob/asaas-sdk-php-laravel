@@ -28,11 +28,11 @@ abstract class ChargingResponse extends EntityResponse
     /** @var $dueDate string */
     protected string $dueDate;
 
-    /** @var $value string */
-    protected string $value;
+    /** @var $value float */
+    protected float $value;
 
-    /** @var $netValue string|null */
-    protected ?string $netValue;
+    /** @var $netValue float|null */
+    protected ?float $netValue;
 
     /**
      * Valores disponíveis {@see BillingType}
@@ -130,12 +130,12 @@ abstract class ChargingResponse extends EntityResponse
         return $this->dueDate;
     }
 
-    public function getValue(): string
+    public function getValue(): float
     {
         return $this->value;
     }
 
-    public function getNetValue(): ?string
+    public function getNetValue(): ?float
     {
         return $this->netValue;
     }

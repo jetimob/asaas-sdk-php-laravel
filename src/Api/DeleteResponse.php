@@ -14,7 +14,7 @@ abstract class DeleteResponse extends Response
         return $this->deleted;
     }
 
-    public function getId(): bool
+    public function getId(): string
     {
         return $this->id;
     }

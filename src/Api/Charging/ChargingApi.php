@@ -63,4 +63,15 @@ class ChargingApi extends AbstractApi
     {
         return $this->mappedPost("payments/$id/restore", RestoreChargingResponse::class);
     }
+
+    /** {@see https://docs.asaas.com/reference/estornar-cobranca} */
+    public function refund(string $id, float $value, string $description): RefundResponse
+    {
+        return $this->mappedPost("payments/$id/refund", RefundResponse::class, [
+            RequestOptions::JSON => [
+                'value' => $value,
+                'description' => $description,
+            ],
+        ]);
+    }
 }

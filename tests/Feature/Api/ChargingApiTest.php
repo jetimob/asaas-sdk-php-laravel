@@ -31,14 +31,14 @@ class ChargingApiTest extends AbstractTestCase
     }
 
     #[Test]
-    public function shouldCreateChargingSuccessfully(): string
+    public function shouldCreateChargingSuccessfully(): CreateChargingResponse
     {
         $response = $this->createCharging();
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf(CreateChargingResponse::class, $response);
 
-        return $response->getId();
+        return $response;
     }
 
     #[Test]
@@ -56,85 +56,12 @@ class ChargingApiTest extends AbstractTestCase
     }
 
     #[Test]
-    public function shouldCreateChargingForCreditCardSuccessfully()
+    public function shouldCreateChargingForCreditCardSuccessfully(): void
     {
-        $charging = $this->fakeCharging()
-            ->setCreditCard($this->fakeCreditCard())
-            ->setCreditCardHolderInfo($this->fakeCreditCardHolder())
-            ->setDescription(fake()->text)
-            ->setBillingType(BillingType::CREDIT_CARD->value)
-            ->setRemoteIp(fake()->ipv4);
-
-        $response = $this->api->create($charging);
+        $response = $this->createCharging($this->fakeCreditCardCharging());
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf(CreateChargingResponse::class, $response);
-    }
-
-    #[Test]
-    public function shouldCreateChargingFailWithInvalidCreditCard(): void
-    {
-        $this->expectException(AsaasRequestException::class);
-
-        $charging = $this->fakeCharging()
-            ->setCreditCard($this->fakeCreditCard(valid: false))
-            ->setCreditCardHolderInfo($this->fakeCreditCardHolder())
-            ->setDescription(fake()->text)
-            ->setBillingType(BillingType::CREDIT_CARD->value)
-            ->setRemoteIp(fake()->ipv4);
-
-        $response = $this->api->create($charging);
-
-        $this->assertEquals(400, $response->getStatusCode());
-    }
-
-    #[Test, Depends('shouldCreateChargingSuccessfully')]
-    public function shouldUpdateChargingSuccessfully(string $id)
-    {
-        $updatedCharging = $this->fakeCharging();
-
-        $response = $this->api->update($id, $updatedCharging);
-
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertInstanceOf(UpdateChargingResponse::class, $response);
-        $this->assertSame($response->getDueDate(), $updatedCharging->getDueDate());
-    }
-
-    #[Test, Depends('shouldCreateChargingSuccessfully')]
-    public function shouldFindChargingSuccessfully(string $id)
-    {
-        $response = $this->api->find($id);
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertInstanceOf(FindChargingResponse::class, $response);
-        $this->assertEquals($id, $response->getId());
-    }
-
-    #[Test, Depends('shouldCreateChargingSuccessfully')]
-    public function shouldConfirmReceiptInCashSuccessfully(string $id)
-    {
-        $confirmation = with(new ConfirmReceiptInCash())
-            ->setPaymentDate(now()->format('Y-m-d'))
-            ->setValue(1000)
-            ->setNotifyCustomer(true);
-
-        $response = $this->api->confirmReceiptInCash($id, $confirmation);
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertInstanceOf(ConfirmReceiptInCashResponse::class, $response);
-    }
-
-    #[Test, Depends('shouldCreateChargingSuccessfully')]
-    public function shouldDeleteChargingSuccessfully(string $id): string
-    {
-        $response = $this->api->delete($id);
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertInstanceOf(DeleteChargingResponse::class, $response);
-        $this->assertTrue($response->isDeleted());
-        $this->assertEquals($id, $response->getId());
-
-        return $id;
     }
 
     #[Test]
@@ -172,12 +99,92 @@ class ChargingApiTest extends AbstractTestCase
         return $account;
     }
 
-    #[Test, Depends('shouldDeleteChargingSuccessfully')]
-    public function shouldRestoreCanceledCharging(string $id): void
+    #[Test]
+    public function shouldCreateChargingFailWithInvalidCreditCard(): void
     {
-        $response = $this->api->restore($id);
+        $this->expectException(AsaasRequestException::class);
+
+        $charging = $this->fakeCharging()
+            ->setCreditCard($this->fakeCreditCard(valid: false))
+            ->setCreditCardHolderInfo($this->fakeCreditCardHolder())
+            ->setDescription(fake()->text)
+            ->setBillingType(BillingType::CREDIT_CARD->value)
+            ->setRemoteIp(fake()->ipv4);
+
+        $response = $this->api->create($charging);
+
+        $this->assertEquals(400, $response->getStatusCode());
+    }
+
+    #[Test, Depends('shouldCreateChargingSuccessfully')]
+    public function shouldUpdateChargingSuccessfully(CreateChargingResponse $charging)
+    {
+        $updatedCharging = $this->fakeCharging();
+
+        $response = $this->api->update($charging->getId(), $updatedCharging);
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertInstanceOf(UpdateChargingResponse::class, $response);
+        $this->assertSame($response->getDueDate(), $updatedCharging->getDueDate());
+    }
+
+    #[Test, Depends('shouldCreateChargingSuccessfully')]
+    public function shouldFindChargingSuccessfully(CreateChargingResponse $charging)
+    {
+        $response = $this->api->find($charging->getId());
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf(FindChargingResponse::class, $response);
+        $this->assertEquals($charging->getId(), $response->getId());
+    }
+
+    #[Test, Depends('shouldCreateChargingSuccessfully')]
+    public function shouldConfirmReceiptInCashSuccessfully(CreateChargingResponse $charging): void
+    {
+        $confirmation = with(new ConfirmReceiptInCash())
+            ->setPaymentDate(now()->format('Y-m-d'))
+            ->setValue(1000)
+            ->setNotifyCustomer(true);
+
+        $response = $this->api->confirmReceiptInCash($charging->getId(), $confirmation);
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf(ConfirmReceiptInCashResponse::class, $response);
+    }
+
+    #[Test, Depends('shouldCreateChargingSuccessfully')]
+    public function shouldDeleteChargingSuccessfully(CreateChargingResponse $charging): DeleteChargingResponse
+    {
+        $response = $this->api->delete($charging->getId());
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf(DeleteChargingResponse::class, $response);
+        $this->assertTrue($response->isDeleted());
+        $this->assertEquals($charging->getId(), $response->getId());
+
+        return $response;
+    }
+
+    #[Test, Depends('shouldDeleteChargingSuccessfully')]
+    public function shouldRestoreCanceledChargingSuccessfully(DeleteChargingResponse $charging): void
+    {
+        $response = $this->api->restore($charging->getId());
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf(RestoreChargingResponse::class, $response);
+    }
+
+    #[Test]
+    public function shouldNotRefundBilletCharging(): void
+    {
+        $this->expectException(AsaasRequestException::class);
+
+        $charging = $this->fakeCharging();
+
+        $charging->setBillingType(BillingType::BILLET->value);
+
+        $charging = $this->createCharging($charging);
+
+        $this->api->refund($charging->getId(), $charging->getValue(), fake()->sentence);
     }
 }
