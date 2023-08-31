@@ -9,6 +9,7 @@ use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
 use Jetimob\Asaas\Api\Charging\DeleteChargingResponse;
 use Jetimob\Asaas\Api\Charging\FindChargingResponse;
 use Jetimob\Asaas\Api\Charging\RestoreChargingResponse;
+use Jetimob\Asaas\Api\Charging\UndoReceiptInCashResponse;
 use Jetimob\Asaas\Api\Charging\UpdateChargingResponse;
 use Jetimob\Asaas\Entity\Charging\BillingType;
 use Jetimob\Asaas\Entity\Charging\ConfirmReceiptInCash;
@@ -139,7 +140,7 @@ class ChargingApiTest extends AbstractTestCase
     }
 
     #[Test, Depends('shouldCreateChargingSuccessfully')]
-    public function shouldConfirmReceiptInCashSuccessfully(CreateChargingResponse $charging): void
+    public function shouldConfirmReceiptInCashSuccessfully(CreateChargingResponse $charging): CreateChargingResponse
     {
         $confirmation = with(new ConfirmReceiptInCash())
             ->setPaymentDate(now()->format('Y-m-d'))
@@ -150,6 +151,17 @@ class ChargingApiTest extends AbstractTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf(ConfirmReceiptInCashResponse::class, $response);
+
+        return $charging;
+    }
+
+    #[Test, Depends('shouldConfirmReceiptInCashSuccessfully')]
+    public function shouldUndoReceiptInCashConfirmationSuccessfully(CreateChargingResponse $charging): void
+    {
+        $response = $this->api->undoReceiptInCash($charging->getId());
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf(UndoReceiptInCashResponse::class, $response);
     }
 
     #[Test, Depends('shouldCreateChargingSuccessfully')]

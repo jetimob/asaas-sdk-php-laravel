@@ -58,6 +58,12 @@ class ChargingApi extends AbstractApi
         ]);
     }
 
+    /** {@see https://docs.asaas.com/reference/desfazer-confirmacao-de-recebimento-em-dinheiro} */
+    public function undoReceiptInCash(string $id): UndoReceiptInCashResponse
+    {
+        return $this->mappedPost("payments/$id/undoReceivedInCash", UndoReceiptInCashResponse::class);
+    }
+
     /** {@see https://docs.asaas.com/reference/restaurar-cobranca-removida} */
     public function restore(string $id): RestoreChargingResponse
     {
