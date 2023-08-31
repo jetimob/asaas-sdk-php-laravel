@@ -25,6 +25,7 @@ class ChargingWebhookEventData extends WebhookEventData
     protected string $dueDate;
     protected string $originalDueDate;
     protected float $value;
+    protected ?float $netValue;
     /* Para quando o valor pago é diferente do valor da cobrança */
     protected ?float $originalValue;
     protected ?float $interestValue;
@@ -106,6 +107,11 @@ class ChargingWebhookEventData extends WebhookEventData
     public function getValue(): float
     {
         return $this->value;
+    }
+
+    public function getNetValue(): ?float
+    {
+        return $this->netValue;
     }
 
     public function getOriginalValue(): ?float

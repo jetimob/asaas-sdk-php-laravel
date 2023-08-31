@@ -12,103 +12,42 @@ use Jetimob\Asaas\Entity\Charging\Refund;
 
 abstract class ChargingResponse extends EntityResponse
 {
-    /** @var $dateCreated string */
     protected string $dateCreated;
-
-    /**
-     * id do cliente
-     *
-     * @var $customer string
-     */
     protected string $customer;
-
-    /** @var $paymentLink string|null */
     protected ?string $paymentLink;
-
-    /** @var $dueDate string */
-    protected string $dueDate;
-
-    /** @var $value float */
+    protected ?string $dueDate;
     protected float $value;
-
-    /** @var $netValue float|null */
-    protected ?float $netValue;
-
-    /**
-     * Valores disponíveis {@see BillingType}
-     *
-     * @var $billingType string
-     */
-    protected string $billingType;
-
-    /** @var $canBePaidAfterDueDate bool */
-    protected bool $canBePaidAfterDueDate;
-
-    /** @var $pixTransaction string|null */
+    protected float $netValue;
+    protected ?string $billingType;
+    protected ?bool $canBePaidAfterDueDate;
+    protected ?string $originalDueDate;
     protected ?string $pixTransaction;
-
-    /** @var $status string */
     protected string $status;
-
-    /** @var $description string|null */
     protected ?string $description;
-
-    /** @var $externalReference string|null */
+    protected ?float $interestValue;
     protected ?string $externalReference;
-
-    /** @var $originalValue string|null */
     protected ?string $originalValue;
-
-    /** @var $paymentDate string|null */
     protected ?string $paymentDate;
-
-    /** @var $clientPaymentDate string|null */
     protected ?string $clientPaymentDate;
-
-    /** @var $installmentNumber string|null */
     protected ?string $installmentNumber;
-
-    /** @var $transactionReceiptUrl string|null */
     protected ?string $transactionReceiptUrl;
-
-    /** @var $nossoNumero string|null */
     protected ?string $nossoNumero;
-
-    /** @var $invoiceUrl string */
-    protected string $invoiceUrl;
-
-    /**
-     * Link do boleto
-     * @var $bankSlipUrl string|null
-     */
+    protected ?string $invoiceUrl;
     protected ?string $bankSlipUrl;
-
-    /** @var $invoiceNumber int */
-    protected int $invoiceNumber;
-
-    /** @var $discount Discount|null */
+    protected ?string $invoiceNumber;
     protected ?Discount $discount;
-
-    /** @var $fine Fine */
-    protected Fine $fine;
-
-    /** @var $interest Interest */
-    protected Interest $interest;
-
-    /** @var $deleted bool */
-    protected bool $deleted;
-
-    /** @var $postalService bool */
+    protected ?Fine $fine;
+    protected ?Interest $interest;
+    protected ?bool $deleted;
     protected bool $postalService;
-
-    /** @var $anticipated bool */
-    protected bool $anticipated;
-
-    /** @var $anticipable bool */
-    protected bool $anticipable;
-
-    /** @var $refunds Refund[]|null */
+    protected ?bool $anticipated;
+    protected ?bool $anticipable;
     protected ?array $refunds;
+
+    public function refundsItemType(): string
+    {
+        return Refund::class;
+    }
 
     public function getDateCreated(): string
     {
@@ -120,12 +59,12 @@ abstract class ChargingResponse extends EntityResponse
         return $this->customer;
     }
 
-    public function getPaymentLink(): string
+    public function getPaymentLink(): ?string
     {
         return $this->paymentLink;
     }
 
-    public function getDueDate(): string
+    public function getDueDate(): ?string
     {
         return $this->dueDate;
     }
@@ -135,22 +74,27 @@ abstract class ChargingResponse extends EntityResponse
         return $this->value;
     }
 
-    public function getNetValue(): ?float
+    public function getNetValue(): float
     {
         return $this->netValue;
     }
 
-    public function getBillingType(): BillingType
+    public function getBillingType(): ?BillingType
     {
         return BillingType::tryFrom($this->billingType);
     }
 
-    public function canBePaidAfterDueDate(): bool
+    public function canBePaidAfterDueDate(): ?bool
     {
         return $this->canBePaidAfterDueDate;
     }
 
-    public function getPixTransaction(): string
+    public function getOriginalDueDate(): ?string
+    {
+        return $this->originalDueDate;
+    }
+
+    public function getPixTransaction(): ?string
     {
         return $this->pixTransaction;
     }
@@ -200,9 +144,14 @@ abstract class ChargingResponse extends EntityResponse
         return $this->nossoNumero;
     }
 
-    public function getInvoiceUrl(): string
+    public function getInvoiceUrl(): ?string
     {
         return $this->invoiceUrl;
+    }
+
+    public function getInterestValue(): ?float
+    {
+        return $this->interestValue;
     }
 
     public function getBankSlipUrl(): string
@@ -210,7 +159,7 @@ abstract class ChargingResponse extends EntityResponse
         return $this->bankSlipUrl;
     }
 
-    public function getInvoiceNumber(): int
+    public function getInvoiceNumber(): ?string
     {
         return $this->invoiceNumber;
     }
@@ -220,32 +169,32 @@ abstract class ChargingResponse extends EntityResponse
         return $this->discount;
     }
 
-    public function getFine(): Fine
+    public function getFine(): ?Fine
     {
         return $this->fine;
     }
 
-    public function getInterest(): Interest
+    public function getInterest(): ?Interest
     {
         return $this->interest;
     }
 
-    public function isDeleted(): bool
+    public function isDeleted(): ?bool
     {
         return $this->deleted;
     }
 
-    public function isPostalService(): bool
+    public function isPostalService(): ?bool
     {
         return $this->postalService;
     }
 
-    public function isAnticipated(): bool
+    public function isAnticipated(): ?bool
     {
         return $this->anticipated;
     }
 
-    public function isAnticipable(): bool
+    public function isAnticipable(): ?bool
     {
         return $this->anticipable;
     }

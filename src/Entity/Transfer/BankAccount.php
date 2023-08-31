@@ -2,8 +2,6 @@
 
 namespace Jetimob\Asaas\Entity\Transfer;
 
-use Carbon\Carbon;
-use DateTimeInterface;
 use Jetimob\Asaas\Entity\Entity;
 
 class BankAccount extends Entity
@@ -62,9 +60,9 @@ class BankAccount extends Entity
     protected string $accountDigit;
 
     /**
-     * @var $pixAddressKey string
+     * @var $pixAddressKey string|null
     */
-    protected string $pixAddressKey;
+    protected ?string $pixAddressKey;
 
     /**
      * @var $account string
@@ -178,7 +176,7 @@ class BankAccount extends Entity
         return $this->ispb;
     }
 
-    public function getPixAddressKey(): string
+    public function getPixAddressKey(): ?string
     {
         return $this->pixAddressKey;
     }

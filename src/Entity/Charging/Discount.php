@@ -9,9 +9,9 @@ class Discount extends Entity
     /**
      * Valor percentual ou fixo de desconto {@see DiscountType}, aplicado sobre o valor da cobrança
      *
-     * @var $value int
+     * @var $value float
      */
-    protected int $value;
+    protected float $value;
 
     /**
      * Dias antes do vencimento para aplicar o desconto
@@ -26,7 +26,7 @@ class Discount extends Entity
      */
     protected string $type;
 
-    public function getValue(): int
+    public function getValue(): float
     {
         return $this->value;
     }
