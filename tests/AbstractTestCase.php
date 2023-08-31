@@ -145,4 +145,14 @@ class AbstractTestCase extends TestCase
             ->setBillingType(BillingType::CREDIT_CARD->value)
             ->setRemoteIp(fake()->ipv4);
     }
+
+    protected function assertNotThrowsException(\Closure $callback): void
+    {
+        try {
+            $callback();
+            $this->assertTrue(true);
+        } catch (\Throwable $e) {
+            $this->fail('Fail asserting that not thrown exception');
+        }
+    }
 }

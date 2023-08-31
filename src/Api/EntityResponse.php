@@ -6,19 +6,7 @@ use Jetimob\Http\Response;
 
 class EntityResponse extends Response
 {
-    /**
-     * Entidade criada
-     * (ex: 'account', 'customer', 'charging')
-     *
-     * @var $object string
-    */
     protected string $object;
-
-    /**
-     * id retornado
-     *
-     * @var $id string
-     */
     protected string $id;
 
     public function getObject(): string

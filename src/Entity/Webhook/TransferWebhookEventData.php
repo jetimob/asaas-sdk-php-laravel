@@ -9,7 +9,7 @@ class TransferWebhookEventData extends WebhookEventData
 {
     protected string $dateCreated;
     protected string $status;
-    protected string $effectiveDate;
+    protected ?string $effectiveDate;
     protected ?string $endToEndIndetifier;
     protected ?string $type;
     protected ?float $value;

@@ -5,7 +5,7 @@ namespace Jetimob\Asaas\Entity;
 use Jetimob\Asaas\Entity\Webhook\WebhookEventData;
 use Jetimob\Http\Traits\Serializable;
 
-abstract class WebhookEvent
+abstract class WebhookEvent implements \JsonSerializable
 {
     use Serializable;
 
