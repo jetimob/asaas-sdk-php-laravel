@@ -6,6 +6,7 @@ use Jetimob\Asaas\Api\Customer\FindCustomerResponse;
 use Jetimob\Asaas\Api\Customer\CustomerApi;
 use Jetimob\Asaas\Api\Customer\CustomerResponse;
 use Jetimob\Asaas\Api\Customer\DeleteCustomerResponse;
+use Jetimob\Asaas\Api\Customer\RestoreCustomerResponse;
 use Jetimob\Asaas\Entity\Customer\Customer;
 use Jetimob\Asaas\Entity\Customer\TokenizeCreditCardInfo;
 use Jetimob\Asaas\Facades\Asaas;
@@ -74,12 +75,24 @@ class CustomerApiTest extends AbstractTestCase
     }
 
     #[Test, Depends('shouldCreateCustomerSuccessfully')]
-    public function shouldDeleteCustomerSuccessfully(string $id): void
+    public function shouldDeleteCustomerSuccessfully(string $id): string
     {
         $response = $this->api->delete($id);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertTrue($response->isDeleted());
         $this->assertInstanceOf(DeleteCustomerResponse::class, $response);
+
+        return $id;
+    }
+
+    #[Test, Depends('shouldDeleteCustomerSuccessfully')]
+    public function shouldRestoreCustomerSuccessfully(string $id): void
+    {
+        $response = $this->api->restore($id);
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($response->isDeleted());
+        $this->assertInstanceOf(RestoreCustomerResponse::class, $response);
     }
 }

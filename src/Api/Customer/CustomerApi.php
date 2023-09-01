@@ -50,6 +50,14 @@ class CustomerApi extends AbstractApi
     }
 
     /**
+     * {@see https://docs.asaas.com/reference/restaurar-cliente-removido}
+     */
+    public function restore(string $id): RestoreCustomerResponse
+    {
+        return $this->mappedGet("customers/$id/restore", RestoreCustomerResponse::class);
+    }
+
+    /**
      * {@see https://docs.asaas.com/reference/tokenizacao-de-cartao-de-credito}
     */
     public function tokenizeCreditCard(TokenizeCreditCardInfo $creditCard): TokenizeCreditCardResponse

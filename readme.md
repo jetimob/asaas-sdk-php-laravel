@@ -74,31 +74,32 @@ Asaas::charging()->usingToken($apiKey)->create($charging);
 ### Implementaçoẽs
 
 
-| **Entidades**      |                   Funções                   |   Status   |
-|--------------------|:-------------------------------------------:|:----------:|
-| **Contas**         |                                             |            |
-|                    |            Criação de subcontas             |     ✔️     |
-|                    |     Buscar informações da conta pelo Id     |     ✔️     |
-|                    |        Resgatar o saldo de uma conta        |     ✔️     |
-|                    |           Estatísticas de Splits            |     ✔️     |
-|                    |           Customização de fatura            |     ✔️     |
-| **Cobranças**      |                                             |            |
-|                    |            Criação de cobranças             |     ✔️     |
-|                    |   Buscar informações da cobrança pelo Id    |     ✔️     |
-|                    |    Atualizar informações de uma cobrança    |     ✔️     |
-|                    |            Cancelar uma cobrança            |     ✔️     |
-|                    |         Restaurar cobrança removida         |     ✔️     |
-|                    |      Confirmar recebimento em dinheiro      |     ✔️     |
-| **Clientes**       |                                             |            |
-|                    |             Criação de clientes             |     ✔️     |
-|                    | Resgatar informações de um cliente pelo Id  |     ✔️     |
-|                    |     Atualizar informações de um cliente     |     ✔️     |
-|                    |             Deletar um cliente              |     ✔️     |
-|                    |          [Tokenização](https://docs.asaas.com/reference/tokenizacao-de-cartao-de-credito) de cartão de crédito          |     ✔️     |
-| **Transferências** |                                             |            |
-|                    |           Transferências externas           |     ✔️     |
-|                    |      Transferências entre contas Asaas      |     ❌     |
-|                    | Recuperar informações de uma transferência  |     ✔️     |
-| **Webhook**        |                                             |            |
-|                    |   Configuração de Webhook para cobranças    |     ✔️     |
-|                    | Configuração de Webhook para transferências |     ✔️     |
+| **Entidades**      |                                                Funções                                                |   Status   |
+|--------------------|:-----------------------------------------------------------------------------------------------------:|:----------:|
+| **Contas**         |                                                                                                       |            |
+|                    |                                         Criação de subcontas                                          |     ✔️     |
+|                    |                                  Buscar informações da conta pelo Id                                  |     ✔️     |
+|                    |                                     Resgatar o saldo de uma conta                                     |     ✔️     |
+|                    |                                        Estatísticas de Splits                                         |     ✔️     |
+|                    |                                        Customização de fatura                                         |     ✔️     |
+| **Cobranças**      |                                                                                                       |            |
+|                    |                                         Criação de cobranças                                          |     ✔️     |
+|                    |                                Buscar informações da cobrança pelo Id                                 |     ✔️     |
+|                    |                                 Atualizar informações de uma cobrança                                 |     ✔️     |
+|                    |                                         Cancelar uma cobrança                                         |     ✔️     |
+|                    |                                      Restaurar cobrança removida                                      |     ✔️     |
+|                    |                                   Confirmar recebimento em dinheiro                                   |     ✔️     |
+|                    |                                   Desfazer recebimento em dinheiro                                    |     ✔️     |
+| **Clientes**       |                                                                                                       |            |
+|                    |                                          Criação de clientes                                          |     ✔️     |
+|                    |                              Resgatar informações de um cliente pelo Id                               |     ✔️     |
+|                    |                                  Atualizar informações de um cliente                                  |     ✔️     |
+|                    |                                          Deletar um cliente                                           |     ✔️     |
+|                    | [Tokenização](https://docs.asaas.com/reference/tokenizacao-de-cartao-de-credito) de cartão de crédito |     ✔️     |
+| **Transferências** |                                                                                                       |            |
+|                    |                                        Transferências externas                                        |     ✔️     |
+|                    |                                   Transferências entre contas Asaas                                   |     ❌     |
+|                    |                              Recuperar informações de uma transferência                               |     ✔️     |
+| **Webhook**        |                                                                                                       |            |
+|                    |                                Configuração de Webhook para cobranças                                 |     ✔️     |
+|                    |                              Configuração de Webhook para transferências                              |     ✔️     |
