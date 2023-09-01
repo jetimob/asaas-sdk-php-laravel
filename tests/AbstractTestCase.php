@@ -24,6 +24,7 @@ class AbstractTestCase extends TestCase
     protected const DEFAULT_CUSTOMER_ID = 'cus_000005402499';
     protected const POSTAL_CODE = '93218-170';
     public const INVALID_CREDIT_CARD_NUMBER = '5184019740373151';
+    public const VALID_CREDIT_CARD_NUMBER = '5573976081098318';
 
     /** @inheritDoc */
     public function getPackageProviders($app): array
@@ -82,14 +83,16 @@ class AbstractTestCase extends TestCase
          *
          * {@see https://docs.asaas.com/reference/criar-nova-cobranca-com-cartao-de-credito}
          */
-        $number = $valid ? fake()->creditCardNumber : self::INVALID_CREDIT_CARD_NUMBER;
+        $number = $valid
+            ? self::VALID_CREDIT_CARD_NUMBER
+            : self::INVALID_CREDIT_CARD_NUMBER;
 
         return with(new CreditCard())
             ->setHolderName(fake()->name)
             ->setNumber($number)
-            ->setExpiryMonth('05')
-            ->setExpiryYear(now()->addYear()->year)
-            ->setCcv('123');
+            ->setExpiryMonth('01')
+            ->setExpiryYear('2025')
+            ->setCcv('913');
     }
 
     protected function fakeCreditCardHolder(): CreditCardHolderInfo

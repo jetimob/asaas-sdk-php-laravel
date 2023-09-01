@@ -47,6 +47,7 @@ class TokenizeCreditCardInfo extends Entity
         $this->customer = $customer;
         return $this;
     }
+
     public function getCreditCard(): CreditCard
     {
         return $this->creditCard;
@@ -57,6 +58,7 @@ class TokenizeCreditCardInfo extends Entity
         $this->creditCard = $creditCard;
         return $this;
     }
+
     public  function getCreditCardHolderInfo(): CreditCardHolderInfo
     {
         return $this->creditCardHolderInfo;

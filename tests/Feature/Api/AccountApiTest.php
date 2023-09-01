@@ -86,9 +86,9 @@ class AccountApiTest extends AbstractTestCase
 
         $customization = (new InvoiceCustomization())
             ->setEnabled(true)
-            ->setFontColor(fake()->hexColor)
-            ->setInfoBackgroundColor(fake()->hexColor)
-            ->setLogoBackgroundColor(fake()->hexColor)
+            ->setFontColor('#00ff00') // Não foi usado "fake()->hexColor()", porque na asaas tem uma validação de visibilidade da fatura
+            ->setInfoBackgroundColor('#000000')
+            ->setLogoBackgroundColor('#ff0000')
             ->setLogoFile($logo->getContent());
 
         $response = $this->api->customizeInvoice($customization);
