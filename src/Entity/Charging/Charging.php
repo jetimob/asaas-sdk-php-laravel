@@ -11,26 +11,26 @@ class Charging extends Entity
      *
      * {@see https://docs.asaas.com/reference/criar-novo-cliente}
      *
-     * @var $customer string
+     * @var $customer string|null
      */
-    protected string $customer;
+    protected ?string $customer;
 
     /**
      * Método de pagamento, valores disponíveis {@see BillingType}
      *
-     * @var $billingType string
+     * @var $billingType string|null
     */
-    protected string $billingType;
+    protected ?string $billingType;
 
-    /** @var $value float */
-    protected float $value;
+    /** @var $value float|null */
+    protected ?float $value;
 
     /**
      * Formato de data {@see https://pt.wikipedia.org/wiki/ISO_8601}
      *
-     * @var $dueDate string
+     * @var $dueDate string|null
      */
-    protected string $dueDate;
+    protected ?string $dueDate;
 
     /** @var $description string|null */
     protected ?string $description;
@@ -62,16 +62,16 @@ class Charging extends Entity
     /**
      * Realizar apenas a Pré-Autorização da cobrança
      *
-     * @var $authorizeOnly bool
+     * @var $authorizeOnly ?bool
      */
-    protected bool $authorizeOnly = false;
+    protected ?bool $authorizeOnly;
 
     /**
      * IP de onde o cliente está fazendo a compra. Não deve ser informado o IP do seu servidor.
      *
-     * @var $remoteIp string
+     * @var $remoteIp string|null
     */
-    protected string $remoteIp;
+    protected ?string $remoteIp;
 
     /**
      * Valor de cada percela (somento no caso de cobrança parcelada)
@@ -94,63 +94,64 @@ class Charging extends Entity
     /**
      * Define se a cobrança vai ser enviada pelos correios
      *
-     * @var $postalService bool
+     * @var $postalService bool|null
     */
-    protected bool $postalService;
+    protected ?bool $postalService;
 
     /**
      * Configuração dos splits
      *
      * @see https://docs.asaas.com/docs/split-de-pagamentos
      *
-     * @var $split Split[]
+     * @var $split Split[]|null
     */
-    protected array $split;
+    protected ?array $split;
 
     public function splitItemType(): string
     {
         return Split::class;
     }
 
-    public function getCustomer(): string
+
+    public function getCustomer(): ?string
     {
         return $this->customer;
     }
 
-    public function setCustomer(string $customer): self
+    public function setCustomer(?string $customer): self
     {
         $this->customer = $customer;
         return $this;
     }
 
-    public function getBillingType(): ?BillingType
+    public function getBillingType(): ?string
     {
-        return BillingType::tryFrom($this->billingType);
+        return $this->billingType;
     }
 
-    public function setBillingType(string $billingType): self
+    public function setBillingType(?string $billingType): self
     {
         $this->billingType = $billingType;
         return $this;
     }
 
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }
 
-    public function setValue(float $value): self
+    public function setValue(?float $value): self
     {
         $this->value = $value;
         return $this;
     }
 
-    public function getDueDate(): string
+    public function getDueDate(): ?string
     {
         return $this->dueDate;
     }
 
-    public function setDueDate(string $dueDate): self
+    public function setDueDate(?string $dueDate): self
     {
         $this->dueDate = $dueDate;
         return $this;
@@ -189,6 +190,50 @@ class Charging extends Entity
         return $this;
     }
 
+    public function getCreditCard(): ?CreditCard
+    {
+        return $this->creditCard;
+    }
+
+    public function setCreditCard(?CreditCard $creditCard): self
+    {
+        $this->creditCard = $creditCard;
+        return $this;
+    }
+
+    public function getCreditCardHolderInfo(): ?CreditCardHolderInfo
+    {
+        return $this->creditCardHolderInfo;
+    }
+
+    public function setCreditCardHolderInfo(?CreditCardHolderInfo $creditCardHolderInfo): self
+    {
+        $this->creditCardHolderInfo = $creditCardHolderInfo;
+        return $this;
+    }
+
+    public function getAuthorizeOnly(): ?bool
+    {
+        return $this->authorizeOnly;
+    }
+
+    public function setAuthorizeOnly(?bool $authorizeOnly): self
+    {
+        $this->authorizeOnly = $authorizeOnly;
+        return $this;
+    }
+
+    public function getRemoteIp(): ?string
+    {
+        return $this->remoteIp;
+    }
+
+    public function setRemoteIp(?string $remoteIp): self
+    {
+        $this->remoteIp = $remoteIp;
+        return $this;
+    }
+
     public function getInstallmentValue(): ?int
     {
         return $this->installmentValue;
@@ -200,7 +245,7 @@ class Charging extends Entity
         return $this;
     }
 
-    public function getDiscount(): Discount
+    public function getDiscount(): ?Discount
     {
         return $this->discount;
     }
@@ -233,12 +278,12 @@ class Charging extends Entity
         return $this;
     }
 
-    public function isPostalService(): bool
+    public function getPostalService(): ?bool
     {
         return $this->postalService;
     }
 
-    public function setPostalService(bool $postalService): self
+    public function setPostalService(?bool $postalService): self
     {
         $this->postalService = $postalService;
         return $this;
@@ -252,50 +297,6 @@ class Charging extends Entity
     public function setSplit(?array $split): self
     {
         $this->split = $split;
-        return $this;
-    }
-
-    public function getCreditCard(): ?CreditCard
-    {
-        return $this->creditCard;
-    }
-
-    public function setCreditCard(CreditCard $creditCard): self
-    {
-        $this->creditCard = $creditCard;
-        return $this;
-    }
-
-    public function getCreditCardHolderInfo(): ?CreditCardHolderInfo
-    {
-        return $this->creditCardHolderInfo;
-    }
-
-    public function setCreditCardHolderInfo(CreditCardHolderInfo $creditCardHolderInfo): self
-    {
-        $this->creditCardHolderInfo = $creditCardHolderInfo;
-        return $this;
-    }
-
-    public function getRemoteIp(): ?string
-    {
-        return $this->remoteIp;
-    }
-
-    public function setRemoteIp(string $remoteIp): self
-    {
-        $this->remoteIp = $remoteIp;
-        return $this;
-    }
-
-    public function isAuthorizeOnly(): ?string
-    {
-        return $this->authorizeOnly;
-    }
-
-    public function setAuthorizeOnly(string $authorizeOnly): self
-    {
-        $this->authorizeOnly = $authorizeOnly;
         return $this;
     }
 }

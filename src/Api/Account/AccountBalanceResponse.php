@@ -9,11 +9,11 @@ class AccountBalanceResponse extends Response
     /**
      * Saldo da conta
      *
-     * @var $balance float
+     * @var $balance float|null
      */
-    protected float $balance;
+    protected ?float $balance;
 
-    public function getBalance(): float
+    public function getBalance(): ?float
     {
         return $this->balance;
     }

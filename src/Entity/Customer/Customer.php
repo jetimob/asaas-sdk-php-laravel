@@ -6,11 +6,11 @@ use Jetimob\Asaas\Entity\Entity;
 
 class Customer extends Entity
 {
-    /** @var $name string */
-    protected string $name;
+    /** @var $name string|null */
+    protected ?string $name;
 
-    /** @var $cpfCnpj string */
-    protected string $cpfCnpj;
+    /** @var $cpfCnpj string|null */
+    protected ?string $cpfCnpj;
 
     /** @var $email string|null */
     protected ?string $email;
@@ -54,9 +54,9 @@ class Customer extends Entity
     /**
      * Envio de notificações de cobrança
      *
-     * @var $notificationDisabled bool
+     * @var $notificationDisabled bool|null
      */
-    protected bool $notificationDisabled;
+    protected ?bool $notificationDisabled;
 
     /**
      * Emails adicionais para envio de notificações de cobrança separados por ","
@@ -79,199 +79,199 @@ class Customer extends Entity
     /** @var $company string|null */
     protected ?string $company;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function getCpfCnpj(): string
-    {
-        return $this->cpfCnpj;
-    }
-
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function getPhone(): string
-    {
-        return $this->phone;
-    }
-
-    public function getMobilePhone(): string
-    {
-        return $this->mobilePhone;
-    }
-
-    public function getAddress(): string
-    {
-        return $this->address;
-    }
-
-    public function getAddressNumber(): string
-    {
-        return $this->addressNumber;
-    }
-
-    public function getComplement(): string
-    {
-        return $this->complement;
-    }
-
-    public function getProvince(): string
-    {
-        return $this->province;
-    }
-
-    public function getPostalCode(): string
-    {
-        return $this->postalCode;
-    }
-
-    public function getExternalReference(): string
-    {
-        return $this->externalReference;
-    }
-
-    public function isNotificationDisabled(): bool
-    {
-        return $this->notificationDisabled;
-    }
-
-    public function getAdditionalEmails(): string
-    {
-        return $this->additionalEmails;
-    }
-
-    public function getMunicipalInscription(): string
-    {
-        return $this->municipalInscription;
-    }
-
-    public function getStateInscription(): string
-    {
-        return $this->stateInscription;
-    }
-
-    public function getObservations(): string
-    {
-        return $this->observations;
-    }
-
-    public function getGroupName(): string
-    {
-        return $this->groupName;
-    }
-
-    public function getCompany(): string
-    {
-        return $this->company;
-    }
-
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
     }
 
-    public function setCpfCnpj(string $cpfCnpj): self
+    public function getCpfCnpj(): ?string
+    {
+        return $this->cpfCnpj;
+    }
+
+    public function setCpfCnpj(?string $cpfCnpj): self
     {
         $this->cpfCnpj = $cpfCnpj;
         return $this;
     }
 
-    public function setEmail(string $email): self
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
         return $this;
     }
 
-    public function setPhone(string $phone): self
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
         return $this;
     }
 
-    public function setMobilePhone(string $mobilePhone): self
+    public function getMobilePhone(): ?string
+    {
+        return $this->mobilePhone;
+    }
+
+    public function setMobilePhone(?string $mobilePhone): self
     {
         $this->mobilePhone = $mobilePhone;
         return $this;
     }
 
-    public function setAddress(string $address): self
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
     {
         $this->address = $address;
         return $this;
     }
 
-    public function setAddressNumber(string $addressNumber): self
+    public function getAddressNumber(): ?string
+    {
+        return $this->addressNumber;
+    }
+
+    public function setAddressNumber(?string $addressNumber): self
     {
         $this->addressNumber = $addressNumber;
         return $this;
     }
 
-    public function setComplement(string $complement): self
+    public function getComplement(): ?string
+    {
+        return $this->complement;
+    }
+
+    public function setComplement(?string $complement): self
     {
         $this->complement = $complement;
         return $this;
     }
 
-    public function setProvince(string $province): self
+    public function getProvince(): ?string
+    {
+        return $this->province;
+    }
+
+    public function setProvince(?string $province): self
     {
         $this->province = $province;
         return $this;
     }
 
-    public function setPostalCode(string $postalCode): self
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(?string $postalCode): self
     {
         $this->postalCode = $postalCode;
         return $this;
     }
 
-    public function setExternalReference(string $externalReference): self
+    public function getExternalReference(): ?string
+    {
+        return $this->externalReference;
+    }
+
+    public function setExternalReference(?string $externalReference): self
     {
         $this->externalReference = $externalReference;
         return $this;
     }
 
-    public function setNotificationDisabled(bool $notificationDisabled): self
+    public function getNotificationDisabled(): ?bool
+    {
+        return $this->notificationDisabled;
+    }
+
+    public function setNotificationDisabled(?bool $notificationDisabled): self
     {
         $this->notificationDisabled = $notificationDisabled;
         return $this;
     }
 
-    public function setAdditionalEmails(string $additionalEmails): self
+    public function getAdditionalEmails(): ?string
+    {
+        return $this->additionalEmails;
+    }
+
+    public function setAdditionalEmails(?string $additionalEmails): self
     {
         $this->additionalEmails = $additionalEmails;
         return $this;
     }
 
-    public function setMunicipalInscription(string $municipalInscription): self
+    public function getMunicipalInscription(): ?string
+    {
+        return $this->municipalInscription;
+    }
+
+    public function setMunicipalInscription(?string $municipalInscription): self
     {
         $this->municipalInscription = $municipalInscription;
         return $this;
     }
 
-    public function setStateInscription(string $stateInscription): self
+    public function getStateInscription(): ?string
+    {
+        return $this->stateInscription;
+    }
+
+    public function setStateInscription(?string $stateInscription): self
     {
         $this->stateInscription = $stateInscription;
         return $this;
     }
 
-    public function setObservations(string $observations): self
+    public function getObservations(): ?string
+    {
+        return $this->observations;
+    }
+
+    public function setObservations(?string $observations): self
     {
         $this->observations = $observations;
         return $this;
     }
 
-    public function setGroupName(string $groupName): self
+    public function getGroupName(): ?string
+    {
+        return $this->groupName;
+    }
+
+    public function setGroupName(?string $groupName): self
     {
         $this->groupName = $groupName;
         return $this;
     }
 
-    public function setCompany(string $company): self
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?string $company): self
     {
         $this->company = $company;
         return $this;

@@ -9,88 +9,88 @@ class CreditCard extends Entity
     /**
      * Nome impresso no cartão
      *
-     * @var $holderName string
+     * @var $holderName string|null
     */
-    protected string $holderName;
+    protected ?string $holderName;
 
     /**
      * Numero do cartão
      *
-     * @var $number string
+     * @var $number string|null
      */
-    protected string $number;
+    protected ?string $number;
 
     /**
      * Mẽs de expiração, (exemplo: 06)
      *
-     * @var $expiryMonth string
+     * @var $expiryMonth string|null
      */
-    protected string $expiryMonth;
+    protected ?string $expiryMonth;
 
     /**
      * Ano de expiração com 4 dígitos (ex: 2019)
      *
-     * @var $expiryYear string
+     * @var $expiryYear string|null
      */
-    protected string $expiryYear;
+    protected ?string $expiryYear;
 
     /**
      * Código de segurança
      *
-     * @var $ccv string
+     * @var $ccv string|null
      */
-    protected string $ccv;
+    protected ?string $ccv;
 
-    public function getHolderName(): string
+    public function getHolderName(): ?string
     {
         return $this->holderName;
     }
 
-    public function getNumber(): string
-    {
-        return $this->number;
-    }
-
-    public function getExpiryMonth(): string
-    {
-        return $this->expiryMonth;
-    }
-
-    public function getExpiryYear(): string
-    {
-        return $this->expiryYear;
-    }
-
-    public function getCcv(): string
-    {
-        return $this->ccv;
-    }
-
-    public function setHolderName(string $holderName): self
+    public function setHolderName(?string $holderName): self
     {
         $this->holderName = $holderName;
         return $this;
     }
 
-    public function setNumber(string $number): self
+    public function getNumber(): ?string
+    {
+        return $this->number;
+    }
+
+    public function setNumber(?string $number): self
     {
         $this->number = $number;
         return $this;
     }
 
-    public function setExpiryMonth(string $expiryMonth): self
+    public function getExpiryMonth(): ?string
+    {
+        return $this->expiryMonth;
+    }
+
+    public function setExpiryMonth(?string $expiryMonth): self
     {
         $this->expiryMonth = $expiryMonth;
         return $this;
     }
 
-    public function setExpiryYear(string $expiryYear): self
+    public function getExpiryYear(): ?string
+    {
+        return $this->expiryYear;
+    }
+
+    public function setExpiryYear(?string $expiryYear): self
     {
         $this->expiryYear = $expiryYear;
         return $this;
     }
 
-    public function setCcv(string $ccv): self
+    public function getCcv(): ?string
+    {
+        return $this->ccv;
+    }
+
+    public function setCcv(?string $ccv): self
     {
         $this->ccv = $ccv;
         return $this;

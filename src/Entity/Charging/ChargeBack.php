@@ -6,8 +6,9 @@ use Jetimob\Asaas\Entity\Entity;
 
 class ChargeBack extends Entity
 {
-    protected string $status;
-    protected string $reason;
+    protected ?string $status;
+
+    protected ?string $reason;
 
     public function getStatus(): ?ChargeBackStatus
     {

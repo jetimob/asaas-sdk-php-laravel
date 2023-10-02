@@ -9,23 +9,23 @@ class CreditCardHolderInfo extends Entity
     /**
      * Nome do titular do cartão
      *
-     * @var string
+     * @var $name string|null
      */
-    protected string $name;
+    protected ?string $name;
 
     /**
      * Email do titular do cartão
      *
-     * @var string
+     * @var $email string|null
      */
-    protected string $email;
+    protected ?string $email;
 
     /**
      * CPF ou CNPJ do titular do cartão
      *
-     * @var string
+     * @var $cpfCnpj string|null
      */
-    protected string $cpfCnpj;
+    protected ?string $cpfCnpj;
 
     /**
      * CEP do titular do cartão
@@ -51,9 +51,9 @@ class CreditCardHolderInfo extends Entity
     /**
      * Fone com DDD do titular do cartão
      *
-     * @var string
+     * @var $phone string|null
      */
-    protected string $phone;
+    protected ?string $phone;
 
     /**
      * Fone celular do titular do cartão
@@ -62,62 +62,42 @@ class CreditCardHolderInfo extends Entity
      */
     protected ?string $mobilePhone;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function getCpfCnpj(): string
-    {
-        return $this->cpfCnpj;
-    }
-
-    public function getPostalCode(): string
-    {
-        return $this->postalCode;
-    }
-
-    public function getAddressNumber(): string
-    {
-        return $this->addressNumber;
-    }
-
-    public function getAddressComplement(): ?string
-    {
-        return $this->addressComplement;
-    }
-
-    public function getPhone(): string
-    {
-        return $this->phone;
-    }
-
-    public function getMobilePhone(): ?string
-    {
-        return $this->mobilePhone;
-    }
-
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
     }
 
-    public function setEmail(string $email): self
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
         return $this;
     }
 
-    public function setCpfCnpj(string $cpfCnpj): self
+    public function getCpfCnpj(): ?string
+    {
+        return $this->cpfCnpj;
+    }
+
+    public function setCpfCnpj(?string $cpfCnpj): self
     {
         $this->cpfCnpj = $cpfCnpj;
         return $this;
+    }
+
+    public function getPostalCode(): string
+    {
+        return $this->postalCode;
     }
 
     public function setPostalCode(string $postalCode): self
@@ -126,10 +106,20 @@ class CreditCardHolderInfo extends Entity
         return $this;
     }
 
+    public function getAddressNumber(): string
+    {
+        return $this->addressNumber;
+    }
+
     public function setAddressNumber(string $addressNumber): self
     {
         $this->addressNumber = $addressNumber;
         return $this;
+    }
+
+    public function getAddressComplement(): ?string
+    {
+        return $this->addressComplement;
     }
 
     public function setAddressComplement(?string $addressComplement): self
@@ -138,10 +128,20 @@ class CreditCardHolderInfo extends Entity
         return $this;
     }
 
-    public function setPhone(string $phone): self
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
         return $this;
+    }
+
+    public function getMobilePhone(): ?string
+    {
+        return $this->mobilePhone;
     }
 
     public function setMobilePhone(?string $mobilePhone): self

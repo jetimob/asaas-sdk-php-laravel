@@ -6,32 +6,23 @@ use Jetimob\Http\Response;
 
 class TokenizeCreditCardResponse extends Response
 {
-    /**
-     * @var $creditCardNumber string
-    */
-    protected string $creditCardNumber;
+    protected ?string $creditCardNumber;
 
-    /**
-     * @var $creditCardBrand string
-    */
-    protected string $creditCardBrand;
+    protected ?string $creditCardBrand;
 
-    /**
-     * @var $creditCardToken string
-    */
-    protected string $creditCardToken;
+    protected ?string $creditCardToken;
 
-    public function getCreditCardNumber(): string
+    public function getCreditCardNumber(): ?string
     {
         return $this->creditCardNumber;
     }
 
-    public function getCreditCardBrand(): string
+    public function getCreditCardBrand(): ?string
     {
         return $this->creditCardBrand;
     }
 
-    public function getCreditCardToken(): string
+    public function getCreditCardToken(): ?string
     {
         return $this->creditCardToken;
     }

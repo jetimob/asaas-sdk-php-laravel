@@ -10,21 +10,20 @@ use Jetimob\Asaas\Entity\Charging\Fine;
 use Jetimob\Asaas\Entity\Charging\Interest;
 use Jetimob\Asaas\Entity\Charging\Refund;
 use Jetimob\Asaas\Entity\Charging\Split;
-use Jetimob\Asaas\Entity\Transfer\TransferStatus;
-use Jetimob\Http\Traits\Serializable;
+
 
 class ChargingWebhookEventData extends WebhookEventData
 {
-    protected string $dateCreated;
-    protected string $customer;
+    protected ?string $dateCreated;
+    protected ?string $customer;
     protected ?string $subscription;
     /* Somente quando pertencer a uma assinatura */
     protected ?string $installment;
     /* Somento quando pertencer a um parcelamento */
     protected ?string $paymentLink;
-    protected string $dueDate;
-    protected string $originalDueDate;
-    protected float $value;
+    protected ?string $dueDate;
+    protected ?string $originalDueDate;
+    protected ?float $value;
     protected ?float $netValue;
     /* Para quando o valor pago é diferente do valor da cobrança */
     protected ?float $originalValue;
@@ -32,9 +31,9 @@ class ChargingWebhookEventData extends WebhookEventData
     protected ?string $description;
     protected ?string $externalReference;
     /** Valores disponíveis em {@see BillingType} */
-    protected string $billingType;
+    protected ?string $billingType;
     /** Valores disponíveis em {@see ChargingStatus} */
-    protected string $status;
+    protected ?string $status;
     protected ?string $pixTransaction;
     protected ?string $confirmedDate;
     protected ?string $paymentDate;
@@ -51,7 +50,7 @@ class ChargingWebhookEventData extends WebhookEventData
     protected ?bool $acticipable;
     protected ?string $lastInvoiceViewedDate;
     protected ?string $lastBankSlipViewedDate;
-    protected bool $postalService;
+    protected ?bool $postalService;
     protected ?Discount $discount;
     protected ?Fine $fine;
     protected ?Interest $interest;
@@ -69,12 +68,12 @@ class ChargingWebhookEventData extends WebhookEventData
         return Refund::class;
     }
 
-    public function getDateCreated(): string
+    public function getDateCreated(): ?string
     {
         return $this->dateCreated;
     }
 
-    public function getCustomer(): string
+    public function getCustomer(): ?string
     {
         return $this->customer;
     }
@@ -94,17 +93,17 @@ class ChargingWebhookEventData extends WebhookEventData
         return $this->paymentLink;
     }
 
-    public function getDueDate(): string
+    public function getDueDate(): ?string
     {
         return $this->dueDate;
     }
 
-    public function getOriginalDueDate(): string
+    public function getOriginalDueDate(): ?string
     {
         return $this->originalDueDate;
     }
 
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }
@@ -134,14 +133,14 @@ class ChargingWebhookEventData extends WebhookEventData
         return $this->externalReference;
     }
 
-    public function getBillingType(): ?BillingType
+    public function getBillingType(): ?string
     {
-        return BillingType::tryFrom($this->billingType);
+        return $this->billingType;
     }
 
-    public function getStatus(): ?TransferStatus
+    public function getStatus(): ?string
     {
-        return TransferStatus::tryFrom($this->status);
+        return $this->status;
     }
 
     public function getPixTransaction(): ?string
@@ -224,7 +223,7 @@ class ChargingWebhookEventData extends WebhookEventData
         return $this->lastBankSlipViewedDate;
     }
 
-    public function isPostalService(): bool
+    public function getPostalService(): ?bool
     {
         return $this->postalService;
     }

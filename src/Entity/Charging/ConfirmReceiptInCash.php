@@ -9,53 +9,53 @@ class ConfirmReceiptInCash extends Entity
     /**
      * Data em que o cliente efetuou o pagamento
      *
-     * @var $paymentDate string
+     * @var $paymentDate string|null
      */
-    protected string $paymentDate;
+    protected ?string $paymentDate;
 
 
     /***
      * Valor pago pelo cliente
      *
-     * @var $value float
+     * @var $value float|null
      */
-    protected float $value;
+    protected ?float $value;
 
     /**
      * Enviar ou não notificação de pagamento confirmado para o cliente
      *
-     * @var $notifyCustomer bool
+     * @var $notifyCustomer bool|null
     */
-    protected bool $notifyCustomer;
+    protected ?bool $notifyCustomer;
 
-    public function getPaymentDate(): string
+    public function getPaymentDate(): ?string
     {
         return $this->paymentDate;
     }
 
-    public function setPaymentDate(string $paymentDate): self
+    public function setPaymentDate(?string $paymentDate): self
     {
         $this->paymentDate = $paymentDate;
         return $this;
     }
 
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }
 
-    public function setValue(float $value): self
+    public function setValue(?float $value): self
     {
         $this->value = $value;
         return $this;
     }
 
-    public function getNotifyCustomer(): bool
+    public function getNotifyCustomer(): ?bool
     {
         return $this->notifyCustomer;
     }
 
-    public function setNotifyCustomer(bool $notifyCustomer): self
+    public function setNotifyCustomer(?bool $notifyCustomer): self
     {
         $this->notifyCustomer = $notifyCustomer;
         return $this;

@@ -10,16 +10,16 @@ class Transfer extends Entity
     /**
      * Valor a ser transferido
      *
-     * @var $value float
+     * @var $value float|null
     */
-    protected float $value;
+    protected ?float $value;
 
     /**
      * Dados da conta caso seja uma transferência para conta bancária
      *
-     * @var $bankAccount BankAccount
+     * @var $bankAccount BankAccount|null
     */
-    protected BankAccount $bankAccount;
+    protected ?BankAccount $bankAccount;
 
     /**
      * Modalidade da transferência.
@@ -28,56 +28,56 @@ class Transfer extends Entity
      *
      * Valores disponíveis em {@see OperationType}
      *
-     * @var $operationType string
+     * @var $operationType string|null
     */
-    protected string $operationType;
+    protected ?string $operationType;
 
     /**
      * Informe a chave Pix caso seja uma transferência para chave Pix
      *
-     * @var $pixAddressKey string
+     * @var $pixAddressKey string|null
     */
-    protected string $pixAddressKey;
+    protected ?string $pixAddressKey;
 
     /**
      * Informe o tipo de chave caso seja uma transferência para chave Pix
      *
      * Valores disponíveis em {@see PixKeyType}
-     * @var $pixAddressKeyType string
+     * @var $pixAddressKeyType string|null
     */
-    protected string $pixAddressKeyType;
+    protected ?string $pixAddressKeyType;
 
     /**
      * Transferências via Pix permitem descrição
      *
-     * @var $description string
+     * @var $description string|null
     */
-    protected string $description;
+    protected ?string $description;
 
     /**
      * Para transferências agendadas, caso não informado o pagamento é instantâneo
      *
-     * @var $scheduleDate string
+     * @var $scheduleDate string|null
     */
-    protected string $scheduleDate;
+    protected ?string $scheduleDate;
 
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }
 
-    public function setValue(float $value): self
+    public function setValue(?float $value): self
     {
         $this->value = $value;
         return $this;
     }
 
-    public function getBankAccount(): BankAccount
+    public function getBankAccount(): ?BankAccount
     {
         return $this->bankAccount;
     }
 
-    public function setBankAccount(BankAccount $bankAccount): self
+    public function setBankAccount(?BankAccount $bankAccount): self
     {
         $this->bankAccount = $bankAccount;
         return $this;
@@ -88,7 +88,7 @@ class Transfer extends Entity
         return OperationType::tryFrom($this->operationType);
     }
 
-    public function setOperationType(string $operationType): self
+    public function setOperationType(?string $operationType): self
     {
         $this->operationType = $operationType;
         return $this;
@@ -99,29 +99,29 @@ class Transfer extends Entity
         return $this->pixAddressKey;
     }
 
-    public function setPixAddressKey(string $pixAddressKey): self
+    public function setPixAddressKey(?string $pixAddressKey): self
     {
         $this->pixAddressKey = $pixAddressKey;
         return $this;
     }
 
-    public function getPixAddressKeyType(): PixKeyType
+    public function getPixAddressKeyType(): ?PixKeyType
     {
         return PixKeyType::tryFrom($this->pixAddressKeyType);
     }
 
-    public function setPixAddressKeyType(string $pixAddressKeyType): self
+    public function setPixAddressKeyType(?string $pixAddressKeyType): self
     {
         $this->pixAddressKeyType = $pixAddressKeyType;
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
         return $this;
@@ -132,7 +132,7 @@ class Transfer extends Entity
         return $this->scheduleDate;
     }
 
-    public function setScheduleDate(string $scheduleDate): self
+    public function setScheduleDate(?string $scheduleDate): self
     {
         $this->scheduleDate = $scheduleDate;
         return $this;

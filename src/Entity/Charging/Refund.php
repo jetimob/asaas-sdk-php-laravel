@@ -6,13 +6,17 @@ use Jetimob\Asaas\Entity\Entity;
 
 class Refund extends Entity
 {
-    protected string $dateCreated;
-    protected string $status;
-    protected float $value;
+    protected ?string $dateCreated;
+
+    protected ?string $status;
+
+    protected ?float $value;
+
     protected ?string $description;
+
     protected ?string $transactionReceiptUrl;
 
-    public function getDateCreated(): string
+    public function getDateCreated(): ?string
     {
         return $this->dateCreated;
     }
@@ -22,7 +26,7 @@ class Refund extends Entity
         return RefundStatus::tryFrom($this->status);
     }
 
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }

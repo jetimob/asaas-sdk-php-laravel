@@ -7,88 +7,66 @@ use Jetimob\Asaas\Entity\Account\AccountNumber;
 
 class AccountResponse extends EntityResponse
 {
-    /** @var string $dateCreated */
-    protected string $dateCreated;
+     protected ?string $dateCreated;
 
-    /** @var string $name */
-    protected string $name;
+    protected ?string $name;
 
-    /** @var string $email */
-    protected string $email;
+    protected ?string $email;
 
-    /** @var string $loginEmail */
-    protected string $loginEmail;
+    protected ?string $loginEmail;
 
-    /** @var string|null $phone */
     protected ?string $phone;
 
-    /** @var string|null $mobilePhone */
     protected ?string $mobilePhone;
 
-    /** @var ?string $address */
     protected string|null $address;
 
-    /** @var string|null $addressNumber */
     protected ?string $addressNumber;
 
-    /** @var string|null $complement */
     protected ?string $complement;
 
-    /** @var string|null $province */
     protected ?string $province;
 
-    /** @var string $postalCode */
-    protected string $postalCode;
+    protected ?string $postalCode;
 
-    /** @var string $cpfCnpj */
-    protected string $cpfCnpj;
+    protected ?string $cpfCnpj;
 
-    /** @var string $birthDate */
-    protected string $birthDate;
+    protected ?string $birthDate;
 
-    /** @var string $personType */
-    protected string $personType;
+    protected ?string $personType;
 
-    /** @var string|null $companyType */
     protected ?string $companyType;
 
-    /** @var int $city */
-    protected int $city;
+    protected ?int $city;
 
-    /** @var string $state */
-    protected string $state;
+    protected ?string $state;
 
-    /** @var string $country */
-    protected string $country;
+    protected ?string $country;
 
-    /** @var string|null $site */
     protected ?string $site;
 
-    /** @var string|null $apiKey */
     protected ?string $apiKey;
 
-    /** @var string $walletId */
-    protected string $walletId;
+    protected ?string $walletId;
 
-    /** @var AccountNumber $accountNumber */
-    protected AccountNumber $accountNumber;
+    protected ?AccountNumber $accountNumber;
 
-    public function getDateCreated(): string
+    public function getDateCreated(): ?string
     {
         return $this->dateCreated;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function getLoginEmail(): string
+    public function getLoginEmail(): ?string
     {
         return $this->loginEmail;
     }
@@ -123,42 +101,42 @@ class AccountResponse extends EntityResponse
         return $this->province;
     }
 
-    public function getPostalCode(): string
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
-    public function getCpfCnpj(): string
+    public function getCpfCnpj(): ?string
     {
         return $this->cpfCnpj;
     }
 
-    public function getBirthDate(): string
+    public function getBirthDate(): ?string
     {
         return $this->birthDate;
     }
 
-    public function getPersonType(): string
+    public function getPersonType(): ?string
     {
         return $this->personType;
     }
 
-    public function getCompanyType(): string
+    public function getCompanyType(): ?string
     {
         return $this->companyType;
     }
 
-    public function getCity(): int
+    public function getCity(): ?int
     {
         return $this->city;
     }
 
-    public function getState(): string
+    public function getState(): ?string
     {
         return $this->state;
     }
 
-    public function getCountry(): string
+    public function getCountry(): ?string
     {
         return $this->country;
     }
@@ -173,12 +151,12 @@ class AccountResponse extends EntityResponse
         return $this->apiKey;
     }
 
-    public function getWalletId(): string
+    public function getWalletId(): ?string
     {
         return $this->walletId;
     }
 
-    public function getAccountNumber(): AccountNumber
+    public function getAccountNumber(): ?AccountNumber
     {
         return $this->accountNumber;
     }

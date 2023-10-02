@@ -7,48 +7,48 @@ class Bank extends BankAccount
     /**
      * Código de compensação do banco no sistema bancário
      *
-     * @var $code string
+     * @var $code string|null
     */
-    protected string $code;
+    protected ?string $code;
 
     /**
-     * @var $ispb string
+     * @var $ispb string|null
     */
-    protected string $ispb;
+    protected ?string $ispb;
 
     /**
-     * @var $name string
+     * @var $name string|null
     */
-    protected string $name;
+    protected ?string $name;
 
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
-    public function setCode(string $code): self
+    public function setCode(?string $code): self
     {
         $this->code = $code;
         return $this;
     }
 
-    public function getIspb(): string
+    public function getIspb(): ?string
     {
         return $this->ispb;
     }
 
-    public function setIspb(string $ispb): self
+    public function setIspb(?string $ispb): self
     {
         $this->ispb = $ispb;
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;

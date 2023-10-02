@@ -2,7 +2,6 @@
 
 namespace Jetimob\Asaas\Entity\Account;
 
-use Illuminate\Support\Arr;
 use Jetimob\Asaas\Entity\Entity;
 
 class InvoiceCustomization extends Entity
@@ -10,88 +9,88 @@ class InvoiceCustomization extends Entity
     /**
      * Cor de fundo da logo
      *
-     * @var string
+     * @var $logoBackgroundColor string|null
      */
-    protected string $logoBackgroundColor;
+    protected ?string $logoBackgroundColor;
 
     /**
      * Cor de fundo das suas informações
      *
-     * @var string
+     * @var $infoBackgroundColor string|null
      */
-    protected string $infoBackgroundColor;
+    protected ?string $infoBackgroundColor;
 
     /**
-     * Cor da fonta das suas informações
-     * Cor
-     * @var string
+     * Cor da fonte das suas informações
+     *
+     * @var $fontColor string|null
      */
-    protected string $fontColor;
+    protected ?string $fontColor;
 
     /**
      * True para habilitar a personalização
      *
-     * @var bool
+     * @var bool|null
      */
-    protected bool $enabled;
+    protected ?bool $enabled;
 
     /**
      * Logo que aparacerá no topo da fatura
      *
-     * @var string
+     * @var $logoFile string|null
      */
-    protected string $logoFile;
+    protected ?string $logoFile;
 
-    public function getLogoBackgroundColor(): string
+    public function getLogoBackgroundColor(): ?string
     {
         return $this->logoBackgroundColor;
     }
 
-    public function setLogoBackgroundColor(string $logoBackgroundColor): InvoiceCustomization
+    public function setLogoBackgroundColor(?string $logoBackgroundColor): self
     {
         $this->logoBackgroundColor = $logoBackgroundColor;
         return $this;
     }
 
-    public function getInfoBackgroundColor(): string
+    public function getInfoBackgroundColor(): ?string
     {
         return $this->infoBackgroundColor;
     }
 
-    public function setInfoBackgroundColor(string $infoBackgroundColor): InvoiceCustomization
+    public function setInfoBackgroundColor(?string $infoBackgroundColor): self
     {
         $this->infoBackgroundColor = $infoBackgroundColor;
         return $this;
     }
 
-    public function getFontColor(): string
+    public function getFontColor(): ?string
     {
         return $this->fontColor;
     }
 
-    public function setFontColor(string $fontColor): InvoiceCustomization
+    public function setFontColor(?string $fontColor): self
     {
         $this->fontColor = $fontColor;
         return $this;
     }
 
-    public function isEnabled(): bool
+    public function isEnabled(): ?bool
     {
         return $this->enabled;
     }
 
-    public function setEnabled(bool $enabled): InvoiceCustomization
+    public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
         return $this;
     }
 
-    public function getLogoFile(): string
+    public function getLogoFile(): ?string
     {
         return $this->logoFile;
     }
 
-    public function setLogoFile(string $logoFile): InvoiceCustomization
+    public function setLogoFile(?string $logoFile): self
     {
         $this->logoFile = $logoFile;
         return $this;

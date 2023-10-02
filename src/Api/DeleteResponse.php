@@ -6,15 +6,16 @@ use Jetimob\Http\Response;
 
 abstract class DeleteResponse extends Response
 {
-    protected bool $deleted;
-    protected string $id;
+    protected ?bool $deleted;
 
-    public function isDeleted(): bool
+    protected ?string $id;
+
+    public function isDeleted(): ?bool
     {
         return $this->deleted;
     }
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }

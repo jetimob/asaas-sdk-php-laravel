@@ -9,107 +9,107 @@ class WebhookConfiguration extends Entity
     /**
      * URL que receberá as informações de sincronização
      *
-     * @var $url string
+     * @var $url string|null
     */
-    protected string $url;
+    protected ?string $url;
 
     /**
      * Email para receber as notificações em caso de erros na fila
      *
-     * @var $email string
+     * @var $email string|null
      */
-    protected string $email;
+    protected ?string $email;
 
     /**
      * Versão utilizada da API. Utilize "3" para a versão v3
      *
-     * @var $apiVersion string
+     * @var $apiVersion string|null
      */
-    protected string $apiVersion;
+    protected ?string $apiVersion;
 
 
     /**
      * Habilitar ou não o webhook
      *
-     * @var $enabled bool
+     * @var $enabled bool|null
     */
     protected bool $enabled;
 
     /**
      * Situação da fila de sincronização
      *
-     * @var $interrupted bool
+     * @var $interrupted bool|null
      */
-    protected bool $interrupted;
+    protected ?bool $interrupted;
 
     /**
      * Token de autenticação
      *
-     * @var $authToken string
+     * @var $authToken string|null
     */
-    protected string $authToken;
+    protected ?string $authToken;
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
         return $this;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
         return $this;
     }
 
-    public function getApiVersion(): string
+    public function getApiVersion(): ?string
     {
         return $this->apiVersion;
     }
 
-    public function setApiVersion(string $apiVersion): self
+    public function setApiVersion(?string $apiVersion): self
     {
         $this->apiVersion = $apiVersion;
         return $this;
     }
 
-    public function isEnabled(): bool
+    public function isEnabled(): ?bool
     {
         return $this->enabled;
     }
 
-    public function setEnabled(bool $enabled): self
+    public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
         return $this;
     }
 
-    public function isInterrupted(): bool
+    public function isInterrupted(): ?bool
     {
         return $this->interrupted;
     }
 
-    public function setInterrupted(bool $interrupted): self
+    public function setInterrupted(?bool $interrupted): self
     {
         $this->interrupted = $interrupted;
         return $this;
     }
 
-    public function getAuthToken(): string
+    public function getAuthToken(): ?string
     {
         return $this->authToken;
     }
 
-    public function setAuthToken(string $authToken): self
+    public function setAuthToken(?string $authToken): self
     {
         $this->authToken = $authToken;
         return $this;

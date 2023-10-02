@@ -6,18 +6,18 @@ use Jetimob\Http\Response;
 
 class SplitStatisticsResponse extends Response
 {
-    /** @var $outcome int */
-    protected int $outcome;
+    /** @var $outcome int|null */
+    protected ?int $outcome;
 
-    /** @var $income int */
-    protected int $income;
+    /** @var $income int|null */
+    protected ?int $income;
 
-    public function getOutcome(): int
+    public function getOutcome(): ?int
     {
         return $this->outcome;
     }
 
-    public function getIncome(): int
+    public function getIncome(): ?int
     {
         return $this->outcome;
     }

@@ -6,15 +6,16 @@ use Jetimob\Http\Response;
 
 class EntityResponse extends Response
 {
-    protected string $object;
-    protected string $id;
+    protected ?string $object;
 
-    public function getObject(): string
+    protected ?string $id;
+
+    public function getObject(): ?string
     {
         return $this->object;
     }
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }

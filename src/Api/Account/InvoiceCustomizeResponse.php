@@ -6,74 +6,72 @@ use Jetimob\Http\Response;
 
 class InvoiceCustomizeResponse extends Response
 {
-    protected string $object;
-
     /**
      * Cor de fundo da logo
      *
-     * @var string
+     * @var $logoBackgroundColor string|null
      */
-    protected string $logoBackgroundColor;
+    protected ?string $logoBackgroundColor;
 
     /**
      * Cor de fundo das suas informações
      *
-     * @var string
+     * @var $infoBackgroundColor string|null
      */
-    protected string $infoBackgroundColor;
+    protected ?string $infoBackgroundColor;
 
     /**
      * Cor da fonta das suas informações
-     * Cor
-     * @var string
+     *
+     * @var $fontColor string|null
      */
-    protected string $fontColor;
+    protected ?string $fontColor;
 
     /**
      * True para habilitar a personalização
      *
-     * @var bool
+     * @var $enabled bool|null
      */
-    protected bool $enabled;
+    protected ?bool $enabled;
 
     /**
      * Logo que aparacerá no topo da fatura
      *
-     * @var string
+     * @var $logoFile string|null
      */
-    protected string $logoFile;
+    protected ?string $logoFile;
 
     /**
-     * @var $status string
+     * @var $status string|null
     */
-    protected string $status;
+    protected ?string $status;
 
-    public function getLogoBackgroundColor(): string
+    public function getLogoBackgroundColor(): ?string
     {
         return $this->logoBackgroundColor;
     }
 
-    public function getInfoBackgroundColor(): string
+    public function getInfoBackgroundColor(): ?string
     {
         return $this->infoBackgroundColor;
     }
 
-    public function getFontColor(): string
+    public function getFontColor(): ?string
     {
         return $this->fontColor;
     }
 
-    public function isEnabled(): bool
+    public function isEnabled(): ?bool
     {
         return $this->enabled;
     }
 
-    public function getLogoFile(): string
+    public function getLogoFile(): ?string
     {
         return $this->logoFile;
     }
 
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }

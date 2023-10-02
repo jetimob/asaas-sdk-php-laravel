@@ -11,71 +11,71 @@ class TokenizeCreditCardInfo extends Entity
     /**
      * Id do cliente criado na Asaas
      *
-     * @var $customer string
+     * @var $customer string|null
     */
-    protected string $customer;
+    protected ?string $customer;
 
     /**
      * Informações do cartão de crédito
      *
-     * @var $creditCard CreditCard
+     * @var $creditCard CreditCard|null
     */
-    protected CreditCard $creditCard;
+    protected ?CreditCard $creditCard;
 
     /**
      * Informações do titular do cartão de crédito
      *
-     * @var $creditCardHolderInfo CreditCardHolderInfo
+     * @var $creditCardHolderInfo CreditCardHolderInfo|null
      */
-    protected CreditCardHolderInfo $creditCardHolderInfo;
+    protected ?CreditCardHolderInfo $creditCardHolderInfo;
 
     /**
      * IP de onde o cliente está fazendo a compra.
      * Não deve ser informado o IP do seu servidor.
      *
-     * @var $remoteIp string
+     * @var $remoteIp string|null
     */
-    protected string $remoteIp;
+    protected ?string $remoteIp;
 
-    public  function getCustomer(): string
+    public  function getCustomer(): ?string
     {
         return $this->customer;
     }
 
-    public function setCustomer(string $customer): self
+    public function setCustomer(?string $customer): self
     {
         $this->customer = $customer;
         return $this;
     }
 
-    public function getCreditCard(): CreditCard
+    public function getCreditCard(): ?CreditCard
     {
         return $this->creditCard;
     }
 
-    public function setCreditCard(CreditCard $creditCard): self
+    public function setCreditCard(?CreditCard $creditCard): self
     {
         $this->creditCard = $creditCard;
         return $this;
     }
 
-    public  function getCreditCardHolderInfo(): CreditCardHolderInfo
+    public  function getCreditCardHolderInfo(): ?CreditCardHolderInfo
     {
         return $this->creditCardHolderInfo;
     }
 
-    public function setCreditCardHolderInfo(CreditCardHolderInfo $creditCardHolderInfo): self
+    public function setCreditCardHolderInfo(?CreditCardHolderInfo $creditCardHolderInfo): self
     {
         $this->creditCardHolderInfo = $creditCardHolderInfo;
         return $this;
     }
 
-    public function getRemoteIp(): string
+    public function getRemoteIp(): ?string
     {
         return $this->remoteIp;
     }
 
-    public function setRemoteIp(string $remoteIp): self
+    public function setRemoteIp(?string $remoteIp): self
     {
         $this->remoteIp = $remoteIp;
         return $this;

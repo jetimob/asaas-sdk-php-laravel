@@ -9,9 +9,9 @@ class Split extends Entity
     /**
      * Identificador da carteira (retornado no momento da criação da conta)
      *
-     * @var $walletId string
+     * @var $walletId string|null
     */
-    protected string $walletId;
+    protected ?string $walletId;
 
     /**
      * Valor fixo a ser transferido para a conta quando a cobrança for recebida
@@ -27,13 +27,13 @@ class Split extends Entity
     */
     protected ?float $percetualValue;
 
-    public function setWalletId(string $walletId): self
+    public function setWalletId(?string $walletId): self
     {
         $this->walletId = $walletId;
         return $this;
     }
 
-    public function getWalletId(): string
+    public function getWalletId(): ?string
     {
         return $this->walletId;
     }
@@ -55,7 +55,7 @@ class Split extends Entity
         return $this;
     }
 
-    public function getPercentualValue(): float
+    public function getPercentualValue(): ?float
     {
         return $this->percetualValue;
     }

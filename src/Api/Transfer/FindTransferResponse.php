@@ -7,87 +7,42 @@ use Jetimob\Asaas\Entity\Transfer\BankAccount;
 
 class FindTransferResponse extends EntityResponse
 {
-    /**
-     * @var $dateCreated string
-    */
-    protected string $dateCreated;
+    protected ?string $dateCreated;
 
-    /**
-     * @var string $status
-    */
-    protected string $status;
+    protected ?string $status;
 
-    /**
-     * @var $effectiveDate string|null
-    */
     protected ?string $effectiveDate;
 
-    /**
-     * @var $endToEndIdentifier string|null
-    */
     protected ?string $endToEndIdentifier;
 
-    /**
-     * @var $type string
-    */
-    protected string $type;
+    protected ?string $type;
 
-    /**
-     * @var $value int
-    */
-    protected int $value;
+    protected ?int $value;
 
-    /**
-     * @var $netValue int
-    */
-    protected int $netValue;
+    protected ?int $netValue;
 
-    /**
-     * @var $transferFee int
-    */
-    protected int $transferFee;
+    protected ?int $transferFee;
 
-    /**
-     * @var $scheduleDate string
-    */
-    protected string $scheduleDate;
+    protected ?string $scheduleDate;
 
-    /**
-     * @var $authorized bool
-    */
-    protected bool $authorized;
+    protected ?bool $authorized;
 
-    /**
-     * @var $failReason string|null
-    */
     protected ?string $failReason;
 
-    /**
-     * @var $bankAccount BankAccount
-    */
-    protected BankAccount $bankAccount;
+    protected ?BankAccount $bankAccount;
 
-    /**
-     * @var $transactionReceiptUrl string
-    */
-    protected string $transactionReceiptUrl;
+    protected ?string $transactionReceiptUrl;
 
-    /**
-     * @var $operationType string
-    */
-    protected string $operationType;
+    protected ?string $operationType;
 
-    /**
-     * @var $description string|null
-    */
     protected ?string $description;
 
-    public function getDateCreated(): string
+    public function getDateCreated(): ?string
     {
         return $this->dateCreated;
     }
 
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -102,32 +57,32 @@ class FindTransferResponse extends EntityResponse
         return $this->endToEndIdentifier;
     }
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function getValue(): int
+    public function getValue(): ?int
     {
         return $this->value;
     }
 
-    public function getNetValue(): int
+    public function getNetValue(): ?int
     {
         return $this->netValue;
     }
 
-    public function getTransferFee(): int
+    public function getTransferFee(): ?int
     {
         return $this->transferFee;
     }
 
-    public function getScheduleDate(): string
+    public function getScheduleDate(): ?string
     {
         return $this->scheduleDate;
     }
 
-    public function isAuthorized(): bool
+    public function getAuthorized(): ?bool
     {
         return $this->authorized;
     }
@@ -137,17 +92,17 @@ class FindTransferResponse extends EntityResponse
         return $this->failReason;
     }
 
-    public function getBankAccount(): BankAccount
+    public function getBankAccount(): ?BankAccount
     {
         return $this->bankAccount;
     }
 
-    public function getTransactionReceiptUrl(): string
+    public function getTransactionReceiptUrl(): ?string
     {
         return $this->transactionReceiptUrl;
     }
 
-    public function getOperationType(): string
+    public function getOperationType(): ?string
     {
         return $this->operationType;
     }

@@ -4,124 +4,77 @@ namespace Jetimob\Asaas\Api\Transfer;
 
 use Jetimob\Asaas\Api\EntityResponse;
 use Jetimob\Asaas\Entity\Transfer\BankAccount;
+use Jetimob\Asaas\Entity\Transfer\OperationType;
 use Jetimob\Asaas\Entity\Transfer\TransferStatus;
 
 class RequestTransferResponse extends EntityResponse
 {
-    /**
-     * @var $type string
-     */
-    protected string $type;
+    protected ?string $type;
 
-    /**
-     *
-     * @var $dateCreated string
-    */
-    protected string $dateCreated;
+    protected ?string $dateCreated;
 
-    /**
-     * @var $value float
-    */
-    protected float $value;
+    protected ?float $value;
 
-    /**
-     * @var $netValue float
-    */
-    protected float $netValue;
+    protected ?float $netValue;
 
-    /**
-     * @var $status string
-     *
-     * Valores disponíveis em {@see TransferStatus}
-    */
-    protected string $status;
+    protected ?string $status;
 
-    /**
-     * @var $transferFee int
-    */
-    protected int $transferFee;
+    protected ?int $transferFee;
 
-    /**
-     * @var $effectiveDate string
-    */
-    protected string $effectiveDate;
+    protected ?string $effectiveDate;
 
-    /**
-     * @var $endToEndIdentifier string
-    */
-    protected string $endToEndIdentifier;
+    protected ?string $endToEndIdentifier;
 
-    /**
-     * @var $scheduleDate string|null
-    */
     protected ?string $scheduleDate;
 
-    /**
-     * @var $authorized bool
-    */
-    protected bool $authorized;
+    protected ?bool $authorized;
 
-    /**
-     * @var $failReason string|null
-    */
     protected ?string $failReason;
 
-    /**
-     * @var $bankAccount BankAccount
-    */
-    protected BankAccount $bankAccount;
+    protected ?BankAccount $bankAccount;
 
-    /**
-     * @var $transactionReceiptUrl string
-    */
-    protected string $transactionReceiptUrl;
+    protected ?string $transactionReceiptUrl;
 
-    /**
-     * @var $operationType string
-    */
-    protected string $operationType;
+    protected ?string $operationType;
 
-    /**
-     * @var $description string|null
-    */
     protected ?string $description;
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function getDateCreated(): string
+    public function getDateCreated(): ?string
     {
         return $this->dateCreated;
     }
 
-    public function getValue(): int
+    public function getValue(): ?float
     {
         return $this->value;
     }
 
-    public function getNetValue(): int
+    public function getNetValue(): ?float
     {
         return $this->netValue;
     }
 
-    public function getStatus(): TransferStatus
+    public function getStatus(): ?TransferStatus
     {
-        return TransferStatus::from($this->status);
+        return TransferStatus::tryFrom($this->status);
     }
 
-    public function getTransferFee(): int
+    public function getTransferFee(): ?int
     {
         return $this->transferFee;
     }
 
-    public function getEffectiveDate(): string
+    public function getEffectiveDate(): ?string
     {
         return $this->effectiveDate;
     }
 
-    public function getEndToEndIdentifier(): string
+    public function getEndToEndIdentifier(): ?string
     {
         return $this->endToEndIdentifier;
     }
@@ -131,7 +84,7 @@ class RequestTransferResponse extends EntityResponse
         return $this->scheduleDate;
     }
 
-    public function isAuthorized(): bool
+    public function getAuthorized(): ?bool
     {
         return $this->authorized;
     }
@@ -141,19 +94,19 @@ class RequestTransferResponse extends EntityResponse
         return $this->failReason;
     }
 
-    public function getBankAccount(): BankAccount
+    public function getBankAccount(): ?BankAccount
     {
         return $this->bankAccount;
     }
 
-    public function getTransactionReceiptUrl(): string
+    public function getTransactionReceiptUrl(): ?string
     {
         return $this->transactionReceiptUrl;
     }
 
-    public function getOperationType(): string
+    public function getOperationType(): ?OperationType
     {
-        return $this->operationType;
+        return OperationType::tryFrom($this->operationType);
     }
 
     public function getDescription(): ?string
