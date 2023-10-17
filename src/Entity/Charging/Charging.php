@@ -107,11 +107,12 @@ class Charging extends Entity
     */
     protected ?array $split;
 
+    protected ?Callback $callback;
+
     public function splitItemType(): string
     {
         return Split::class;
     }
-
 
     public function getCustomer(): ?string
     {
@@ -297,6 +298,17 @@ class Charging extends Entity
     public function setSplit(?array $split): self
     {
         $this->split = $split;
+        return $this;
+    }
+
+    public function getCallback(): ?Callback
+    {
+        return $this->callback;
+    }
+
+    public function setCallback(?Callback $callback): self
+    {
+        $this->callback = $callback;
         return $this;
     }
 }

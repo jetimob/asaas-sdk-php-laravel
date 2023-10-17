@@ -80,6 +80,15 @@ class AccountApiTest extends AbstractTestCase
     }
 
     #[Test, Depends('shouldCreateAccountSuccessfully')]
+    public function shouldGetWalletIds(CreateAccountResponse $createAccountResponse): void
+    {
+        $response = $this->api->usingToken($createAccountResponse->getApiKey())->findWallets();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertIsArray($response->data);
+    }
+
+    #[Test, Depends('shouldCreateAccountSuccessfully')]
     public function shoulCustomizeInvoiceSuccessfully(CreateAccountResponse $createAccountResponse): void
     {
         $logo = File::image(fake()->image, 50, 50);

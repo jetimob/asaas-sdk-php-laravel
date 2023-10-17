@@ -8,6 +8,7 @@ use Jetimob\Asaas\Api\Customer\CreateCustomerResponse;
 use Jetimob\Asaas\AsaasServiceProvider;
 use Jetimob\Asaas\Entity\Account\Account;
 use Jetimob\Asaas\Entity\Charging\BillingType;
+use Jetimob\Asaas\Entity\Charging\Callback;
 use Jetimob\Asaas\Entity\Charging\Charging;
 use Jetimob\Asaas\Entity\Charging\CreditCard;
 use Jetimob\Asaas\Entity\Charging\CreditCardHolderInfo;
@@ -136,6 +137,7 @@ class AbstractTestCase extends TestCase
             ->setFine(Fine::withValue(fake()->randomFloat(0, 5.0, 10.0)))
             ->setInterest(Interest::withValue(fake()->randomFloat(0, 5.0, 10.0)))
             ->setDescription(fake()->text)
+            ->setCallback(Callback::new(fake()->url, fake()->boolean))
             ->setDiscount(Discount::new(fake()->randomFloat(0, 5.0, 10.0), DiscountType::FIXED->value, fake()->numberBetween(1, 10)));
     }
 

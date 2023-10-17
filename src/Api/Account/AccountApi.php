@@ -52,4 +52,12 @@ class AccountApi extends AbstractApi
             RequestOptions::MULTIPART => $invoiceCustomization->toArray(),
         ]);
     }
+
+    /**
+     * {@see https://docs.asaas.com/reference/recuperar-walletid}
+    */
+    public function findWallets(): FindWalletsResponse
+    {
+        return $this->mappedGet('wallets', FindWalletsResponse::class);
+    }
 }
