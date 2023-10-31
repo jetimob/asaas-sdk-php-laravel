@@ -60,6 +60,11 @@ class Charging extends Entity
     protected ?CreditCardHolderInfo $creditCardHolderInfo;
 
     /**
+     * @var $creditCardToken string|null
+     */
+    protected ?string $creditCardToken;
+
+    /**
      * Realizar apenas a Pré-Autorização da cobrança
      *
      * @var $authorizeOnly ?bool
@@ -210,6 +215,17 @@ class Charging extends Entity
     public function setCreditCardHolderInfo(?CreditCardHolderInfo $creditCardHolderInfo): self
     {
         $this->creditCardHolderInfo = $creditCardHolderInfo;
+        return $this;
+    }
+
+   public function getCreditCardToken(): ?string
+   {
+       return $this->creditCardToken;
+   }
+
+    public function setCreditCardToken(?string $token): self
+    {
+        $this->creditCardToken = $token;
         return $this;
     }
 
