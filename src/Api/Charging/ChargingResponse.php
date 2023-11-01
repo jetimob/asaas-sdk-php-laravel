@@ -129,9 +129,9 @@ abstract class ChargingResponse extends EntityResponse
         return $this->pixTransaction;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): ?ChargingStatus
     {
-        return $this->status;
+        return ChargingStatus::tryFrom($this->status);
     }
 
     public function getDescription(): ?string
