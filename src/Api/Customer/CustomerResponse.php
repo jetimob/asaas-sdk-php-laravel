@@ -7,14 +7,14 @@ use Jetimob\Asaas\Api\EntityResponse;
 abstract class CustomerResponse extends EntityResponse
 {
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $dateCreated;
+    protected ?string $dateCreated;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $name;
+    protected ?string $name;
 
     /**
      * @var string|null
@@ -57,9 +57,9 @@ abstract class CustomerResponse extends EntityResponse
     protected ?string $postalCode;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $cpfCnpj;
+    protected ?string $cpfCnpj;
 
     /**
      * @var string|null
@@ -156,7 +156,7 @@ abstract class CustomerResponse extends EntityResponse
         return $this->postalCode;
     }
 
-    public function getCpfCnpj(): string
+    public function getCpfCnpj(): ?string
     {
         return $this->cpfCnpj;
     }
