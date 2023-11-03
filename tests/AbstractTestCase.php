@@ -18,6 +18,7 @@ use Jetimob\Asaas\Entity\Charging\Fine;
 use Jetimob\Asaas\Entity\Charging\Interest;
 use Jetimob\Asaas\Entity\Customer\Customer;
 use Jetimob\Asaas\Facades\Asaas;
+use Jetimob\Asaas\Fakes\Utils;
 use Orchestra\Testbench\TestCase;
 
 class AbstractTestCase extends TestCase
@@ -48,35 +49,6 @@ class AbstractTestCase extends TestCase
         return Asaas::charging()->create($charging ?: $this->fakeCharging());
     }
 
-    public static function fakeCpf(): string
-    {
-        $cpf = random_int(100000000, 999999999);
-
-        $aux = [10,9,8,7,6,5,4,3,2];
-        $total = 0;
-
-        foreach (str_split($cpf) as $key => $char) {
-            $total += $char * $aux[$key];
-        }
-
-        $firstVerification = 11 - ($total % 11);
-
-        $cpf .= ($firstVerification >= 10) ? '0' : $firstVerification;
-
-        //Segundo digito verificador
-        $aux = [11,10,9,8,7,6,5,4,3,2];
-        $total = 0;
-
-        foreach (str_split($cpf) as $key => $char) {
-            $total += $char * $aux[$key];
-        }
-
-        $secondVerification = 11 - ($total % 11);
-        $cpf .= ($secondVerification >= 10) ? '0' : $secondVerification;
-
-        return $cpf;
-    }
-
     protected function fakeCreditCard(bool $valid = true): CreditCard
     {
         /**
@@ -101,7 +73,7 @@ class AbstractTestCase extends TestCase
         return with(new CreditCardHolderInfo())
             ->setName(fake()->name)
             ->setEmail(fake()->safeEmail)
-            ->setCpfCnpj(self::fakeCpf())
+            ->setCpfCnpj(Utils::fakeCpf())
             ->setPostalCode(self::POSTAL_CODE)
             ->setPhone(fake()->phoneNumber)
             ->setAddressNumber(fake()->randomDigitNotNull())
@@ -114,14 +86,14 @@ class AbstractTestCase extends TestCase
         return with(new Customer())
             ->setName(fake()->name)
             ->setEmail(fake()->email)
-            ->setCpfCnpj(self::fakeCpf());
+            ->setCpfCnpj(Utils::fakeCpf());
     }
 
     protected function fakeAccount(): Account
     {
         return with(new Account())
             ->setName(fake()->name)
-            ->setCpfCnpj(self::fakeCpf())
+            ->setCpfCnpj(Utils::fakeCpf())
             ->setBirthDate(now()->subYears(40))
             ->setEmail(fake()->email)
             ->setPostalCode(self::POSTAL_CODE);

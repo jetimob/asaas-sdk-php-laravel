@@ -10,6 +10,7 @@ use Jetimob\Asaas\Api\Customer\RestoreCustomerResponse;
 use Jetimob\Asaas\Entity\Customer\Customer;
 use Jetimob\Asaas\Entity\Customer\TokenizeCreditCardInfo;
 use Jetimob\Asaas\Facades\Asaas;
+use Jetimob\Asaas\Fakes\Utils;
 use Jetimob\Asaas\Tests\AbstractTestCase;
 use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\Test;
@@ -26,7 +27,7 @@ class CustomerApiTest extends AbstractTestCase
         $this->customer = (new Customer())
             ->setName(fake()->name)
             ->setEmail(fake()->safeEmail)
-            ->setCpfCnpj(self::fakeCpf());
+            ->setCpfCnpj(Utils::fakeCpf());
     }
 
     #[Test]

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jetimob\Asaas\Mocks;
 
 use Jetimob\Asaas\Entity\Account\CompanyType;
+use Jetimob\Asaas\Fakes\Utils;
 use Jetimob\Asaas\Tests\AbstractTestCase;
 
 class CreateAccountResponseMock extends AbstractMockResponse
@@ -24,7 +25,7 @@ class CreateAccountResponseMock extends AbstractMockResponse
             'complement' => fake()->sentence(),
             'province' => fake()->address(),
             'postalCode' => fake()->postcode(),
-            'cpfCnpj' => AbstractTestCase::fakeCpf(),
+            'cpfCnpj' => Utils::fakeCpf(),
             'birthDate' => now()->subYears(20)->toDateString(),
             'personType' => 'JURIDICA',
             'companyType' => CompanyType::random()->value,
