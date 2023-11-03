@@ -15,7 +15,7 @@ use Jetimob\Asaas\Api\Account\SplitStatisticsResponse;
 use Jetimob\Asaas\Contracts\AccountApiInterface;
 use Jetimob\Asaas\Entity\Account\Account;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
-use Jetimob\Asaas\Tests\Mocks\CreateAccountResponseMock;
+use Jetimob\Asaas\Mocks\CreateAccountResponseMock;
 
 class AccountApiFake implements AccountApiInterface
 {

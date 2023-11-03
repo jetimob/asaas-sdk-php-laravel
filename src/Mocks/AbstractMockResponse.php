@@ -1,6 +1,6 @@
 <?php
 
-namespace Jetimob\Asaas\Tests\Mocks;
+namespace Jetimob\Asaas\Mocks;
 
 use Illuminate\Contracts\Support\Arrayable;
 

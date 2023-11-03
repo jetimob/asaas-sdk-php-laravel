@@ -4,7 +4,7 @@ namespace Jetimob\Asaas\Entity\Transfer;
 
 use Jetimob\Asaas\Entity\Charging\ChargeBackReason;
 use Jetimob\Asaas\Entity\Charging\ChargeBackStatus;
-use Jetimob\Asaas\Tests\Mocks\AbstractMockResponse;
+use Jetimob\Asaas\Mocks\AbstractMockResponse;
 
 class ChargingWebhookEventMock extends AbstractMockResponse
 {

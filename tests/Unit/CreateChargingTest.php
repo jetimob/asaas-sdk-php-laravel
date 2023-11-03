@@ -4,7 +4,7 @@ namespace Jetimob\Asaas\Tests\Unit;
 
 use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
 use Jetimob\Asaas\Tests\AbstractTestCase;
-use Jetimob\Asaas\Tests\Mocks\CreateChargingResponseMock;
+use Jetimob\Asaas\Mocks\CreateChargingResponseMock;
 use PHPUnit\Framework\Attributes\Test;
 
 class CreateChargingTest extends AbstractTestCase

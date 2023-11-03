@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jetimob\Asaas\Tests\Mocks;
+namespace Jetimob\Asaas\Mocks;
 
 use Jetimob\Asaas\Entity\Account\CompanyType;
 use Jetimob\Asaas\Tests\AbstractTestCase;

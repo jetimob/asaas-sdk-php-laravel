@@ -1,6 +1,6 @@
 <?php
 
-namespace Jetimob\Asaas\Tests\Mocks;
+namespace Jetimob\Asaas\Mocks;
 
 use Jetimob\Asaas\Entity\Webhook\TransferEvent;
 
