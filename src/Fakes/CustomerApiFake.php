@@ -16,6 +16,19 @@ use Jetimob\Asaas\Entity\Customer\TokenizeCreditCardInfo;
 
 class CustomerApiFake implements CustomerApiInterface
 {
+    protected string $token;
+
+    public function __construct()
+    {
+        $this->token = fake()->uuid();
+    }
+
+    public function usingToken(string $token): self
+    {
+        $this->token = $token;
+        return $this;
+    }
+
     public function create(Customer $customer): CreateCustomerResponse
     {
         return new CreateCustomerResponse();
