@@ -4,19 +4,31 @@ declare(strict_types=1);
 
 namespace Jetimob\Asaas\Fakes;
 
-use Jetimob\Asaas\Contracts\AccountApiInterface;
-use Jetimob\Asaas\Contracts\AsaasInterface;
-use Jetimob\Asaas\Contracts\CustomerApiInterface;
-
-class AsaasFake implements AsaasInterface
+class AsaasFake
 {
-    public static function customer(): CustomerApiInterface
+    protected array $instances;
+
+    public function __construct()
     {
-        return resolve(CustomerApiFake::class);
+        $this->instances = [
+            'customer' => resolve(CustomerApiFake::class),
+            'account'  => resolve(AccountApiFake::class),
+            'charging' => resolve(ChargingApiFake::class),
+        ];
     }
 
-    public static function account(): AccountApiInterface
+    public function customer(): CustomerApiFake
     {
-        return resolve(AccountApiFake::class);
+        return $this->instances['customer'];
+    }
+
+    public function account(): AccountApiFake
+    {
+        return $this->instances['account'];
+    }
+
+    public function charging(): ChargingApiFake
+    {
+        return $this->instances['charging'];
     }
 }

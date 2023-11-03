@@ -3,18 +3,17 @@
 namespace Jetimob\Asaas\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Jetimob\Asaas\Api\Account\AccountApi;
-use Jetimob\Asaas\Api\Charging\ChargingApi;
-use Jetimob\Asaas\Api\Customer\CustomerApi;
 use Jetimob\Asaas\Api\Transfer\TransferApi;
 use Jetimob\Asaas\Api\Webhook\WebhookApi;
+use Jetimob\Asaas\Contracts\AccountApiInterface;
+use Jetimob\Asaas\Contracts\ChargingApiInterface;
 use Jetimob\Asaas\Contracts\CustomerApiInterface;
 use Jetimob\Asaas\Fakes\AsaasFake;
 
 /**
-* @method static CustomerApi customer()
-* @method static ChargingApi charging()
-* @method static AccountApi account()
+* @method static CustomerApiInterface customer()
+* @method static ChargingApiInterface charging()
+* @method static AccountApiInterface account()
 * @method static TransferApi transfer()
 * @method static WebhookApi webhook()
 */

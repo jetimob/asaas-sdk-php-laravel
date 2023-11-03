@@ -4,5 +4,5 @@ namespace Jetimob\Asaas\Contracts;
 
 interface AsaasInterface
 {
-    static function customer(): CustomerApiInterface;
+//    static function customer(): CustomerApiInterface;
 }

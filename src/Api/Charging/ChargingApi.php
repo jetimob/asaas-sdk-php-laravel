@@ -4,10 +4,11 @@ namespace Jetimob\Asaas\Api\Charging;
 
 use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
+use Jetimob\Asaas\Contracts\ChargingApiInterface;
 use Jetimob\Asaas\Entity\Charging\Charging;
 use Jetimob\Asaas\Entity\Charging\ConfirmReceiptInCash;
 
-class ChargingApi extends AbstractApi
+class ChargingApi extends AbstractApi implements ChargingApiInterface
 {
     /**
      * {@see https://docs.asaas.com/reference/criar-nova-cobranca}

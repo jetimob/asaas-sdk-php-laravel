@@ -6,6 +6,7 @@ namespace Jetimob\Asaas\Fakes;
 
 use Illuminate\Support\Collection;
 use Jetimob\Asaas\Api\Customer\CreateCustomerResponse;
+use Jetimob\Asaas\Api\Customer\CustomerResponse;
 use Jetimob\Asaas\Api\Customer\DeleteCustomerResponse;
 use Jetimob\Asaas\Api\Customer\FindCustomerResponse;
 use Jetimob\Asaas\Api\Customer\RestoreCustomerResponse;
@@ -18,6 +19,7 @@ use Jetimob\Asaas\Mocks\CreateCustomerResponseMock;
 
 class CustomerApiFake implements CustomerApiInterface
 {
+    /** @var $customers Collection|CustomerResponse[] */
     protected Collection $customers;
 
     protected string $token;
@@ -32,6 +34,11 @@ class CustomerApiFake implements CustomerApiInterface
     {
         $this->token = $token;
         return $this;
+    }
+
+    public function getToken(): string
+    {
+        return $this->token;
     }
 
     public function create(Customer $customer): CreateCustomerResponse
@@ -67,5 +74,15 @@ class CustomerApiFake implements CustomerApiInterface
     public function tokenizeCreditCard(TokenizeCreditCardInfo $creditCard): TokenizeCreditCardResponse
     {
         return new TokenizeCreditCardResponse();
+    }
+
+    public function getCustomers(): Collection
+    {
+        return $this->customers;
+    }
+
+    public function getLastCustomer(): CustomerResponse
+    {
+        return $this->customers->last();
     }
 }

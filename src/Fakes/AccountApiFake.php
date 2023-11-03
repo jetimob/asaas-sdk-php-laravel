@@ -20,7 +20,7 @@ use Jetimob\Asaas\Mocks\CreateAccountResponseMock;
 class AccountApiFake implements AccountApiInterface
 {
     /** @var Collection|AccountResponse[] */
-    public Collection $accounts;
+    protected Collection $accounts;
 
     public function __construct()
     {
@@ -67,5 +67,15 @@ class AccountApiFake implements AccountApiInterface
     public function findWallets(): FindWalletsResponse
     {
         // TODO: Implement findWallets() method.
+    }
+
+    public function getAccounts(): Collection
+    {
+        return $this->accounts;
+    }
+
+    public function getLastAccount(): AccountResponse
+    {
+        return $this->accounts->last();
     }
 }
