@@ -4,10 +4,11 @@ namespace Jetimob\Asaas\Api\Customer;
 
 use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
+use Jetimob\Asaas\Contracts\CustomerApiInterface;
 use Jetimob\Asaas\Entity\Customer\Customer;
 use Jetimob\Asaas\Entity\Customer\TokenizeCreditCardInfo;
 
-class CustomerApi extends AbstractApi
+class CustomerApi extends AbstractApi implements CustomerApiInterface
 {
     /**
      * {@see https://docs.asaas.com/reference/criar-novo-cliente}
@@ -29,9 +30,9 @@ class CustomerApi extends AbstractApi
     /**
      * {@see https://docs.asaas.com/reference/atualizar-cliente-existente}
     */
-    public function update(string $id, Customer $customer): FindCustomerResponse
+    public function update(string $id, Customer $customer): UpdateCustomerResponse
     {
-        return $this->mappedPost("customers/$id", FindCustomerResponse::class, [
+        return $this->mappedPost("customers/$id", UpdateCustomerResponse::class, [
             RequestOptions::JSON => $customer,
         ]);
     }

@@ -4,10 +4,11 @@ namespace Jetimob\Asaas\Api\Account;
 
 use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
+use Jetimob\Asaas\Contracts\AccountApiInterface;
 use Jetimob\Asaas\Entity\Account\Account;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
 
-class AccountApi extends AbstractApi
+class AccountApi extends AbstractApi implements AccountApiInterface
 {
     /**
      * {@see https://docs.asaas.com/reference/criar-subconta}
