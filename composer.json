@@ -25,7 +25,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Jetimob\\Asaas\\": "src/"
+            "Jetimob\\Asaas\\": "src/",
+            "Jetimob\\Asaas\\Tests\\": "tests/"
         }
     },
     "autoload-dev": {
