@@ -10,30 +10,30 @@ class Account extends Entity
     /**
      * Nome da subconta
      *
-     * @var $name string
+     * @var $name string|null
      */
-    protected string $name;
+    protected ?string $name;
 
     /**
      * Email da subconta
      *
-     * @var string $email
+     * @var string|null $email
      */
-    protected string $email;
+    protected ?string $email;
 
     /**
      * Email para login da subconta
      *
-     * @var string $loginEmail
+     * @var ?string $loginEmail
      */
-    protected string $loginEmail;
+    protected ?string $loginEmail;
 
     /**
      * CPF ou CNPJ do proprietário da subconta
      *
-     * @var string $cpfCnpj
+     * @var string|null $cpfCnpj
      */
-    protected string $cpfCnpj;
+    protected ?string $cpfCnpj;
 
     /**
      * Data de nascimento (somente quando Pessoa Física)
@@ -59,9 +59,9 @@ class Account extends Entity
     /**
      * Fone celular
      *
-     * @var string $mobilePhone
+     * @var string|null $mobilePhone
      */
-    protected string $mobilePhone;
+    protected ?string $mobilePhone;
 
     /**
      * URL referente ao site da conta filha
@@ -73,16 +73,16 @@ class Account extends Entity
     /**
      * Logradouro
      *
-     * @var string $address
+     * @var string|null $address
      */
-    protected string $address;
+    protected ?string $address;
 
     /**
      * Número do endereço
      *
-     * @var string $addressNumber
+     * @var string|null $addressNumber
      */
-    protected string $addressNumber;
+    protected ?string $addressNumber;
 
     /**
      * Complemento do endereço
@@ -94,16 +94,16 @@ class Account extends Entity
     /**
      * Bairro
      *
-     * @var string $province
+     * @var string|null $province
      */
-    protected string $province;
+    protected ?string $province;
 
     /**
      * CEP do endereço
      *
-     * @var string $postalCode
+     * @var string|null $postalCode
      */
-    protected string $postalCode;
+    protected ?string $postalCode;
 
     /**
      * Array com as configurações de Webhooks desejadas
@@ -197,6 +197,17 @@ class Account extends Entity
     public function setMobilePhone(string $mobilePhone): self
     {
         $this->mobilePhone = $mobilePhone;
+        return $this;
+    }
+
+    public function getAddress(): string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
         return $this;
     }
 

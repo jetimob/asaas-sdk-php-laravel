@@ -9,14 +9,14 @@ class Fine extends Valuable
 {
     protected ?string $type;
 
-    public function getType(): ValueType
+    public function getType(): ?ValueType
     {
-        return ValueType::from($this->type);
+        return ValueType::tryFrom($this->type);
     }
 
     public function setType(?ValueType $type): self
     {
-        $this->type = $type;
+        $this->type = $type->value;
         return $this;
     }
 
