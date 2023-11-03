@@ -6,6 +6,7 @@ namespace Jetimob\Asaas\Fakes;
 
 use Illuminate\Support\Collection;
 use Jetimob\Asaas\Api\Account\AccountBalanceResponse;
+use Jetimob\Asaas\Api\Account\AccountResponse;
 use Jetimob\Asaas\Api\Account\CreateAccountResponse;
 use Jetimob\Asaas\Api\Account\FindAccountResponse;
 use Jetimob\Asaas\Api\Account\FindWalletsResponse;
@@ -14,9 +15,11 @@ use Jetimob\Asaas\Api\Account\SplitStatisticsResponse;
 use Jetimob\Asaas\Contracts\AccountApiInterface;
 use Jetimob\Asaas\Entity\Account\Account;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
+use Jetimob\Asaas\Tests\Mocks\CreateAccountResponseMock;
 
 class AccountApiFake implements AccountApiInterface
 {
+    /** @var Collection|AccountResponse[] */
     public Collection $accounts;
 
     public function __construct()
@@ -26,7 +29,11 @@ class AccountApiFake implements AccountApiInterface
 
     public function create(Account $account): CreateAccountResponse
     {
-        $account = CreateAccountResponse::deserialize([]);
+        $account = CreateAccountResponse::deserialize(
+            CreateAccountResponseMock::get(
+                $account->toArray()
+            )
+        );
 
         $this->accounts->add($account);
 
@@ -35,12 +42,16 @@ class AccountApiFake implements AccountApiInterface
 
     public function find(string $id): FindAccountResponse
     {
-        // TODO: Implement find() method.
+        return $this->accounts->first(
+            fn (AccountResponse $account) => $account->getId() === $id
+        );
     }
 
     public function balance(): AccountBalanceResponse
     {
-        // TODO: Implement balance() method.
+        return AccountBalanceResponse::deserialize([
+           'balance' => fake()->randomFloat(),
+        ]);
     }
 
     public function splitsStatistics(): SplitStatisticsResponse
