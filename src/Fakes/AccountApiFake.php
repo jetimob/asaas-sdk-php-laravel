@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Jetimob\Asaas\Fakes;
 
-use Illuminate\Support\Collection;
 use Jetimob\Asaas\Api\Account\AccountBalanceResponse;
 use Jetimob\Asaas\Api\Account\AccountResponse;
 use Jetimob\Asaas\Api\Account\CreateAccountResponse;
@@ -17,32 +16,20 @@ use Jetimob\Asaas\Entity\Account\Account;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
 use Jetimob\Asaas\Mocks\CreateAccountResponseMock;
 
-class AccountApiFake implements AccountApiInterface
+class AccountApiFake extends AbstractFakeApi implements AccountApiInterface
 {
-    /** @var Collection|AccountResponse[] */
-    protected Collection $accounts;
-
-    public function __construct()
-    {
-        $this->accounts = new Collection();
-    }
-
     public function create(Account $account): CreateAccountResponse
     {
-        $account = CreateAccountResponse::deserialize(
-            CreateAccountResponseMock::get(
-                $account->toArray()
-            )
-        );
+        $account = $this->makeResponse($account);
 
-        $this->accounts->add($account);
+        $this->entities->add($account);
 
         return $account;
     }
 
     public function find(string $id): FindAccountResponse
     {
-        return $this->accounts->first(
+        return $this->entities->first(
             fn (AccountResponse $account) => $account->getId() === $id
         );
     }
@@ -56,26 +43,23 @@ class AccountApiFake implements AccountApiInterface
 
     public function splitsStatistics(): SplitStatisticsResponse
     {
-        // TODO: Implement splitsStatistics() method.
+        throw new \Exception('Not implemented');
     }
 
     public function customizeInvoice(InvoiceCustomization $invoiceCustomization): InvoiceCustomizeResponse
     {
-        // TODO: Implement customizeInvoice() method.
+        throw new \Exception('Not implemented');
     }
 
     public function findWallets(): FindWalletsResponse
     {
-        // TODO: Implement findWallets() method.
+        throw new \Exception('Not implemented');
     }
 
-    public function getAccounts(): Collection
+    protected function makeResponse(Account $account): CreateAccountResponse
     {
-        return $this->accounts;
-    }
-
-    public function getLastAccount(): AccountResponse
-    {
-        return $this->accounts->last();
+        return CreateAccountResponse::deserialize(
+            CreateAccountResponseMock::get($account->toArray())
+        );
     }
 }

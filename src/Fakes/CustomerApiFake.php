@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Jetimob\Asaas\Fakes;
 
-use Illuminate\Support\Collection;
 use Jetimob\Asaas\Api\Customer\CreateCustomerResponse;
-use Jetimob\Asaas\Api\Customer\CustomerResponse;
 use Jetimob\Asaas\Api\Customer\DeleteCustomerResponse;
 use Jetimob\Asaas\Api\Customer\FindCustomerResponse;
 use Jetimob\Asaas\Api\Customer\RestoreCustomerResponse;
@@ -17,72 +15,60 @@ use Jetimob\Asaas\Entity\Customer\Customer;
 use Jetimob\Asaas\Entity\Customer\TokenizeCreditCardInfo;
 use Jetimob\Asaas\Mocks\CreateCustomerResponseMock;
 
-class CustomerApiFake implements CustomerApiInterface
+class CustomerApiFake extends AbstractFakeApi implements CustomerApiInterface
 {
-    /** @var $customers Collection|CustomerResponse[] */
-    protected Collection $customers;
-
-    protected string $token;
-
-    public function __construct()
-    {
-        $this->token = fake()->uuid();
-        $this->customers = new Collection();
-    }
-
-    public function usingToken(string $token): self
-    {
-        $this->token = $token;
-        return $this;
-    }
-
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
     public function create(Customer $customer): CreateCustomerResponse
     {
-        $customer = CreateCustomerResponse::deserialize(
-            CreateCustomerResponseMock::get($customer->toArray()),
-        );
+        $customer = $this->makeResponse($customer);
 
-        $this->customers->add($customer);
+        $this->entities->add($customer);
+
         return $customer;
     }
 
     public function find(string $id): FindCustomerResponse
     {
-        return $this->customers->first(fn (CreateCustomerResponse $customer) => $customer->getId() === $id);
+        return $this->entities->first(
+            fn (CreateCustomerResponse $customer) => $customer->getId() === $id
+        );
     }
 
     public function update(string $id, Customer $customer): UpdateCustomerResponse
     {
-        return new UpdateCustomerResponse();
+        $this->entities->transform(function (CreateCustomerResponse $response) use ($id, $customer) {
+            if ($response->getId() === $id) {
+                $response = $this->makeResponse($customer);
+            }
+
+            return $response;
+        });
     }
 
     public function delete(string $id): DeleteCustomerResponse
     {
-        return new DeleteCustomerResponse();
+        $this->entities = $this->entities->filter(
+            fn (CreateCustomerResponse $response) => $response->getId() !== $id
+        );
+
+        return DeleteCustomerResponse::deserialize(
+            Utils::deletedResponse($id)->toArray()
+        );
     }
 
     public function restore(string $id): RestoreCustomerResponse
     {
-        return new RestoreCustomerResponse();
+        throw new \Exception('Not implemented');
     }
 
     public function tokenizeCreditCard(TokenizeCreditCardInfo $creditCard): TokenizeCreditCardResponse
     {
-        return new TokenizeCreditCardResponse();
+        throw new \Exception('Not implemented');
     }
 
-    public function getCustomers(): Collection
+    public function makeResponse(Customer $customer): CreateCustomerResponse
     {
-        return $this->customers;
-    }
-
-    public function getLastCustomer(): CustomerResponse
-    {
-        return $this->customers->last();
+        return CreateCustomerResponse::deserialize(
+            CreateCustomerResponseMock::get($customer->toArray()),
+        );
     }
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Jetimob\Asaas\Fakes;
 
-use Illuminate\Support\Collection;
 use Jetimob\Asaas\Api\Charging\ChargingResponse;
 use Jetimob\Asaas\Api\Charging\ConfirmReceiptInCashResponse;
 use Jetimob\Asaas\Api\Charging\CreateChargingResponse;
@@ -19,82 +18,59 @@ use Jetimob\Asaas\Entity\Charging\Charging;
 use Jetimob\Asaas\Entity\Charging\ConfirmReceiptInCash;
 use Jetimob\Asaas\Mocks\CreateChargingResponseMock;
 
-class ChargingApiFake implements ChargingApiInterface
+class ChargingApiFake extends AbstractFakeApi implements ChargingApiInterface
 {
-    /** @var Collection|ChargingResponse[] */
-    protected Collection $chargings;
-
-    protected string $token;
-
-    public function __construct()
-    {
-        $this->token = fake()->uuid();
-        $this->chargings = new Collection();
-    }
-
-    public function usingToken(string $token): self
-    {
-        $this->token = $token;
-        return $this;
-    }
-
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
     public function create(Charging $charging): CreateChargingResponse
     {
-        $charging = CreateChargingResponse::deserialize(
-            CreateChargingResponseMock::get($charging->toArray()),
-        );
+        $charging = $this->makeResponse($charging);
 
-        $this->chargings->add($charging);
+        $this->entities->add($charging);
+
+
         return $charging;
     }
 
     public function find(string $id): FindChargingResponse
     {
-        return $this->chargings->find(fn (ChargingResponse $charging) => $charging->getId() === $id);
+        return $this->entities->first(
+            fn (ChargingResponse $charging) => $charging->getId() === $id
+        );
     }
 
     public function update(string $id, Charging $charging): UpdateChargingResponse
     {
-        // TODO: Implement update() method.
+        throw new \Exception('Not implemented');
     }
 
     public function delete(string $id): DeleteChargingResponse
     {
-        // TODO: Implement delete() method.
+        throw new \Exception('Not implemented');
     }
 
     public function confirmReceiptInCash(string $id, ConfirmReceiptInCash $confirmReceiptInCash): ConfirmReceiptInCashResponse
     {
-        // TODO: Implement confirmReceiptInCash() method.
+        throw new \Exception('Not implemented');
     }
 
     public function undoReceiptInCash(string $id): UndoReceiptInCashResponse
     {
-        // TODO: Implement undoReceiptInCash() method.
+        throw new \Exception('Not implemented');
     }
 
     public function restore(string $id): RestoreChargingResponse
     {
-        // TODO: Implement restore() method.
+        throw new \Exception('Not implemented');
     }
 
     public function refund(string $id, float $value, string $description): RefundResponse
     {
-        // TODO: Implement refund() method.
+        throw new \Exception('Not implemented');
     }
 
-    public function getChargings(): Collection
+    protected function makeResponse(Charging $charging): CreateChargingResponse
     {
-        return $this->chargings;
-    }
-
-    public function getLastCharging(): ChargingResponse
-    {
-        return $this->chargings->last();
+        return CreateChargingResponse::deserialize(
+            CreateChargingResponseMock::get($charging->toArray())
+        );
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Jetimob\Asaas\Fakes;
 
-use Exception;
+use Jetimob\Asaas\Api\DeleteResponse;
 
 class Utils
 {
@@ -35,5 +35,13 @@ class Utils
         $cpf .= ($secondVerification >= 10) ? '0' : $secondVerification;
 
         return $cpf;
+    }
+
+    public static function deletedResponse(string $id): DeleteResponse
+    {
+        return DeleteResponse::deserialize([
+           'deleted' => true,
+           'id' => $id,
+        ]);
     }
 }
