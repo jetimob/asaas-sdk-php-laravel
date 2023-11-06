@@ -13,6 +13,7 @@ use Jetimob\Asaas\Api\Customer\UpdateCustomerResponse;
 use Jetimob\Asaas\Entity\Customer\Customer;
 use Jetimob\Asaas\Entity\Customer\TokenizeCreditCardInfo;
 
+/** @mixin \Jetimob\Asaas\Fakes\CustomerApiFake */
 interface CustomerApiInterface
 {
     public function create(Customer $customer): CreateCustomerResponse;

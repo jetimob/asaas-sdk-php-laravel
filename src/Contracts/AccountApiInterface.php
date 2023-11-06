@@ -11,6 +11,7 @@ use Jetimob\Asaas\Api\Account\SplitStatisticsResponse;
 use Jetimob\Asaas\Entity\Account\Account;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
 
+/** @mixin \Jetimob\Asaas\Fakes\AccountApiFake */
 interface AccountApiInterface
 {
     public function create(Account $account): CreateAccountResponse;

@@ -15,6 +15,7 @@ use Jetimob\Asaas\Api\Charging\UpdateChargingResponse;
 use Jetimob\Asaas\Entity\Charging\Charging;
 use Jetimob\Asaas\Entity\Charging\ConfirmReceiptInCash;
 
+/** @mixin \Jetimob\Asaas\Fakes\ChargingApiFake */
 interface ChargingApiInterface
 {
     public function create(Charging $charging): CreateChargingResponse;

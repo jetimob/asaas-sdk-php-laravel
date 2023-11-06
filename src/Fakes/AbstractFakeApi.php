@@ -38,7 +38,7 @@ class AbstractFakeApi
         return $this->entities;
     }
 
-    public function getLastEntity(): ?Entity
+    public function getLastEntity(): ?EntityResponse
     {
         return $this->getEntities()->last();
     }
