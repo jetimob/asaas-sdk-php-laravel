@@ -14,6 +14,7 @@ class AsaasFake
             'customer' => resolve(CustomerApiFake::class),
             'account'  => resolve(AccountApiFake::class),
             'charging' => resolve(ChargingApiFake::class),
+            'transfer' => resolve(TransferApiFake::class),
         ];
     }
 
@@ -30,5 +31,10 @@ class AsaasFake
     public function charging(): ChargingApiFake
     {
         return $this->instances['charging'];
+    }
+
+    public function transfer(): TransferApiFake
+    {
+        return $this->instances['transfer'];
     }
 }
