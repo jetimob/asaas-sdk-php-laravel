@@ -13,7 +13,7 @@ class Charging extends Entity
      *
      * @var $customer string|null
      */
-    protected ?string $customer;
+    protected ?string $customer = null;
 
     /**
      * Método de pagamento, valores disponíveis {@see BillingType}
@@ -23,85 +23,85 @@ class Charging extends Entity
     protected ?string $billingType;
 
     /** @var $value float|null */
-    protected ?float $value;
+    protected ?float $value = null;
 
     /**
      * Formato de data {@see https://pt.wikipedia.org/wiki/ISO_8601}
      *
      * @var $dueDate string|null
      */
-    protected ?string $dueDate;
+    protected ?string $dueDate = null;
 
     /** @var $description string|null */
-    protected ?string $description;
+    protected ?string $description = null;
 
     /**
      * Informação de referência externa, possibilitando a realização de pesquisa.
      *
      * @var $externalReference string|null
      */
-    protected ?string $externalReference;
+    protected ?string $externalReference = null;
 
     /**
      * Número de parcelas (somento no caso de cobrança parcelada)
      *
      * @var $installmentCount int|null
     */
-    protected ?int $installmentCount;
+    protected ?int $installmentCount = null;
 
     /**
      * @var $creditCard CreditCard|null
     */
-    protected ?CreditCard $creditCard;
+    protected ?CreditCard $creditCard = null;
 
     /**
      * @var $creditCardHolderInfo CreditCardHolderInfo|null
      */
-    protected ?CreditCardHolderInfo $creditCardHolderInfo;
+    protected ?CreditCardHolderInfo $creditCardHolderInfo = null;
 
     /**
      * @var $creditCardToken string|null
      */
-    protected ?string $creditCardToken;
+    protected ?string $creditCardToken = null;
 
     /**
      * Realizar apenas a Pré-Autorização da cobrança
      *
      * @var $authorizeOnly ?bool
      */
-    protected ?bool $authorizeOnly;
+    protected ?bool $authorizeOnly = null;
 
     /**
      * IP de onde o cliente está fazendo a compra. Não deve ser informado o IP do seu servidor.
      *
      * @var $remoteIp string|null
     */
-    protected ?string $remoteIp;
+    protected ?string $remoteIp = null;
 
     /**
      * Valor de cada percela (somento no caso de cobrança parcelada)
      *
      * @var $installmentValue int|null
      */
-    protected ?int $installmentValue;
+    protected ?int $installmentValue = null;
 
     /**
      * @var $discount Discount|null
      */
-    protected ?Discount $discount;
+    protected ?Discount $discount = null;
 
     /** @var $interest Interest|null */
-    protected ?Interest $interest;
+    protected ?Interest $interest = null;
 
     /** @var $fine Fine|null */
-    protected ?Fine $fine;
+    protected ?Fine $fine = null;
 
     /**
      * Define se a cobrança vai ser enviada pelos correios
      *
      * @var $postalService bool|null
     */
-    protected ?bool $postalService;
+    protected ?bool $postalService = null;
 
     /**
      * Configuração dos splits
@@ -110,9 +110,9 @@ class Charging extends Entity
      *
      * @var $split Split[]|null
     */
-    protected ?array $split;
+    protected ?array $split = null;
 
-    protected ?Callback $callback;
+    protected ?Callback $callback = null;
 
     public function splitItemType(): string
     {
