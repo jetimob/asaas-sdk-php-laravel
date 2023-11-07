@@ -11,21 +11,21 @@ class Split extends Entity
      *
      * @var $walletId string|null
     */
-    protected ?string $walletId;
+    protected ?string $walletId = null;
 
     /**
      * Valor fixo a ser transferido para a conta quando a cobrança for recebida
      *
      * @var $fixedValue float|null
     */
-    protected ?float $fixedValue;
+    protected ?float $fixedValue = null;
 
     /**
      * Percentual sobre o valor líquido da cobrança a ser transferido quando for recebida
      *
      * @var $percetualValue float|null
     */
-    protected ?float $percetualValue;
+    protected ?float $percetualValue = null;
 
     public function setWalletId(?string $walletId): self
     {

@@ -11,7 +11,7 @@ class Callback extends Entity
      *
      * @var $successUrl string|null
     */
-    protected ?string $successUrl;
+    protected ?string $successUrl = null;
 
     /**
      * Definir se o cliente será redirecionado automaticamente ou será apenas informado com um botão para retornar ao site.

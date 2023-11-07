@@ -6,20 +6,20 @@ use Jetimob\Asaas\Entity\Transfer\BankAccount;
 
 class TransferWebhookEventData extends WebhookEventData
 {
-    protected ?string $dateCreated;
-    protected ?string $status;
-    protected ?string $effectiveDate;
-    protected ?string $endToEndIndetifier;
-    protected ?string $type;
-    protected ?float $value;
-    protected ?float $transferFee;
-    protected ?string $scheduleDate;
-    protected ?bool $authorized;
-    protected ?string $failReason;
-    protected ?string $transactionReceiptUrl;
-    protected ?BankAccount $bankAccount;
-    protected ?string $operationType;
-    protected ?string $description;
+    protected ?string $dateCreated = null;
+    protected ?string $status = null;
+    protected ?string $effectiveDate = null;
+    protected ?string $endToEndIndetifier = null;
+    protected ?string $type = null;
+    protected ?float $value = null;
+    protected ?float $transferFee = null;
+    protected ?string $scheduleDate = null;
+    protected ?bool $authorized = null;
+    protected ?string $failReason = null;
+    protected ?string $transactionReceiptUrl = null;
+    protected ?BankAccount $bankAccount = null;
+    protected ?string $operationType = null;
+    protected ?string $description = null;
 
     public function getDateCreated(): ?string
     {

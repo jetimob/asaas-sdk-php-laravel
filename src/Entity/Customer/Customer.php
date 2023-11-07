@@ -7,77 +7,77 @@ use Jetimob\Asaas\Entity\Entity;
 class Customer extends Entity
 {
     /** @var $name string|null */
-    protected ?string $name;
+    protected ?string $name = null;
 
     /** @var $cpfCnpj string|null */
-    protected ?string $cpfCnpj;
+    protected ?string $cpfCnpj = null;
 
     /** @var $email string|null */
-    protected ?string $email;
+    protected ?string $email = null;
 
     /**
      * Telefone fixo
      * @var $phone string|null
      */
-    protected ?string $phone;
+    protected ?string $phone = null;
 
     /**
      * Telefone celular
      * @var $mobilePhone string|null
      */
-    protected ?string $mobilePhone;
+    protected ?string $mobilePhone = null;
 
     /**
      * Logradouro
      * @var $address string|null
      */
-    protected ?string $address;
+    protected ?string $address = null;
 
     /** @var $addressNumber string|null */
-    protected ?string $addressNumber;
+    protected ?string $addressNumber = null;
 
     /** @var $complement string|null */
-    protected ?string $complement;
+    protected ?string $complement = null;
 
     /**
      * Bairro
      * @var $province string|null
      */
-    protected ?string $province;
+    protected ?string $province = null;
 
     /** @var $postalCode string|null */
-    protected ?string $postalCode;
+    protected ?string $postalCode = null;
 
     /** @var $externalReference string|null */
-    protected ?string $externalReference;
+    protected ?string $externalReference = null;
 
     /**
      * Envio de notificações de cobrança
      *
      * @var $notificationDisabled bool|null
      */
-    protected ?bool $notificationDisabled;
+    protected ?bool $notificationDisabled = null;
 
     /**
      * Emails adicionais para envio de notificações de cobrança separados por ","
      * @var $additionalEmails string|null
      */
-    protected ?string $additionalEmails;
+    protected ?string $additionalEmails = null;
 
     /** @var $municipalInscription string|null  */
-    protected ?string $municipalInscription;
+    protected ?string $municipalInscription = null;
 
     /** @var $stateInscription string|null */
-    protected ?string $stateInscription;
+    protected ?string $stateInscription = null;
 
     /** @var $observations string|null */
-    protected ?string $observations;
+    protected ?string $observations = null;
 
     /** @var $groupName string|null */
-    protected ?string $groupName;
+    protected ?string $groupName = null;
 
     /** @var $company string|null */
-    protected ?string $company;
+    protected ?string $company = null;
 
     public function getName(): ?string
     {

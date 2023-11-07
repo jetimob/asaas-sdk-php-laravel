@@ -11,35 +11,35 @@ class CreditCard extends Entity
      *
      * @var $holderName string|null
     */
-    protected ?string $holderName;
+    protected ?string $holderName = null;
 
     /**
      * Numero do cartão
      *
      * @var $number string|null
      */
-    protected ?string $number;
+    protected ?string $number = null;
 
     /**
      * Mẽs de expiração, (exemplo: 06)
      *
      * @var $expiryMonth string|null
      */
-    protected ?string $expiryMonth;
+    protected ?string $expiryMonth = null;
 
     /**
      * Ano de expiração com 4 dígitos (ex: 2019)
      *
      * @var $expiryYear string|null
      */
-    protected ?string $expiryYear;
+    protected ?string $expiryYear = null;
 
     /**
      * Código de segurança
      *
      * @var $ccv string|null
      */
-    protected ?string $ccv;
+    protected ?string $ccv = null;
 
     public function getHolderName(): ?string
     {

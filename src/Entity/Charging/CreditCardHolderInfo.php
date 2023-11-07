@@ -11,56 +11,56 @@ class CreditCardHolderInfo extends Entity
      *
      * @var $name string|null
      */
-    protected ?string $name;
+    protected ?string $name = null;
 
     /**
      * Email do titular do cartão
      *
      * @var $email string|null
      */
-    protected ?string $email;
+    protected ?string $email = null;
 
     /**
      * CPF ou CNPJ do titular do cartão
      *
      * @var $cpfCnpj string|null
      */
-    protected ?string $cpfCnpj;
+    protected ?string $cpfCnpj = null;
 
     /**
      * CEP do titular do cartão
      *
-     * @var string
+     * @var string|null
      */
-    protected string $postalCode;
+    protected ?string $postalCode = null;
 
     /**
      * Número do endereço do titular do cartão
      *
-     * @var string
+     * @var string|null
      */
-    protected string $addressNumber;
+    protected ?string $addressNumber = null;
 
     /**
      * Complemento do endereço do titular do cartão
      *
      * @var string|null
      */
-    protected ?string $addressComplement;
+    protected ?string $addressComplement = null;
 
     /**
      * Fone com DDD do titular do cartão
      *
      * @var $phone string|null
      */
-    protected ?string $phone;
+    protected ?string $phone = null;
 
     /**
      * Fone celular do titular do cartão
      *
      * @var string|null
      */
-    protected ?string $mobilePhone;
+    protected ?string $mobilePhone = null;
 
     public function getName(): ?string
     {
@@ -95,23 +95,23 @@ class CreditCardHolderInfo extends Entity
         return $this;
     }
 
-    public function getPostalCode(): string
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
-    public function setPostalCode(string $postalCode): self
+    public function setPostalCode(?string $postalCode): self
     {
         $this->postalCode = $postalCode;
         return $this;
     }
 
-    public function getAddressNumber(): string
+    public function getAddressNumber(): ?string
     {
         return $this->addressNumber;
     }
 
-    public function setAddressNumber(string $addressNumber): self
+    public function setAddressNumber(?string $addressNumber): self
     {
         $this->addressNumber = $addressNumber;
         return $this;

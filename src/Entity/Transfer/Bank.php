@@ -9,17 +9,17 @@ class Bank extends BankAccount
      *
      * @var $code string|null
     */
-    protected ?string $code;
+    protected ?string $code = null;
 
     /**
      * @var $ispb string|null
     */
-    protected ?string $ispb;
+    protected ?string $ispb = null;
 
     /**
      * @var $name string|null
     */
-    protected ?string $name;
+    protected ?string $name = null;
 
     public function getCode(): ?string
     {

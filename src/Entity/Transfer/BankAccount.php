@@ -9,21 +9,21 @@ class BankAccount extends Entity
     /**
      * @var $bank Bank|null
     */
-    protected ?Bank $bank;
+    protected ?Bank $bank = null;
 
     /**
      * Nome da conta bancária
      *
      * @var $accountName string|null
     */
-    protected ?string $accountName;
+    protected ?string $accountName = null;
 
     /**
      * Nome do proprietário da conta
      *
      * @var $ownerName string|null
      */
-    protected ?string $ownerName;
+    protected ?string $ownerName = null;
 
     /**
      * Data de nascimento do proprietário da conta.
@@ -31,57 +31,57 @@ class BankAccount extends Entity
      *
      * @var $ownerBirthDate string|null
     */
-    protected ?string $ownerBirthDate;
+    protected ?string $ownerBirthDate = null;
 
     /**
      * CPF ou CNPJ do proprietário da conta bancária
      *
      * @var $cpfCnpj string|null
     */
-    protected ?string $cpfCnpj;
+    protected ?string $cpfCnpj = null;
 
     /**
      * Número da agência sem dígito
      *
      * @var $agency string|null
     */
-    protected ?string $agency;
+    protected ?string $agency = null;
 
     /**
      * @var $agencyDigit string|null
     */
-    protected ?string $agencyDigit;
+    protected ?string $agencyDigit = null;
 
     /**
      * Dígito da conta bancária
      *
      * @var $accountDigit string|null
     */
-    protected ?string $accountDigit;
+    protected ?string $accountDigit = null;
 
     /**
      * @var $pixAddressKey string|null
     */
-    protected ?string $pixAddressKey;
+    protected ?string $pixAddressKey = null;
 
     /**
      * @var $account string|null
     */
-    protected ?string $account;
+    protected ?string $account = null;
 
     /**
      * Tipo da conta. Valores disponíveis em {@see BankAccountType}
      *
      * @var $bankAccountType string|null
     */
-    protected ?string $bankAccountType;
+    protected ?string $bankAccountType = null;
 
     /**
      * Identificador no Sistema de Pagamentos Brasileiro
      *
      * @var $ispb string|null
     */
-    protected ?string $ispb;
+    protected ?string $ispb = null;
 
     public function getBank(): ?Bank
     {

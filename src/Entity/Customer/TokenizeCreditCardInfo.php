@@ -13,21 +13,21 @@ class TokenizeCreditCardInfo extends Entity
      *
      * @var $customer string|null
     */
-    protected ?string $customer;
+    protected ?string $customer = null;
 
     /**
      * Informações do cartão de crédito
      *
      * @var $creditCard CreditCard|null
     */
-    protected ?CreditCard $creditCard;
+    protected ?CreditCard $creditCard = null;
 
     /**
      * Informações do titular do cartão de crédito
      *
      * @var $creditCardHolderInfo CreditCardHolderInfo|null
      */
-    protected ?CreditCardHolderInfo $creditCardHolderInfo;
+    protected ?CreditCardHolderInfo $creditCardHolderInfo = null;
 
     /**
      * IP de onde o cliente está fazendo a compra.
@@ -35,7 +35,7 @@ class TokenizeCreditCardInfo extends Entity
      *
      * @var $remoteIp string|null
     */
-    protected ?string $remoteIp;
+    protected ?string $remoteIp = null;
 
     public  function getCustomer(): ?string
     {

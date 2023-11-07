@@ -9,7 +9,7 @@ abstract class WebhookEvent implements \JsonSerializable
 {
     use Serializable;
 
-    protected ?string $event;
+    protected ?string $event = null;
 
     abstract public function getEvent();
 

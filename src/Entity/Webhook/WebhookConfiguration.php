@@ -11,21 +11,21 @@ class WebhookConfiguration extends Entity
      *
      * @var $url string|null
     */
-    protected ?string $url;
+    protected ?string $url = null;
 
     /**
      * Email para receber as notificações em caso de erros na fila
      *
      * @var $email string|null
      */
-    protected ?string $email;
+    protected ?string $email = null;
 
     /**
      * Versão utilizada da API. Utilize "3" para a versão v3
      *
      * @var $apiVersion string|null
      */
-    protected ?string $apiVersion;
+    protected ?string $apiVersion = null;
 
 
     /**
@@ -33,21 +33,21 @@ class WebhookConfiguration extends Entity
      *
      * @var $enabled bool|null
     */
-    protected bool $enabled;
+    protected ?bool $enabled = null;
 
     /**
      * Situação da fila de sincronização
      *
      * @var $interrupted bool|null
      */
-    protected ?bool $interrupted;
+    protected ?bool $interrupted = null;
 
     /**
      * Token de autenticação
      *
      * @var $authToken string|null
     */
-    protected ?string $authToken;
+    protected ?string $authToken = null;
 
     public function getUrl(): ?string
     {

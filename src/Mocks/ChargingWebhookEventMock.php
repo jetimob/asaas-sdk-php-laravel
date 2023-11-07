@@ -1,10 +1,9 @@
 <?php
 
-namespace Jetimob\Asaas\Entity\Transfer;
+namespace Jetimob\Asaas\Mocks;
 
 use Jetimob\Asaas\Entity\Charging\ChargeBackReason;
 use Jetimob\Asaas\Entity\Charging\ChargeBackStatus;
-use Jetimob\Asaas\Mocks\AbstractMockResponse;
 
 class ChargingWebhookEventMock extends AbstractMockResponse
 {

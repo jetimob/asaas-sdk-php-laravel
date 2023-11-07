@@ -14,49 +14,49 @@ use Jetimob\Asaas\Entity\Charging\Split;
 
 class ChargingWebhookEventData extends WebhookEventData
 {
-    protected ?string $dateCreated;
-    protected ?string $customer;
-    protected ?string $subscription;
+    protected ?string $dateCreated = null;
+    protected ?string $customer = null;
+    protected ?string $subscription = null;
     /* Somente quando pertencer a uma assinatura */
-    protected ?string $installment;
+    protected ?string $installment = null;
     /* Somento quando pertencer a um parcelamento */
-    protected ?string $paymentLink;
-    protected ?string $dueDate;
-    protected ?string $originalDueDate;
-    protected ?float $value;
-    protected ?float $netValue;
+    protected ?string $paymentLink = null;
+    protected ?string $dueDate = null;
+    protected ?string $originalDueDate = null;
+    protected ?float $value = null;
+    protected ?float $netValue = null;
     /* Para quando o valor pago é diferente do valor da cobrança */
-    protected ?float $originalValue;
-    protected ?float $interestValue;
-    protected ?string $description;
-    protected ?string $externalReference;
+    protected ?float $originalValue = null;
+    protected ?float $interestValue = null;
+    protected ?string $description = null;
+    protected ?string $externalReference = null;
     /** Valores disponíveis em {@see BillingType} */
-    protected ?string $billingType;
+    protected ?string $billingType = null;
     /** Valores disponíveis em {@see ChargingStatus} */
-    protected ?string $status;
-    protected ?string $pixTransaction;
-    protected ?string $confirmedDate;
-    protected ?string $paymentDate;
-    protected ?string $clientPaymentDate;
-    protected ?string $installmentNumber;
-    protected ?string $creditDate;
-    protected ?string $estimatedCreditDate;
-    protected ?string $invoiceUrl;
-    protected ?string $bankSlipUrl;
-    protected ?string $transactionReceiptUrl;
-    protected ?string $invoiceNumber;
-    protected ?bool $deleted;
-    protected ?bool $anticipated;
-    protected ?bool $acticipable;
-    protected ?string $lastInvoiceViewedDate;
-    protected ?string $lastBankSlipViewedDate;
-    protected ?bool $postalService;
-    protected ?Discount $discount;
-    protected ?Fine $fine;
-    protected ?Interest $interest;
-    protected ?array $split;
-    protected ?ChargeBack $chargeBack;
-    protected ?array $refunds;
+    protected ?string $status = null;
+    protected ?string $pixTransaction = null;
+    protected ?string $confirmedDate = null;
+    protected ?string $paymentDate = null;
+    protected ?string $clientPaymentDate = null;
+    protected ?string $installmentNumber = null;
+    protected ?string $creditDate = null;
+    protected ?string $estimatedCreditDate = null;
+    protected ?string $invoiceUrl = null;
+    protected ?string $bankSlipUrl = null;
+    protected ?string $transactionReceiptUrl = null;
+    protected ?string $invoiceNumber = null;
+    protected ?bool $deleted = null;
+    protected ?bool $anticipated = null;
+    protected ?bool $acticipable = null;
+    protected ?string $lastInvoiceViewedDate = null;
+    protected ?string $lastBankSlipViewedDate = null;
+    protected ?bool $postalService = null;
+    protected ?Discount $discount = null;
+    protected ?Fine $fine = null;
+    protected ?Interest $interest = null;
+    protected ?array $split = null;
+    protected ?ChargeBack $chargeBack = null;
+    protected ?array $refunds = null;
 
     public function splitItemType(): string
     {

@@ -6,15 +6,15 @@ use Jetimob\Asaas\Entity\Entity;
 
 class Refund extends Entity
 {
-    protected ?string $dateCreated;
+    protected ?string $dateCreated = null;
 
-    protected ?string $status;
+    protected ?string $status = null;
 
-    protected ?float $value;
+    protected ?float $value = null;
 
-    protected ?string $description;
+    protected ?string $description = null;
 
-    protected ?string $transactionReceiptUrl;
+    protected ?string $transactionReceiptUrl = null;
 
     public function getDateCreated(): ?string
     {

@@ -11,7 +11,7 @@ class ConfirmReceiptInCash extends Entity
      *
      * @var $paymentDate string|null
      */
-    protected ?string $paymentDate;
+    protected ?string $paymentDate = null;
 
 
     /***
@@ -19,14 +19,14 @@ class ConfirmReceiptInCash extends Entity
      *
      * @var $value float|null
      */
-    protected ?float $value;
+    protected ?float $value = null;
 
     /**
      * Enviar ou não notificação de pagamento confirmado para o cliente
      *
      * @var $notifyCustomer bool|null
     */
-    protected ?bool $notifyCustomer;
+    protected ?bool $notifyCustomer = null;
 
     public function getPaymentDate(): ?string
     {

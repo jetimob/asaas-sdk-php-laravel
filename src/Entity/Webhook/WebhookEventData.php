@@ -8,8 +8,8 @@ abstract class WebhookEventData
 {
     use Serializable;
 
-    protected ?string $object;
-    protected ?string $id;
+    protected ?string $object = null;
+    protected ?string $id = null;
 
     public function getObject(): ?string
     {

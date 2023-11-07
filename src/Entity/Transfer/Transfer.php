@@ -12,14 +12,14 @@ class Transfer extends Entity
      *
      * @var $value float|null
     */
-    protected ?float $value;
+    protected ?float $value = null;
 
     /**
      * Dados da conta caso seja uma transferência para conta bancária
      *
      * @var $bankAccount BankAccount|null
     */
-    protected ?BankAccount $bankAccount;
+    protected ?BankAccount $bankAccount = null;
 
     /**
      * Modalidade da transferência.
@@ -30,14 +30,14 @@ class Transfer extends Entity
      *
      * @var $operationType string|null
     */
-    protected ?string $operationType;
+    protected ?string $operationType = null;
 
     /**
      * Informe a chave Pix caso seja uma transferência para chave Pix
      *
      * @var $pixAddressKey string|null
     */
-    protected ?string $pixAddressKey;
+    protected ?string $pixAddressKey = null;
 
     /**
      * Informe o tipo de chave caso seja uma transferência para chave Pix
@@ -45,21 +45,21 @@ class Transfer extends Entity
      * Valores disponíveis em {@see PixKeyType}
      * @var $pixAddressKeyType string|null
     */
-    protected ?string $pixAddressKeyType;
+    protected ?string $pixAddressKeyType = null;
 
     /**
      * Transferências via Pix permitem descrição
      *
      * @var $description string|null
     */
-    protected ?string $description;
+    protected ?string $description = null;
 
     /**
      * Para transferências agendadas, caso não informado o pagamento é instantâneo
      *
      * @var $scheduleDate string|null
     */
-    protected ?string $scheduleDate;
+    protected ?string $scheduleDate = null;
 
     public function getValue(): ?float
     {

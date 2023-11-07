@@ -4,10 +4,10 @@ namespace Jetimob\Asaas\Entity;
 
 abstract class Valuable extends Entity
 {
-    /** @var $value float */
-    protected float $value;
+    /** @var $value float|null */
+    protected ?float $value = null;
 
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }

@@ -7,7 +7,7 @@ use Jetimob\Asaas\Entity\Valuable;
 /** Percentual de multa sobre o valor da cobrança para pagamento após o vencimento */
 class Fine extends Valuable
 {
-    protected ?string $type;
+    protected ?string $type = null;
 
     public function getType(): ?ValueType
     {
