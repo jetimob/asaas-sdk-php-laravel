@@ -37,7 +37,7 @@ class AccountApiFake extends AbstractFakeApi implements AccountApiInterface
     public function balance(): AccountBalanceResponse
     {
         return AccountBalanceResponse::deserialize([
-           'balance' => fake()->randomFloat(),
+           'balance' => fake()->randomFloat(2),
         ]);
     }
 
