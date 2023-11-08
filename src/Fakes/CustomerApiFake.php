@@ -35,13 +35,22 @@ class CustomerApiFake extends AbstractFakeApi implements CustomerApiInterface
 
     public function update(string $id, Customer $customer): UpdateCustomerResponse
     {
-        $this->entities->transform(function (CreateCustomerResponse $response) use ($id, $customer) {
+        $res = null;
+        $this->entities->transform(function (CreateCustomerResponse $response) use ($id, $customer, &$res) {
             if ($response->getId() === $id) {
-                $response = $this->makeResponse($customer);
+		        $response = UpdateCustomerResponse::deserialize(
+                    CreateCustomerResponseMock::get([
+                        'id' => $id,
+                        ...$customer->toArray(),
+                    ])
+                );
+		        $res = $response;
             }
 
             return $response;
-        });
+	    });
+
+	    return $res;
     }
 
     public function delete(string $id): DeleteCustomerResponse

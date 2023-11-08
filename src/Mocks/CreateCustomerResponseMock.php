@@ -33,6 +33,7 @@ class CreateCustomerResponseMock extends AbstractMockResponse
             'state' => fake()->randomLetter(),
             'country' => fake()->word(),
             'observations' => fake()->sentence(),
+            ...$overrides,
         ];
     }
 }
