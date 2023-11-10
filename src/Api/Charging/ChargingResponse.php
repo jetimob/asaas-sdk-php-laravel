@@ -12,67 +12,67 @@ use Jetimob\Asaas\Entity\Charging\Refund;
 
 abstract class ChargingResponse extends EntityResponse
 {
-    protected ?string $dateCreated;
+    protected ?string $dateCreated = null;
 
-    protected ?string $customer;
+    protected ?string $customer = null;
 
-    protected ?string $paymentLink;
+    protected ?string $paymentLink = null;
 
-    protected ?string $dueDate;
+    protected ?string $dueDate = null;
 
-    protected float $value;
+    protected ?float $value = null;
 
-    protected float $netValue;
+    protected ?float $netValue = null;
 
-    protected ?string $billingType;
+    protected ?string $billingType = null;
 
-    protected ?bool $canBePaidAfterDueDate;
+    protected ?bool $canBePaidAfterDueDate = null;
 
-    protected ?string $originalDueDate;
+    protected ?string $originalDueDate = null;
 
-    protected ?string $pixTransaction;
+    protected ?string $pixTransaction = null;
 
-    protected ?string $status;
+    protected ?string $status = null;
 
-    protected ?string $description;
+    protected ?string $description = null;
 
-    protected ?float $interestValue;
+    protected ?float $interestValue = null;
 
-    protected ?string $externalReference;
+    protected ?string $externalReference = null;
 
-    protected ?string $originalValue;
+    protected ?string $originalValue = null;
 
-    protected ?string $paymentDate;
+    protected ?string $paymentDate = null;
 
-    protected ?string $clientPaymentDate;
+    protected ?string $clientPaymentDate = null;
 
-    protected ?string $installmentNumber;
+    protected ?string $installmentNumber = null;
 
-    protected ?string $transactionReceiptUrl;
+    protected ?string $transactionReceiptUrl = null;
 
-    protected ?string $nossoNumero;
+    protected ?string $nossoNumero = null;
 
-    protected ?string $invoiceUrl;
+    protected ?string $invoiceUrl = null;
 
-    protected ?string $bankSlipUrl;
+    protected ?string $bankSlipUrl = null;
 
-    protected ?string $invoiceNumber;
+    protected ?string $invoiceNumber = null;
 
-    protected ?Discount $discount;
+    protected ?Discount $discount = null;
 
-    protected ?Fine $fine;
+    protected ?Fine $fine = null;
 
-    protected ?Interest $interest;
+    protected ?Interest $interest = null;
 
-    protected ?bool $deleted;
+    protected ?bool $deleted = null;
 
-    protected ?bool $postalService;
+    protected ?bool $postalService = null;
 
-    protected ?bool $anticipated;
+    protected ?bool $anticipated = null;
 
-    protected ?bool $anticipable;
+    protected ?bool $anticipable = null;
 
-    protected ?array $refunds;
+    protected ?array $refunds = null;
 
     public function refundsItemType(): string
     {
@@ -99,12 +99,12 @@ abstract class ChargingResponse extends EntityResponse
         return $this->dueDate;
     }
 
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }
 
-    public function getNetValue(): float
+    public function getNetValue(): ?float
     {
         return $this->netValue;
     }
