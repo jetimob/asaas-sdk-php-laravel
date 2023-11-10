@@ -2,8 +2,8 @@
 
 namespace Jetimob\Asaas\Tests\Unit;
 
-use Jetimob\Asaas\Entity\Transfer\ChargingWebhookEventMock;
 use Jetimob\Asaas\Entity\Webhook\ChargingWebhookEvent;
+use Jetimob\Asaas\Mocks\ChargingWebhookEventMock;
 use Jetimob\Asaas\Tests\AbstractTestCase;
 use PHPUnit\Framework\Attributes\Test;
 
