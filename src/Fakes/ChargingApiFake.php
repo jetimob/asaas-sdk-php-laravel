@@ -15,6 +15,7 @@ use Jetimob\Asaas\Api\Charging\UndoReceiptInCashResponse;
 use Jetimob\Asaas\Api\Charging\UpdateChargingResponse;
 use Jetimob\Asaas\Contracts\ChargingApiInterface;
 use Jetimob\Asaas\Entity\Charging\Charging;
+use Jetimob\Asaas\Entity\Charging\ChargingStatus;
 use Jetimob\Asaas\Entity\Charging\ConfirmReceiptInCash;
 use Jetimob\Asaas\Mocks\CreateChargingResponseMock;
 
@@ -22,7 +23,7 @@ class ChargingApiFake extends AbstractFakeApi implements ChargingApiInterface
 {
     public function create(Charging $charging): CreateChargingResponse
     {
-        $charging = $this->makeResponse($charging);
+        $charging = $this->makeResponse($charging->toArray());
 
         $this->entities->add($charging);
 
@@ -32,9 +33,27 @@ class ChargingApiFake extends AbstractFakeApi implements ChargingApiInterface
 
     public function find(string $id): FindChargingResponse
     {
-        return $this->entities->first(
+        /** @var ChargingResponse $charging */
+        $charging = $this->entities->first(
             fn (ChargingResponse $charging) => $charging->getId() === $id
         );
+
+        return FindChargingResponse::deserialize($charging->toArray());
+    }
+
+    public function pay(string $id): void
+    {
+        $this->entities->transform(function (ChargingResponse $response) use ($id) {
+            if ($response->getId() === $id) {
+                $response = $this->makeResponse([
+                    ...$response->toArray(),
+                    'paymentDate' => now()->format('Y-m-d'),
+                    'status' => ChargingStatus::RECEIVED->value,
+                ]);
+            }
+
+            return $response;
+        });
     }
 
     public function update(string $id, Charging $charging): UpdateChargingResponse
@@ -67,10 +86,10 @@ class ChargingApiFake extends AbstractFakeApi implements ChargingApiInterface
         throw new \Exception('Not implemented');
     }
 
-    protected function makeResponse(Charging $charging): CreateChargingResponse
+    protected function makeResponse(array $charging): CreateChargingResponse
     {
         return CreateChargingResponse::deserialize(
-            CreateChargingResponseMock::get($charging->toArray())
+            CreateChargingResponseMock::get($charging)
         );
     }
 }
