@@ -61,4 +61,9 @@ class AccountApi extends AbstractApi implements AccountApiInterface
     {
         return $this->mappedGet('wallets', FindWalletsResponse::class);
     }
+
+    public function findPendingDocuments(): FindPendingDocumentsResponse
+    {
+        return $this->mappedGet('myAccount/documents');
+    }
 }
