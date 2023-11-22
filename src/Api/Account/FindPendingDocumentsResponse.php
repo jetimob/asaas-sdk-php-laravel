@@ -15,4 +15,10 @@ class FindPendingDocumentsResponse extends Response
     {
         return DocumentStatus::class;
     }
+
+    /** @return DocumentStatus[]|null */
+    public function getData(): ?array
+    {
+        return $this->data;
+    }
 }
