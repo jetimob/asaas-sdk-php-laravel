@@ -11,13 +11,13 @@ class TransferApi extends AbstractApi implements TransferApiInterface
 {
     public function requestTransfer(Transfer $transfer): RequestTransferResponse
     {
-        return $this->mappedPost('transfer', RequestTransferResponse::class, [
+        return $this->mappedPost('transfers', RequestTransferResponse::class, [
             RequestOptions::JSON => $transfer,
         ]);
     }
 
     public function find(string $id): FindTransferResponse
     {
-        return $this->mappedGet("transfer/$id", FindTransferResponse::class);
+        return $this->mappedGet("transfers/$id", FindTransferResponse::class);
     }
 }
