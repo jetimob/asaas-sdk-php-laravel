@@ -3,6 +3,7 @@
 namespace Jetimob\Asaas\Entity\Webhook;
 
 use Jetimob\Asaas\Entity\Transfer\BankAccount;
+use Jetimob\Asaas\Entity\Transfer\TransferStatus;
 
 class TransferWebhookEventData extends WebhookEventData
 {
@@ -26,9 +27,9 @@ class TransferWebhookEventData extends WebhookEventData
         return $this->dateCreated;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): ?TransferStatus
     {
-        return $this->status;
+        return TransferStatus::tryFrom($this->status);
     }
 
     public function getEffectiveDate(): ?string
