@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1)ç
+
 namespace Jetimob\Asaas\Entity\Charging;
 
 use Jetimob\Asaas\Entity\Entity;
@@ -31,7 +33,7 @@ class Discount extends Entity
         return $this->value;
     }
 
-    public function setValue(int $value): self
+    public function setValue(float $value): self
     {
         $this->value = $value;
         return $this;
