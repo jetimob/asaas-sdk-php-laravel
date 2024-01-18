@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jetimob\Asaas\Entity\Charging;
 
 use Jetimob\Asaas\Entity\Valuable;

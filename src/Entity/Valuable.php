@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jetimob\Asaas\Entity;
 
 abstract class Valuable extends Entity
 {
-    /** @var $value float|null */
     protected ?float $value = null;
 
     public function getValue(): ?float

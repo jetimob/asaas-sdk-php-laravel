@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jetimob\Asaas\Entity\Transfer;
 
 use Jetimob\Asaas\Entity\Charging\PixKeyType;

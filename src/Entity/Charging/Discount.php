@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1)ç
+declare(strict_types=1);
 
 namespace Jetimob\Asaas\Entity\Charging;
 
