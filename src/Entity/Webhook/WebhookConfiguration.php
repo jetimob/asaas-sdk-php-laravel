@@ -49,6 +49,15 @@ class WebhookConfiguration extends Entity
     */
     protected ?string $authToken = null;
 
+    /**
+     * Tipo do Webhook
+     *
+     * @see WebhookType
+     *
+     * @var $type string|null
+     */
+    protected ?string $type = null;
+
     public function getUrl(): ?string
     {
         return $this->url;
@@ -112,6 +121,17 @@ class WebhookConfiguration extends Entity
     public function setAuthToken(?string $authToken): self
     {
         $this->authToken = $authToken;
+        return $this;
+    }
+
+    public function getType(): ?WebhookType
+    {
+        return WebhookType::tryFrom($this->type);
+    }
+
+    public function setType(WebhookType $type): self
+    {
+        $this->type = $type->value;
         return $this;
     }
 }
