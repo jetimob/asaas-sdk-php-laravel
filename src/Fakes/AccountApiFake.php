@@ -7,6 +7,7 @@ namespace Jetimob\Asaas\Fakes;
 use Jetimob\Asaas\Api\Account\AccountBalanceResponse;
 use Jetimob\Asaas\Api\Account\AccountResponse;
 use Jetimob\Asaas\Api\Account\CreateAccountResponse;
+use Jetimob\Asaas\Api\Account\CreatePixKeyResponse;
 use Jetimob\Asaas\Api\Account\FindAccountResponse;
 use Jetimob\Asaas\Api\Account\FindPendingDocumentsResponse;
 use Jetimob\Asaas\Api\Account\FindWalletsResponse;
@@ -15,6 +16,7 @@ use Jetimob\Asaas\Api\Account\SplitStatisticsResponse;
 use Jetimob\Asaas\Contracts\AccountApiInterface;
 use Jetimob\Asaas\Entity\Account\Account;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
+use Jetimob\Asaas\Entity\Account\PixAddressKeyType;
 use Jetimob\Asaas\Mocks\CreateAccountResponseMock;
 
 class AccountApiFake extends AbstractFakeApi implements AccountApiInterface
@@ -65,6 +67,11 @@ class AccountApiFake extends AbstractFakeApi implements AccountApiInterface
     }
 
     public function findPendingDocuments(): FindPendingDocumentsResponse
+    {
+        throw new \Exception('Not implemented');
+    }
+
+    public function createPixKey(PixAddressKeyType $type): CreatePixKeyResponse
     {
         throw new \Exception('Not implemented');
     }
