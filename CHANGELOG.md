@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.1.1...v1.2.0) (2024-02-20)
+
+
+### Features
+
+* adiciona campo de tipo de Webhook no endpoint de criação de conta ([c6a5f3c](https://github.com/jetimob/asaas-sdk-php-laravel/commit/c6a5f3cb2045504fa1cc303f7a13dfbcf8884a91))
+* Implementa cadastro de endereços de chaves pix para contas ([9a8d383](https://github.com/jetimob/asaas-sdk-php-laravel/commit/9a8d383e5602e367510848775e094be0c51d7a86))
+
 ### 1.1.1 (2024-01-18)
 
 
