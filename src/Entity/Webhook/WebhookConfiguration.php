@@ -6,57 +6,62 @@ use Jetimob\Asaas\Entity\Entity;
 
 class WebhookConfiguration extends Entity
 {
+
+    /**
+     * Nome para idetificar o webhook
+     */
+    protected ?string $name = null;
+
     /**
      * URL que receberá as informações de sincronização
-     *
-     * @var $url string|null
-    */
+     */
     protected ?string $url = null;
 
     /**
      * Email para receber as notificações em caso de erros na fila
-     *
-     * @var $email string|null
      */
     protected ?string $email = null;
 
     /**
+     * Método de envio: SEQUENTIALLY, NON_SEQUENTIALLY
+     */
+    protected ?string $sendType = null;
+
+    /**
      * Versão utilizada da API. Utilize "3" para a versão v3
-     *
-     * @var $apiVersion string|null
      */
     protected ?string $apiVersion = null;
 
-
     /**
      * Habilitar ou não o webhook
-     *
-     * @var $enabled bool|null
-    */
+     */
     protected ?bool $enabled = null;
 
     /**
      * Situação da fila de sincronização
-     *
-     * @var $interrupted bool|null
      */
     protected ?bool $interrupted = null;
 
     /**
      * Token de autenticação
-     *
-     * @var $authToken string|null
-    */
+     */
     protected ?string $authToken = null;
 
     /**
-     * Tipo do Webhook
-     *
-     * @see WebhookType
-     *
-     * @var $type string|null
+     * Eventos que o webhook deve enviar
      */
-    protected ?string $type = null;
+    protected ?array $events = null;
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+        return $this;
+    }
 
     public function getUrl(): ?string
     {
@@ -77,6 +82,17 @@ class WebhookConfiguration extends Entity
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+        return $this;
+    }
+
+    public function getSendType(): ?string
+    {
+        return $this->sendType;
+    }
+
+    public function setSendType(?string $sendType): self
+    {
+        $this->sendType = $sendType;
         return $this;
     }
 
@@ -124,14 +140,14 @@ class WebhookConfiguration extends Entity
         return $this;
     }
 
-    public function getType(): ?WebhookType
+    public function getEvents(): ?array
     {
-        return WebhookType::tryFrom($this->type);
+        return $this->events;
     }
 
-    public function setType(WebhookType $type): self
+    public function setEvents(?array $events): self
     {
-        $this->type = $type->value;
+        $this->events = $events;
         return $this;
     }
 }

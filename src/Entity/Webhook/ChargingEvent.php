@@ -4,46 +4,50 @@ namespace Jetimob\Asaas\Entity\Webhook;
 
 enum ChargingEvent: string
 {
-    /* Geração de nova cobrança. */
+    /** Geração de nova cobrança. */
     case PAYMENT_CREATED = 'PAYMENT_CREATED';
-    /* Pagamento em cartão aguardando aprovação pela análise manual de risco. */
+    /** Pagamento em cartão aguardando aprovação pela análise manual de risco. */
     case PAYMENT_AWAITING_RISK_ANALYSIS = 'PAYMENT_AWAITING_RISK_ANALYSIS';
-    /* Pagamento em cartão aprovado pela análise manual de risco. */
+    /** Pagamento em cartão aprovado pela análise manual de risco. */
     case PAYMENT_APPROVED_BY_RISK_ANALYSIS = 'PAYMENT_APPROVED_BY_RISK_ANALYSIS';
-    /* Pagamento em cartão reprovado pela análise manual de risco. */
+    /** Pagamento em cartão que foi autorizado e precisa ser capturado. */
+    case PAYMENT_AUTHORIZED = 'PAYMENT_AUTHORIZED';
+    /** Pagamento em cartão reprovado pela análise manual de risco. */
     case PAYMENT_REPROVED_BY_RISK_ANALYSIS = 'PAYMENT_REPROVED_BY_RISK_ANALYSIS';
-    /* Alteração no vencimento ou valor de cobrança existente. */
+    /** Alteração no vencimento ou valor de cobrança existente. */
     case PAYMENT_UPDATED = 'PAYMENT_UPDATED';
-    /* Cobrança confirmada (pagamento efetuado, porém o saldo ainda não foi disponibilizado). */
+    /** Cobrança confirmada (pagamento efetuado, porém o saldo ainda não foi disponibilizado). */
     case PAYMENT_CONFIRMED = 'PAYMENT_CONFIRMED';
-    /* Cobrança recebida. */
+    /** Cobrança recebida. */
     case PAYMENT_RECEIVED = 'PAYMENT_RECEIVED';
-    /* Cobrança antecipada. */
+    /** Cobrança antecipada. */
     case PAYMENT_ANTICIPATED = 'PAYMENT_ANTICIPATED';
-    /* Cobrança vencida. */
+    /** Falha no pagamento de cartão de crédito */
+    case PAYMENT_CREDIT_CARD_CAPTURE_REFUSED = 'PAYMENT_CREDIT_CARD_CAPTURE_REFUSED';
+    /** Cobrança vencida. */
     case PAYMENT_OVERDUE = 'PAYMENT_OVERDUE';
-    /* Cobrança removida. */
+    /** Cobrança removida. */
     case PAYMENT_DELETED = 'PAYMENT_DELETED';
-    /* Cobrança restaurada. */
+    /** Cobrança restaurada. */
     case PAYMENT_RESTORED = 'PAYMENT_RESTORED';
-    /* Cobrança estornada. */
+    /** Cobrança estornada. */
     case PAYMENT_REFUNDED = 'PAYMENT_REFUNDED';
-    /* Estorno em processamento (liquidação já está agendada, cobrança será estornada após executar a liquidação). */
+    /** Estorno em processamento (liquidação já está agendada, cobrança será estornada após executar a liquidação). */
     case PAYMENT_REFUND_IN_PROGRESS = 'PAYMENT_REFUND_IN_PROGRESS';
-    /* Recebimento em dinheiro desfeito. */
+    /** Recebimento em dinheiro desfeito. */
     case PAYMENT_RECEIVED_IN_CASH_UNDONE = 'PAYMENT_RECEIVED_IN_CASH_UNDONE';
-    /* Recebido chargeback. */
+    /** Recebido chargeback. */
     case PAYMENT_CHARGEBACK_REQUESTED = 'PAYMENT_CHARGEBACK_REQUESTED';
-    /* Em disputa de chargeback (caso sejam apresentados documentos para contestação). */
+    /** Em disputa de chargeback (caso sejam apresentados documentos para contestação). */
     case PAYMENT_CHARGEBACK_DISPUTE = 'PAYMENT_CHARGEBACK_DISPUTE';
-    /* Disputa vencida, aguardando repasse da adquirente. */
+    /** Disputa vencida, aguardando repasse da adquirente. */
     case PAYMENT_AWAITING_CHARGEBACK_REVERSAL = 'PAYMENT_AWAITING_CHARGEBACK_REVERSAL';
-    /* Recebimento de negativação. */
+    /** Recebimento de negativação. */
     case PAYMENT_DUNNING_RECEIVED = 'PAYMENT_DUNNING_RECEIVED';
-    /* Requisição de negativação. */
+    /** Requisição de negativação. */
     case PAYMENT_DUNNING_REQUESTED = 'PAYMENT_DUNNING_REQUESTED';
-    /* Boleto da cobrança visualizado pelo cliente. */
+    /** Boleto da cobrança visualizado pelo cliente. */
     case PAYMENT_BANK_SLIP_VIEWED = 'PAYMENT_BANK_SLIP_VIEWED';
-    /* Fatura da cobrança visualizada pelo cliente. */
+    /** Fatura da cobrança visualizada pelo cliente. */
     case PAYMENT_CHECKOUT_VIEWED = 'PAYMENT_CHECKOUT_VIEWED';
 }

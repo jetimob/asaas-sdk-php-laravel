@@ -51,6 +51,7 @@ class ChargingWebhookEventData extends WebhookEventData
     protected ?string $lastInvoiceViewedDate = null;
     protected ?string $lastBankSlipViewedDate = null;
     protected ?bool $postalService = null;
+    protected ?string $duplicatedPayment = null;
     protected ?Discount $discount = null;
     protected ?Fine $fine = null;
     protected ?Interest $interest = null;
@@ -226,6 +227,11 @@ class ChargingWebhookEventData extends WebhookEventData
     public function getPostalService(): ?bool
     {
         return $this->postalService;
+    }
+
+    public function getDuplicatedPayment(): ?string
+    {
+        return $this->duplicatedPayment;
     }
 
     public function getDiscount(): ?Discount

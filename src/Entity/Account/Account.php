@@ -112,6 +112,13 @@ class Account extends Entity
     */
     protected array $webhooks;
 
+    /**
+     * Valor de recebimentos mensal
+     *
+     * @var int $incomeValue
+     */
+    protected int $incomeValue;
+
     public function getName(): string
     {
         return $this->name;
@@ -252,6 +259,17 @@ class Account extends Entity
     public function setWebhooks(array $webhooks): self
     {
         $this->webhooks = $webhooks;
+        return $this;
+    }
+
+    public function getIncomeValue(): int
+    {
+        return $this->incomeValue;
+    }
+
+    public function setIncomeValue(int $incomeValue): self
+    {
+        $this->incomeValue = $incomeValue;
         return $this;
     }
 }
