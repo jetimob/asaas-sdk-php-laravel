@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.2.1...v1.3.0) (2024-04-02)
+
+
+### Features
+
+* atualização de abertura e configuração de subconta ([6be9b8b](https://github.com/jetimob/asaas-sdk-php-laravel/commit/6be9b8b7c932678e999371cf9cdc18e46910a324))
+
 ### [1.2.1](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.2.0...v1.2.1) (2024-02-20)
 
 ## [1.2.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.1.1...v1.2.0) (2024-02-20)
