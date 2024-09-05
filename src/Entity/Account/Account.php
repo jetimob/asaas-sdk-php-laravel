@@ -119,6 +119,16 @@ class Account extends Entity
      */
     protected int $incomeValue;
 
+    public function getProvince(): string
+    {
+        return $this->province;
+    }
+
+    public function setProvince(string $province): void
+    {
+        $this->province = $province;
+    }
+
     public function getName(): string
     {
         return $this->name;
