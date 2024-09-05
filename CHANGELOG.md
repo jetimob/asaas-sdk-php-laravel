@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.4.0...v1.4.1) (2024-09-05)
+
+
+### Bug Fixes
+
+* corrige setProvince ([9d0b555](https://github.com/jetimob/asaas-sdk-php-laravel/commit/9d0b5550d97e2852eff212699b6d470f194c5add))
+
 ## [1.4.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.3.0...v1.4.0) (2024-09-05)
 
 
