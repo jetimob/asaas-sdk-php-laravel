@@ -124,9 +124,10 @@ class Account extends Entity
         return $this->province;
     }
 
-    public function setProvince(string $province): void
+    public function setProvince(string $province): self
     {
         $this->province = $province;
+        return $this;
     }
 
     public function getName(): string
