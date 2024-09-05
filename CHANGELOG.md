@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.3.0...v1.4.0) (2024-09-05)
+
+
+### Features
+
+* implementa set e get de province ([6cb3990](https://github.com/jetimob/asaas-sdk-php-laravel/commit/6cb3990d82cc45637fb49325dadc9b524b66d797))
+
 ## [1.3.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.2.1...v1.3.0) (2024-04-02)
 
 
