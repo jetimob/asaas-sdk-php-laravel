@@ -6,6 +6,7 @@ use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
 use Jetimob\Asaas\Contracts\AccountApiInterface;
 use Jetimob\Asaas\Entity\Account\Account;
+use Jetimob\Asaas\Entity\Account\ValidationDocument;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
 use Jetimob\Asaas\Entity\Account\PixAddressKeyType;
 
@@ -68,9 +69,16 @@ class AccountApi extends AbstractApi implements AccountApiInterface
         return $this->mappedGet('myAccount/documents', FindPendingDocumentsResponse::class);
     }
 
+    public function sendDocument(ValidationDocument $document, string $id): SendDocumentResponse
+    {
+        return $this->mappedPost("myAccount/documents/$id", SendDocumentResponse::class, [
+            RequestOptions::MULTIPART => $document->toArray(),
+        ]);
+    }
+
     public function createPixKey(PixAddressKeyType $type): CreatePixKeyResponse
     {
-        return $this->mappedPost('pix/addressKeys', [
+        return $this->mappedPost('pix/addressKeys', CreatePixKeyResponse::class, [
             RequestOptions::JSON => [
                 'type' => $type->value,
             ],

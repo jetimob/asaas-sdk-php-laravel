@@ -9,8 +9,10 @@ use Jetimob\Asaas\Api\Account\FindAccountResponse;
 use Jetimob\Asaas\Api\Account\FindPendingDocumentsResponse;
 use Jetimob\Asaas\Api\Account\FindWalletsResponse;
 use Jetimob\Asaas\Api\Account\InvoiceCustomizeResponse;
+use Jetimob\Asaas\Api\Account\SendDocumentResponse;
 use Jetimob\Asaas\Api\Account\SplitStatisticsResponse;
 use Jetimob\Asaas\Entity\Account\Account;
+use Jetimob\Asaas\Entity\Account\ValidationDocument;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
 use Jetimob\Asaas\Entity\Account\PixAddressKeyType;
 
@@ -32,4 +34,6 @@ interface AccountApiInterface
     public function findPendingDocuments(): FindPendingDocumentsResponse;
 
     public function createPixKey(PixAddressKeyType $type): CreatePixKeyResponse;
+
+    public function sendDocument(ValidationDocument $document, string $id): SendDocumentResponse;
 }
