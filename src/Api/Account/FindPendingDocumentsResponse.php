@@ -21,4 +21,9 @@ class FindPendingDocumentsResponse extends Response
     {
         return $this->data;
     }
+
+    public function getRejectReasons(): ?string
+    {
+        return $this->rejectReasons;
+    }
 }
