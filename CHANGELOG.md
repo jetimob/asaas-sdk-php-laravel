@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.4.1...v1.5.0) (2024-09-09)
+
+
+### Features
+
+* implementação de envio de documentos ([8deae2f](https://github.com/jetimob/asaas-sdk-php-laravel/commit/8deae2f90828411030ea4f9c0c92af9bd5d36083))
+
 ### [1.4.1](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.4.0...v1.4.1) (2024-09-05)
 
 
