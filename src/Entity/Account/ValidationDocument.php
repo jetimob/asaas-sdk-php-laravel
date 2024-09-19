@@ -10,14 +10,27 @@ class ValidationDocument extends Entity
 
     protected ?string $documentFile;
 
+    protected ?string $documentFileName;
+
     public function getDocumentFile(): ?string
     {
         return $this->documentFile;
     }
 
+    public function getDocumentFileName(): ?string
+    {
+        return $this->documentFileName;
+    }
+
     public function setDocumentFile(?string $documentFile): self
     {
         $this->documentFile = $documentFile;
+        return $this;
+    }
+
+    public function setDocumentFileName(?string $documentFileName): self
+    {
+        $this->documentFileName = $documentFileName;
         return $this;
     }
 
@@ -42,6 +55,7 @@ class ValidationDocument extends Entity
             [
                 'name' => 'documentFile',
                 'contents' => $this->getDocumentFile(),
+                'filename' => $this->getDocumentFileName(),
             ]
         ];
     }
