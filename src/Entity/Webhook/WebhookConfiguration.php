@@ -7,6 +7,8 @@ use Jetimob\Asaas\Entity\Entity;
 class WebhookConfiguration extends Entity
 {
 
+    protected ?string $id = null;
+
     /**
      * Nome para idetificar o webhook
      */
@@ -51,6 +53,17 @@ class WebhookConfiguration extends Entity
      * Eventos que o webhook deve enviar
      */
     protected ?array $events = null;
+
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
+    public function setId(?string $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     public function getName(): ?string
     {

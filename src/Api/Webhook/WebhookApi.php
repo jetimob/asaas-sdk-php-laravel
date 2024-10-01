@@ -21,4 +21,16 @@ class WebhookApi extends AbstractApi
             RequestOptions::JSON => $configuration,
         ]);
     }
+
+    public function webhookList(): WebhookListResponse
+    {
+        return $this->mappedGet('webhooks', WebhookListResponse::class);
+    }
+
+    public function updateWebhook(WebhookConfiguration $configuration, string $id): WebhookConfigurationResponse
+    {
+        return $this->mappedPut("webhooks/$id", WebhookConfigurationResponse::class, [
+            RequestOptions::JSON => $configuration,
+        ]);
+    }
 }
