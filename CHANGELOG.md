@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.5.1...v1.6.0) (2024-10-01)
+
+
+### Features
+
+* implementa atualização de configuração de webhooks ([90bdf0a](https://github.com/jetimob/asaas-sdk-php-laravel/commit/90bdf0accf5d8a7b05f370bb527ae9fc557cb9ef))
+
 ## [1.5.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.4.1...v1.5.0) (2024-09-09)
 
 
