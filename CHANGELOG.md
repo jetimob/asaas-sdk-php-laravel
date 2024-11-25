@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.6.0...v1.7.0) (2024-11-25)
+
+
+### Features
+
+* implementa daysAfterDueDateToRegistrationCancellation na Entity Charging ([4065500](https://github.com/jetimob/asaas-sdk-php-laravel/commit/4065500bd049f172a39dbd71f820f131734a7cc5))
+
 ## [1.6.0](https://github.com/jetimob/asaas-sdk-php-laravel/compare/v1.5.1...v1.6.0) (2024-10-01)
 
 
