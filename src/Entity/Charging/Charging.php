@@ -19,7 +19,7 @@ class Charging extends Entity
      * Método de pagamento, valores disponíveis {@see BillingType}
      *
      * @var $billingType string|null
-    */
+     */
     protected ?string $billingType;
 
     /** @var $value float|null */
@@ -36,6 +36,13 @@ class Charging extends Entity
     protected ?string $description = null;
 
     /**
+     * Dias após o vencimento para cancelamento do registro (somente para boleto bancário)
+     *
+     * @var int|null
+     */
+    protected ?int $daysAfterDueDateToRegistrationCancellation = null;
+
+    /**
      * Informação de referência externa, possibilitando a realização de pesquisa.
      *
      * @var $externalReference string|null
@@ -46,12 +53,12 @@ class Charging extends Entity
      * Número de parcelas (somento no caso de cobrança parcelada)
      *
      * @var $installmentCount int|null
-    */
+     */
     protected ?int $installmentCount = null;
 
     /**
      * @var $creditCard CreditCard|null
-    */
+     */
     protected ?CreditCard $creditCard = null;
 
     /**
@@ -75,7 +82,7 @@ class Charging extends Entity
      * IP de onde o cliente está fazendo a compra. Não deve ser informado o IP do seu servidor.
      *
      * @var $remoteIp string|null
-    */
+     */
     protected ?string $remoteIp = null;
 
     /**
@@ -100,7 +107,7 @@ class Charging extends Entity
      * Define se a cobrança vai ser enviada pelos correios
      *
      * @var $postalService bool|null
-    */
+     */
     protected ?bool $postalService = null;
 
     /**
@@ -109,7 +116,7 @@ class Charging extends Entity
      * @see https://docs.asaas.com/docs/split-de-pagamentos
      *
      * @var $split Split[]|null
-    */
+     */
     protected ?array $split = null;
 
     protected ?Callback $callback = null;
@@ -174,6 +181,17 @@ class Charging extends Entity
         return $this;
     }
 
+    public function getDaysAfterDueDateToRegistrationCancellation(): ?int
+    {
+        return $this->daysAfterDueDateToRegistrationCancellation;
+    }
+
+    public function setDaysAfterDueDateToRegistrationCancellation(?int $days): self
+    {
+        $this->daysAfterDueDateToRegistrationCancellation = $days;
+        return $this;
+    }
+
     public function getExternalReference(): ?string
     {
         return $this->externalReference;
@@ -218,10 +236,10 @@ class Charging extends Entity
         return $this;
     }
 
-   public function getCreditCardToken(): ?string
-   {
-       return $this->creditCardToken;
-   }
+    public function getCreditCardToken(): ?string
+    {
+        return $this->creditCardToken;
+    }
 
     public function setCreditCardToken(?string $token): self
     {
