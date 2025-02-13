@@ -84,4 +84,12 @@ class AccountApi extends AbstractApi implements AccountApiInterface
             ],
         ]);
     }
+
+    public function financialTransactions(int $offset, int $limit, ?string $startDate = null, ?string $finishDate = null): FinancialTransactionsResponse
+    {
+        return $this->mappedGet(
+            "financialTransactions?offset=$offset&limit=$limit&startDate=$startDate&finishDate=$finishDate",
+            FinancialTransactionsResponse::class
+        );
+    }
 }
