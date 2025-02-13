@@ -5,6 +5,7 @@ namespace Jetimob\Asaas\Contracts;
 use Jetimob\Asaas\Api\Account\AccountBalanceResponse;
 use Jetimob\Asaas\Api\Account\CreateAccountResponse;
 use Jetimob\Asaas\Api\Account\CreatePixKeyResponse;
+use Jetimob\Asaas\Api\Account\FinancialTransactionsResponse;
 use Jetimob\Asaas\Api\Account\FindAccountResponse;
 use Jetimob\Asaas\Api\Account\FindPendingDocumentsResponse;
 use Jetimob\Asaas\Api\Account\FindWalletsResponse;
@@ -36,4 +37,6 @@ interface AccountApiInterface
     public function createPixKey(PixAddressKeyType $type): CreatePixKeyResponse;
 
     public function sendDocument(ValidationDocument $document, string $id): SendDocumentResponse;
+
+    public function financialTransactions(int $offset, int $limit, string $startDate, string $finishDate): FinancialTransactionsResponse;
 }
