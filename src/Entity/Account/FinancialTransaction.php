@@ -13,10 +13,10 @@ class FinancialTransaction extends Entity
     protected ?string $id = null;
 
     //Valor da transação
-    protected ?int $value = null;
+    protected ?float $value = null;
 
     //Valor em conta no momento da transação
-    protected ?int $balance = null;
+    protected ?float $balance = null;
 
     //Tipo de transação
     protected ?string $type = null;
@@ -61,12 +61,12 @@ class FinancialTransaction extends Entity
         return $this->id;
     }
 
-    public  function getValue(): ?int
+    public  function getValue(): ?float
     {
         return $this->value;
     }
 
-    public  function getBalance(): ?int
+    public  function getBalance(): ?float
     {
         return $this->balance;
     }
