@@ -6,6 +6,7 @@ use GuzzleHttp\RequestOptions;
 use Jetimob\Asaas\Api\AbstractApi;
 use Jetimob\Asaas\Contracts\AccountApiInterface;
 use Jetimob\Asaas\Entity\Account\Account;
+use Jetimob\Asaas\Entity\Account\CommercialInfo;
 use Jetimob\Asaas\Entity\Account\ValidationDocument;
 use Jetimob\Asaas\Entity\Account\InvoiceCustomization;
 use Jetimob\Asaas\Entity\Account\PixAddressKeyType;
@@ -74,6 +75,18 @@ class AccountApi extends AbstractApi implements AccountApiInterface
         return $this->mappedPost("myAccount/documents/$id", SendDocumentResponse::class, [
             RequestOptions::MULTIPART => $document->toArray(),
         ]);
+    }
+
+    public function updateCommercialInfo(CommercialInfo $commercialInfo): CommercialInfoResponse
+    {
+        return $this->mappedPost("myAccount/commercialInfo", CommercialInfoResponse::class, [
+            RequestOptions::JSON => $commercialInfo,
+        ]);
+    }
+
+    public function commercialInfo(): CommercialInfoResponse
+    {
+        return $this->mappedGet("myAccount/commercialInfo", CommercialInfoResponse::class);
     }
 
     public function createPixKey(PixAddressKeyType $type): CreatePixKeyResponse
