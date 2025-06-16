@@ -89,6 +89,11 @@ class AccountApi extends AbstractApi implements AccountApiInterface
         return $this->mappedGet("myAccount/commercialInfo", CommercialInfoResponse::class);
     }
 
+    public function accountNumber(): AccountNumberResponse
+    {
+        return $this->mappedGet("myAccount/accountNumber", AccountNumberResponse::class);
+    }
+
     public function createPixKey(PixAddressKeyType $type): CreatePixKeyResponse
     {
         return $this->mappedPost('pix/addressKeys', CreatePixKeyResponse::class, [
