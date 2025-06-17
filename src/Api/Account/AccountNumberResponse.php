@@ -2,7 +2,9 @@
 
 namespace Jetimob\Asaas\Api\Account;
 
-class AccountNumberResponse
+use Jetimob\Asaas\Api\EntityResponse;
+
+class AccountNumberResponse extends EntityResponse
 {
     protected ?string $agency;
     protected ?string $account;
