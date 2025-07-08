@@ -50,6 +50,15 @@ class Transfer extends Entity
     protected ?string $pixAddressKeyType = null;
 
     /**
+     * Transferência entre contas Asaas
+     * Só é possível fazer transferência entre contas Asaas para contas que possuam vínculo entre si,
+     * como conta raiz e subconta, ou duas subcontas de mesma conta raiz.
+     *
+     * @var $walletId string|null
+     */
+    protected ?string $walletId = null;
+
+    /**
      * Transferências via Pix permitem descrição
      *
      * @var $description string|null
@@ -62,6 +71,13 @@ class Transfer extends Entity
      * @var $scheduleDate string|null
     */
     protected ?string $scheduleDate = null;
+
+    /**
+     * Identificador da transferência no seu sistema
+     *
+     * @var $externalReference string|null
+     */
+    protected ?string $externalReference = null;
 
     public function getValue(): ?float
     {
@@ -137,6 +153,28 @@ class Transfer extends Entity
     public function setScheduleDate(?string $scheduleDate): self
     {
         $this->scheduleDate = $scheduleDate;
+        return $this;
+    }
+
+    public function getWalletId(): ?string
+    {
+        return $this->walletId;
+    }
+
+    public function setWalletId(?string $walletId): Transfer
+    {
+        $this->walletId = $walletId;
+        return $this;
+    }
+
+    public function getExternalReference(): ?string
+    {
+        return $this->externalReference;
+    }
+
+    public function setExternalReference(?string $externalReference): Transfer
+    {
+        $this->externalReference = $externalReference;
         return $this;
     }
 }
