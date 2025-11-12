@@ -98,7 +98,7 @@ Asaas::charging()->usingToken($apiKey)->create($charging);
 |                    | [Tokenização](https://docs.asaas.com/reference/tokenizacao-de-cartao-de-credito) de cartão de crédito |     ✔️     |
 | **Transferências** |                                                                                                       |            |
 |                    |                                        Transferências externas                                        |     ✔️     |
-|                    |                                   Transferências entre contas Asaas                                   |     ❌     |
+|                    |                                   Transferências entre contas Asaas                                   |     ✔️     |
 |                    |                              Recuperar informações de uma transferência                               |     ✔️     |
 | **Webhook**        |                                                                                                       |            |
 |                    |                                Configuração de Webhook para cobranças                                 |     ✔️     |
