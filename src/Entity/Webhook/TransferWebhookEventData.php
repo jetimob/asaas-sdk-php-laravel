@@ -21,6 +21,7 @@ class TransferWebhookEventData extends WebhookEventData
     protected ?BankAccount $bankAccount = null;
     protected ?string $operationType = null;
     protected ?string $description = null;
+    protected ?string $externalReference = null;
 
     public function getDateCreated(): ?string
     {
@@ -90,5 +91,10 @@ class TransferWebhookEventData extends WebhookEventData
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+
+    public function getExternalReference(): ?string
+    {
+        return $this->externalReference;
     }
 }
