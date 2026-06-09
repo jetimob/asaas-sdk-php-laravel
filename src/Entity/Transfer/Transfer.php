@@ -63,6 +63,13 @@ class Transfer extends Entity
     */
     protected ?string $scheduleDate = null;
 
+    /**
+     * Identificador da transferência no sistema
+     *
+     * @var $externalReference string|null
+    */
+    protected ?string $externalReference = null;
+
     public function getValue(): ?float
     {
         return $this->value;
@@ -137,6 +144,17 @@ class Transfer extends Entity
     public function setScheduleDate(?string $scheduleDate): self
     {
         $this->scheduleDate = $scheduleDate;
+        return $this;
+    }
+
+    public function getExternalReference(): ?string
+    {
+        return $this->externalReference;
+    }
+
+    public function setExternalReference(?string $externalReference): self
+    {
+        $this->externalReference = $externalReference;
         return $this;
     }
 }
